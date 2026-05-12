@@ -10,7 +10,7 @@ public class CannonRotator : MonoBehaviour
     [SerializeField] LayerMask EntityLayer;
     float closest = float.MaxValue;
     Entity target = null;
-    Dictionary<string, float> EntitiesDistance = new Dictionary<string, float>();
+    Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
     (float,float,float) OriginalRotaion;
     private void Start()
     {
@@ -29,26 +29,36 @@ public class CannonRotator : MonoBehaviour
 
     void Update()
     {
+        float originalDistance = 0f;
+        //float currentDistance = 0f;
         if (target != null)
         {
-            RotateTower(target.transform.position);
-            Debug.Log($"x: {target.transform.position.x}" +
-                $"y: {target.transform.position.y}" +
-                $"z: {target.transform.position.z}");
+            originalDistance = Vector3.Distance(transform.position, target.transform.position);
+            RotateTower(target.transform.position, originalDistance);
             
+        }
+
+        else if(target == null)
+        {
+
+           Pivotpoint.localRotation = Quaternion.Lerp(
+                Pivotpoint.localRotation,
+                Quaternion.Euler(OriginalRotaion.Item1, OriginalRotaion.Item2, OriginalRotaion.Item3),
+                rotationSpeed * Time.deltaTime);
         }
             
 
-        
-        
+
+
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, Radius, EntityLayer);
         foreach (var collider in colliders)
         {
             
             Entity enemy = collider.GetComponent<Entity>();
-            string key = enemy.name;
-            
-            
+            int key = enemy.GetInstanceID();
+
+
             if (EntitiesDistance.ContainsKey(key))
             {
                 EntitiesDistance[key] = Vector3.Distance(transform.position, enemy.transform.position);
@@ -69,22 +79,47 @@ public class CannonRotator : MonoBehaviour
 
 
 
-        if (target != null && EntitiesDistance[target.name] >= closest)
+        if (target != null && EntitiesDistance[target.GetInstanceID()] >= closest)
             closest = float.MaxValue;
     }
 
-    void RemoveEntityFromDictionary(string name)
+    void RemoveEntityFromDictionary(int id)
     {
-        EntitiesDistance.Remove(name);
+        EntitiesDistance.Remove(id);
     }
 
-    void RotateTower(Vector3 enemyPos)
+    void RotateTower(Vector3 enemyPos, float steps)
+
     {
-        //Pivotpoint.Rotate(0f,rotationSpeed*Time.deltaTime,0f);
-        
-        Pivotpoint.localRotation = Quaternion.Euler(0f,
-            (Mathf.Clamp(OriginalRotaion.Item2 + enemyPos.z, 100, 260)),
-            Mathf.Clamp(OriginalRotaion.Item3 - enemyPos.x, -30, 0));
+        Vector3 directionToEnemy = enemyPos - Pivotpoint.position;
+
+        directionToEnemy.y = 0f; 
+
+        if (directionToEnemy == Vector3.zero) return;
+
+
+        Quaternion targetRotation = Quaternion.LookRotation(directionToEnemy);
+
+        targetRotation.x += steps * Time.deltaTime;
+
+        targetRotation.x = Mathf.Clamp(targetRotation.x, 0, 30);
+
+        if (!(targetRotation.y <= 0 && targetRotation.y >= -1))
+
+        {
+            targetRotation.y = -0.707f;
+        }
+
+        Debug.Log(targetRotation.y);
+
+        Pivotpoint.rotation = Quaternion.Slerp(
+
+            Pivotpoint.rotation,
+
+            targetRotation,
+
+            Time.deltaTime * 5f);
+
     }
 
 

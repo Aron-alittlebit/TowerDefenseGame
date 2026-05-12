@@ -15,7 +15,7 @@ public class Entity : MonoBehaviour
     {
         if(health <= 0)
         {
-            EntitiesEvent.EntityDeath(transform.name);
+            EntitiesEvent.EntityDeath(transform.GetInstanceID());
             GameObject gem = Instantiate(GemPrefab, transform.position, Quaternion.identity);
             Rigidbody rb = gem.GetComponent<Rigidbody>();
             if(rb != null)
