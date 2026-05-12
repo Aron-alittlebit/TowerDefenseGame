@@ -4,8 +4,8 @@ using UnityEngine;
 public class EntityMove : MonoBehaviour
 {
     [SerializeField] Crystal Crystal;
-    float speed = 10f;
-    float attackDst = 6f;
+    [SerializeField] float speed = 10f;
+    [SerializeField] float attackDst = 6f;
     float cooldown = 1;
 
    
@@ -13,7 +13,7 @@ public class EntityMove : MonoBehaviour
     void Update()
     {
 
-        
+        transform.LookAt(Crystal.transform);
         if (Vector3.Distance(transform.position, Crystal.transform.position) >= attackDst)
         {
             transform.position = Vector3.MoveTowards(transform.position,

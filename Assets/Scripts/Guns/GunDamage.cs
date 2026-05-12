@@ -17,7 +17,7 @@ public class GunDamage : MonoBehaviour
         
         if (Physics.Raycast(firePoint.position, firePoint.forward, out RaycastHit hitInfo, range))
         {
-            Debug.Log(hitInfo.collider.name);
+            
             Entity enemy = hitInfo.collider.GetComponent<Entity>();
             if (enemy != null)
             {

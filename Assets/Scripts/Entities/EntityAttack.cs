@@ -13,7 +13,7 @@ public class EntityAttack : MonoBehaviour
     }
     void Attack()
     {
-        Debug.Log("Die you stupid brick");
+        //Debug.Log("Die you stupid brick");
     }
 
     

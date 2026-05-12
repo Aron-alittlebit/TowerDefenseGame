@@ -7,7 +7,7 @@ public class PlayerGemPickUp : MonoBehaviour
     public LayerMask GemLayer;
     void Update()
     {
-        Debug.Log(GemCounter);
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position,Radius, GemLayer);
         foreach(var collider in colliders)
         {
