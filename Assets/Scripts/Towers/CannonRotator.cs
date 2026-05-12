@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal.Builders;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,12 @@ public class CannonRotator : MonoBehaviour
     float closest = float.MaxValue;
     Entity target = null;
     Dictionary<string, float> EntitiesDistance = new Dictionary<string, float>();
-
+    (float,float,float) OriginalRotaion;
+    private void Start()
+    {
+        OriginalRotaion = (Pivotpoint.localEulerAngles.x, 
+            Pivotpoint.localEulerAngles.y, Pivotpoint.localEulerAngles.z);
+    }
     private void OnEnable()
     {
         EntitiesEvent.OnEntityDeath += RemoveEntityFromDictionary;
@@ -23,8 +29,18 @@ public class CannonRotator : MonoBehaviour
 
     void Update()
     {
+        if (target != null)
+        {
+            RotateTower(target.transform.position);
+            Debug.Log($"x: {target.transform.position.x}" +
+                $"y: {target.transform.position.y}" +
+                $"z: {target.transform.position.z}");
+            
+        }
+            
+
         
-        //Pivotpoint.Rotate(0f,rotationSpeed*Time.deltaTime,0f);
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, Radius, EntityLayer);
         foreach (var collider in colliders)
         {
@@ -40,7 +56,7 @@ public class CannonRotator : MonoBehaviour
                 {
                     closest = EntitiesDistance[key];
                     target = enemy;
-                    Debug.Log($"{key} {Vector3.Distance(transform.position, enemy.transform.position)}");
+                    
                 }
             }
             else
@@ -51,6 +67,8 @@ public class CannonRotator : MonoBehaviour
 
         }
 
+
+
         if (target != null && EntitiesDistance[target.name] >= closest)
             closest = float.MaxValue;
     }
@@ -60,5 +78,14 @@ public class CannonRotator : MonoBehaviour
         EntitiesDistance.Remove(name);
     }
 
-    
+    void RotateTower(Vector3 enemyPos)
+    {
+        //Pivotpoint.Rotate(0f,rotationSpeed*Time.deltaTime,0f);
+        
+        Pivotpoint.localRotation = Quaternion.Euler(0f,
+            (Mathf.Clamp(OriginalRotaion.Item2 + enemyPos.z, 100, 260)),
+            Mathf.Clamp(OriginalRotaion.Item3 - enemyPos.x, -30, 0));
+    }
+
+
 }
