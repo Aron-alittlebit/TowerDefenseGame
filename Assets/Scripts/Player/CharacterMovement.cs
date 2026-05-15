@@ -31,6 +31,7 @@ public class CharacterMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.forward * z + transform.right * x;
+        move.y = 0;
         characterController.Move(Speed * Time.deltaTime * move);
 
         if(IsGrounded && Input.GetButtonDown("Jump"))

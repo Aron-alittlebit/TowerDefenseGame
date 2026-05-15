@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMove
   Crystal: {fileID: 2118870628}
-  speed: 5
+  speed: 10
   attackDst: 6
 --- !u!136 &144469119
 CapsuleCollider:
