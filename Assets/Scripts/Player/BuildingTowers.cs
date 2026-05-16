@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 public class BuildingTowers : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class BuildingTowers : MonoBehaviour
     [SerializeField] Tower TowerPrefab;
     [SerializeField] Material BuildingMat;
     [SerializeField] Material PlacedMat;
+    [SerializeField] TowerData towerData;
     void Start()
     {
         IsBuilding = false;
@@ -35,15 +37,12 @@ public class BuildingTowers : MonoBehaviour
                 tower.ChangeIsBuilt(true);
                 MaterialChange(PlacedMat);
             }
-
-            
-                
         }
- 
     }
 
     void Building()
     {
+        if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
         Vector3 TowerPos = transform.position;
         TowerPos.x += 10;
         TowerPos.y = -1;

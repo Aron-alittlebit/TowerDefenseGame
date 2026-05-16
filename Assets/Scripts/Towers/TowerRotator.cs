@@ -6,7 +6,8 @@ public class TowerRotator : MonoBehaviour
 {
     [SerializeField] Transform Pivotpoint;
     [SerializeField] float rotationSpeed = 90f;
-    public float Radius = 25;
+    [SerializeField] TowerData towerData;
+    public float Range;
     
     float closest = float.MaxValue;
     Entity target = null;
@@ -18,7 +19,7 @@ public class TowerRotator : MonoBehaviour
     
     private void Start()
     {
-        
+        Range = towerData.Range;
         OriginalLocalRotationY = (Pivotpoint.localEulerAngles.x,Pivotpoint.localEulerAngles.y);
         OriginalRotaion = (Pivotpoint.localEulerAngles.x, 
             Pivotpoint.localEulerAngles.y, Pivotpoint.localEulerAngles.z);
@@ -46,7 +47,7 @@ public class TowerRotator : MonoBehaviour
         {
             originalDistance = Vector3.Distance(transform.position, target.transform.position);
             RotateTower(target.transform.position, originalDistance);
-            GunEvents.TowerAttack(FirePoint, Radius);
+            GunEvents.TowerAttack(FirePoint, Range);
             
         }
 
@@ -64,7 +65,7 @@ public class TowerRotator : MonoBehaviour
 
 
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, Radius,
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Range,
             Tower.Instance.EntityLayer);
         foreach (var collider in colliders)
         {
@@ -108,10 +109,11 @@ public class TowerRotator : MonoBehaviour
         directionToEnemy.y = 0f;
         if (directionToEnemy == Vector3.zero) return;
 
-        Quaternion targetRotation = Quaternion.LookRotation(Pivotpoint.parent.InverseTransformDirection(directionToEnemy));
+        Quaternion targetRotation = 
+            Quaternion.LookRotation(Pivotpoint.parent.InverseTransformDirection(directionToEnemy));
 
         Vector3 targetEuler = targetRotation.eulerAngles;
-        targetEuler.x = Mathf.Clamp(Mathf.Lerp(30f, 0f, steps / Radius), 0f, 30f);
+        targetEuler.x = Mathf.Clamp(Mathf.Lerp(30f, 0f, steps / Range), 0f, 30f);
         targetRotation = Quaternion.Euler(targetEuler);
 
         float targetY = targetRotation.eulerAngles.y;

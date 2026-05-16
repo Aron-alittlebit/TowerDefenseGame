@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class TowerAttack : MonoBehaviour
 {
-    [SerializeField] float CoolDown;
+    [SerializeField] TowerData towerData;
+    float CoolDown;
     float currentCoolDown;
-    [SerializeField] int Damage;
+    int Damage;
     Transform firePoint;
     
     
@@ -13,6 +14,8 @@ public class TowerAttack : MonoBehaviour
 
     private void Start()
     {
+        Damage = towerData.Damage;
+        CoolDown = towerData.CoolDown;
         currentCoolDown = CoolDown;
         IsBuilt = false;
     }
