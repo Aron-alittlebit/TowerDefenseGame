@@ -436,7 +436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGemPickUp
   Radius: 5
-  GemCounter: 0
   GemLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -455,6 +454,7 @@ MonoBehaviour:
   TowerPrefab: {fileID: 3844656792843723955, guid: 2aec729388f83da448a5dfeaabb358b2, type: 3}
   BuildingMat: {fileID: 2100000, guid: 1bc5ec41a1fe97f4c84b59a8b4faa7e7, type: 2}
   PlacedMat: {fileID: 2100000, guid: 3b217272c37f7ac4f8aee31db37225dd, type: 2}
+  towerData: {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
 --- !u!1 &328058417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,7 +2188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMove
   Crystal: {fileID: 2118870628}
-  speed: 0
+  speed: 10
   attackDst: 6
 --- !u!114 &1754087597
 MonoBehaviour:

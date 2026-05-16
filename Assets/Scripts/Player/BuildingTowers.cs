@@ -16,7 +16,7 @@ public class BuildingTowers : MonoBehaviour
     }
     void Update()
     {
-
+        Debug.Log(transform.forward);
         if (Input.GetKeyDown(KeyCode.B) && !IsBuilding)
             Building();
 
@@ -43,8 +43,11 @@ public class BuildingTowers : MonoBehaviour
     void Building()
     {
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
-        Vector3 TowerPos = transform.position;
-        TowerPos.x += 10;
+        Vector3 TowerPos = transform.position+(transform.forward)*10;
+        
+
+        
+
         TowerPos.y = -1;
         tower = Instantiate(TowerPrefab, TowerPos, Quaternion.identity);
 

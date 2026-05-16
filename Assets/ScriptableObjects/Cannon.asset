@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d810f3a3c97454ebf34b1986c7899e, type: 3}
   m_Name: Cannon
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
-  Cost: 0
-  TowerPrefab: {fileID: 0}
-  TowerName: 
-  Damage: 0
-  Range: 0
-  CoolDown: 0
+  Cost: 5
+  TowerPrefab: {fileID: 3844656792843723955, guid: 2aec729388f83da448a5dfeaabb358b2, type: 3}
+  TowerName: Cannon
+  Damage: 100
+  Range: 25
+  CoolDown: 1
