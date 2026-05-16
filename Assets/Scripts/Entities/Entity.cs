@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : LivingAbstractClass
 {
     protected int health;
     public int Health => health;
     [SerializeField] GameObject GemPrefab;
-    public virtual void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         health -= damage;
         Die();
     }
 
-    private void Die()
+    protected override void Die()
     {
         if(health <= 0)
         {
@@ -21,6 +21,7 @@ public class Entity : MonoBehaviour
             if(rb != null)
             {
                 rb.AddExplosionForce(500f, transform.position, 5f);
+                
             }
             Destroy(gameObject);
         }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Crystal : Entity
+public class Crystal : LivingAbstractClass
 {
     
 }

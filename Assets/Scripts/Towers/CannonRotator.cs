@@ -32,9 +32,9 @@ public class CannonRotator : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log($"Rotation: {transform.rotation.x} - {transform.rotation.y} - {transform.rotation.z}");
+        
         float originalDistance = 0f;
-        //float currentDistance = 0f;
+        
         if (target != null)
         {
             originalDistance = Vector3.Distance(transform.position, target.transform.position);
@@ -112,8 +112,6 @@ public class CannonRotator : MonoBehaviour
                 OriginalLocalRotationY.Item2,
                 Pivotpoint.localEulerAngles.z);
         }
-
-        Debug.Log($"Condition: {!(Pivotpoint.localEulerAngles.y >= 180 && Pivotpoint.localEulerAngles.y < 360)} | LocalY: {Pivotpoint.localEulerAngles.y}");
 
         Pivotpoint.localRotation = Quaternion.Slerp(
             Pivotpoint.localRotation,
