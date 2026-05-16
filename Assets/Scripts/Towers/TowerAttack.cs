@@ -6,20 +6,29 @@ public class TowerAttack : MonoBehaviour
     [SerializeField] float CoolDown;
     float currentCoolDown;
     [SerializeField] int Damage;
-    [SerializeField] LayerMask EntityLayer;
+    
+    bool IsBuilt;
 
     private void Start()
     {
         currentCoolDown = CoolDown;
+        IsBuilt = false;
     }
     private void OnEnable()
     {
         GunEvents.OnTowerAttack += Attack;
+        TowerEvents.OnTowerBuilt += IsBuiltChanger;
     }
 
     private void OnDisable()
     {
         GunEvents.OnTowerAttack -= Attack;
+        TowerEvents.OnTowerBuilt += IsBuiltChanger;
+    }
+
+    void IsBuiltChanger(bool value)
+    {
+        IsBuilt = value;
     }
     private void Update()
     {
@@ -29,15 +38,15 @@ public class TowerAttack : MonoBehaviour
 
     void Attack(Transform firePoint, Vector3 targetPos, float Range)
     {
+        //if (IsBuilt) return;
         if (currentCoolDown <= 0)
         {
             
             Vector3 direction =targetPos - firePoint.position;
             
             if (Physics.Raycast(firePoint.position, direction, out RaycastHit hitInfo,
-                Range, EntityLayer))
+                Range, Tower.Instance.EntityLayer))
             {
-                Debug.Log("Attacked enemy");
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
                 enemy.TakeDamage(Damage);
             }
