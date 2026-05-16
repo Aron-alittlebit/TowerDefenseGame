@@ -2,7 +2,7 @@ using NUnit.Framework.Internal.Builders;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonRotator : MonoBehaviour
+public class TowerRotator : MonoBehaviour
 {
     [SerializeField] Transform Pivotpoint;
     [SerializeField] float rotationSpeed = 90f;
@@ -13,6 +13,7 @@ public class CannonRotator : MonoBehaviour
     Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
     (float,float,float) OriginalRotaion;
     (float,float) OriginalLocalRotationY;
+    [SerializeField] Transform FirePoint;
     
     private void Start()
     {
@@ -39,6 +40,7 @@ public class CannonRotator : MonoBehaviour
         {
             originalDistance = Vector3.Distance(transform.position, target.transform.position);
             RotateTower(target.transform.position, originalDistance);
+            GunEvents.TowerAttack(FirePoint, target.transform.position, Radius);
             
         }
 

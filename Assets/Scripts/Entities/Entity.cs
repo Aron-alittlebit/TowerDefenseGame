@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Entity : LivingAbstractClass
 {
-    protected int health;
-    public int Health => health;
+    
     [SerializeField] GameObject GemPrefab;
     public override void TakeDamage(int damage)
     {
