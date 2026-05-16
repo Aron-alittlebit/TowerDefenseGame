@@ -14,11 +14,11 @@ public class TowerRotator : MonoBehaviour
     (float,float,float) OriginalRotaion;
     (float,float) OriginalLocalRotationY;
     [SerializeField] Transform FirePoint;
-    bool IsBuilt;
+    
     
     private void Start()
     {
-        IsBuilt = false;
+        
         OriginalLocalRotationY = (Pivotpoint.localEulerAngles.x,Pivotpoint.localEulerAngles.y);
         OriginalRotaion = (Pivotpoint.localEulerAngles.x, 
             Pivotpoint.localEulerAngles.y, Pivotpoint.localEulerAngles.z);
@@ -26,30 +26,27 @@ public class TowerRotator : MonoBehaviour
     private void OnEnable()
     {
         EntitiesEvent.OnEntityDeath += RemoveEntityFromDictionary;
-        TowerEvents.OnTowerBuilt += IsBuiltChanger;
+        
     }
 
     private void OnDisable()
     {
         EntitiesEvent.OnEntityDeath -= RemoveEntityFromDictionary;
-        TowerEvents.OnTowerBuilt += IsBuiltChanger;
+        
     }
 
-    void IsBuiltChanger(bool value)
-    {
-        IsBuilt = value;
-    }
+    
 
     void Update()
     {
-        //if (IsBuilt) return;
+        
         float originalDistance = 0f;
         
         if (target != null)
         {
             originalDistance = Vector3.Distance(transform.position, target.transform.position);
             RotateTower(target.transform.position, originalDistance);
-            GunEvents.TowerAttack(FirePoint, target.transform.position, Radius);
+            GunEvents.TowerAttack(FirePoint, Radius);
             
         }
 

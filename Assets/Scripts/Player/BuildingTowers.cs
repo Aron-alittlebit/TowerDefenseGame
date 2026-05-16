@@ -6,33 +6,18 @@ public class BuildingTowers : MonoBehaviour
     float RotateAmount = 50f;
     Tower tower;
     [SerializeField] Tower TowerPrefab;
-    [SerializeField] Material mat;
+    [SerializeField] Material BuildingMat;
+    [SerializeField] Material PlacedMat;
     void Start()
     {
         IsBuilding = false;
     }
-
-
     void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.B) && !IsBuilding)
-        {
             Building();
 
-            //}
-            //if (Input.GetKeyDown(KeyCode.B) && !IsBuilding)
-            //{
-            //    Building();
-            //    if (IsBuilding)
-            //    {
-            //        if (tower != null)
-            //            tower.transform.Rotate(0, RotateAmount * Time.deltaTime, 0);
-            //    }
-            //}
-
-
-        }
 
         if (IsBuilding)
         {
@@ -46,6 +31,13 @@ public class BuildingTowers : MonoBehaviour
             {
                 IsBuilding = false;
                 tower.ChangeIsBuilt(true);
+                foreach (Transform child in tower.transform)
+                {
+                    if (child.GetComponent<Renderer>() != null)
+                    {
+                        child.GetComponent<Renderer>().material = PlacedMat;
+                    }
+                }
             }
                 
         }
@@ -61,17 +53,13 @@ public class BuildingTowers : MonoBehaviour
             {
                 if (child.GetComponent<Renderer>() != null)
                 {
-                    child.GetComponent<Renderer>().material = mat;
+                    child.GetComponent<Renderer>().material = BuildingMat;
                 }
             }
             IsBuilding = true;
 
         }
 
-
-
-
-
-
+        
     }
 }
