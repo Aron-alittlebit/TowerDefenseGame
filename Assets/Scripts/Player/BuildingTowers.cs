@@ -45,7 +45,7 @@ public class BuildingTowers : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.N))
             {
                 IsBuilding = false;
-                TowerEvents.TowerBuilt(!IsBuilding);
+                tower.ChangeIsBuilt(true);
             }
                 
         }
@@ -56,6 +56,7 @@ public class BuildingTowers : MonoBehaviour
             TowerPos.x += 10;
             TowerPos.y = -1;
             tower = Instantiate(TowerPrefab, TowerPos, Quaternion.identity);
+            
             foreach (Transform child in tower.transform)
             {
                 if (child.GetComponent<Renderer>() != null)
