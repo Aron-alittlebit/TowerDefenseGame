@@ -31,35 +31,35 @@ public class BuildingTowers : MonoBehaviour
             {
                 IsBuilding = false;
                 tower.ChangeIsBuilt(true);
-                foreach (Transform child in tower.transform)
-                {
-                    if (child.GetComponent<Renderer>() != null)
-                    {
-                        child.GetComponent<Renderer>().material = PlacedMat;
-                    }
-                }
+                MaterialChange(PlacedMat);
             }
                 
         }
+ 
+    }
 
-        void Building()
+    void Building()
+    {
+        Vector3 TowerPos = transform.position;
+        TowerPos.x += 10;
+        TowerPos.y = -1;
+        tower = Instantiate(TowerPrefab, TowerPos, Quaternion.identity);
+
+        MaterialChange(BuildingMat);
+
+        IsBuilding = true;
+
+    }
+
+    void MaterialChange(Material mat)
+    {
+        var renderers = tower.GetComponentsInChildren<Renderer>();
+        if (renderers != null)
         {
-            Vector3 TowerPos = transform.position;
-            TowerPos.x += 10;
-            TowerPos.y = -1;
-            tower = Instantiate(TowerPrefab, TowerPos, Quaternion.identity);
-            
-            foreach (Transform child in tower.transform)
+            foreach (var render in renderers)
             {
-                if (child.GetComponent<Renderer>() != null)
-                {
-                    child.GetComponent<Renderer>().material = BuildingMat;
-                }
+                render.material = mat;
             }
-            IsBuilding = true;
-
         }
-
-        
     }
 }
