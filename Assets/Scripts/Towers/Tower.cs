@@ -4,6 +4,7 @@ public class Tower : MonoBehaviour
 {
     public static Tower Instance;
     public LayerMask EntityLayer;
+    public int Cost;
     //public bool IsBuilt;
     
         

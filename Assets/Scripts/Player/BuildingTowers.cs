@@ -21,18 +21,22 @@ public class BuildingTowers : MonoBehaviour
 
         if (IsBuilding)
         {
-            if (Input.GetAxis("Mouse ScrollWheel") > 0)
-                tower.transform.Rotate(0, RotateAmount, 0);
+            RotateTower();
 
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-                tower.transform.Rotate(0, -RotateAmount, 0);
-
-            if (Input.GetKeyDown(KeyCode.N))
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                IsBuilding = false;
+                Destroy(tower.gameObject);
+                tower = null;
+            }
+            else if (Input.GetKeyDown(KeyCode.N))
             {
                 IsBuilding = false;
                 tower.ChangeIsBuilt(true);
                 MaterialChange(PlacedMat);
             }
+
+            
                 
         }
  
@@ -61,5 +65,14 @@ public class BuildingTowers : MonoBehaviour
                 render.material = mat;
             }
         }
+    }
+
+    void RotateTower()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            tower.transform.Rotate(0, RotateAmount, 0);
+
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            tower.transform.Rotate(0, -RotateAmount, 0);
     }
 }
