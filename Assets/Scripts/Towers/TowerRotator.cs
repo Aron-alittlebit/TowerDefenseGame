@@ -13,14 +13,13 @@ public class TowerRotator : MonoBehaviour
     Entity target = null;
     Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
     (float,float,float) OriginalRotaion;
-    (float,float) OriginalLocalRotationY;
+    
     [SerializeField] Transform FirePoint;
     
     
     private void Start()
     {
         Range = towerData.Range;
-        OriginalLocalRotationY = (Pivotpoint.localEulerAngles.x,Pivotpoint.localEulerAngles.y);
         OriginalRotaion = (Pivotpoint.localEulerAngles.x, 
             Pivotpoint.localEulerAngles.y, Pivotpoint.localEulerAngles.z);
     }
@@ -120,8 +119,8 @@ public class TowerRotator : MonoBehaviour
         if (targetY < 180)
         {
             targetRotation = Quaternion.Euler(
-                OriginalLocalRotationY.Item1,
-                OriginalLocalRotationY.Item2,
+                OriginalRotaion.Item1,
+                OriginalRotaion.Item2,
                 Pivotpoint.localEulerAngles.z);
         }
 
