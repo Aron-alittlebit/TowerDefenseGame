@@ -29,8 +29,6 @@ public class BuildingTowers : MonoBehaviour
             
         }
 
-        Debug.Log(BPressed);
-
         if (IsBuilding)
         {
             RotateTower();

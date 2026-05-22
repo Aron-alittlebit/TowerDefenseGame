@@ -8,7 +8,10 @@ public class EntityMove : MonoBehaviour
     [SerializeField] float attackDst = 6f;
     float cooldown = 1;
 
-   
+    private void Start()
+    {
+        transform.LookAt(Crystal.transform);
+    }
 
     void Update()
     {
