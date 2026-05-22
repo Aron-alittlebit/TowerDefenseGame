@@ -3,7 +3,8 @@ using UnityEngine;
 
 public static class TowerEvents
 {
-    public static event Action<bool> OnTowerBuilt;
+   
+    public static event Action<int> OnGemSpent;
 
-    public static void TowerBuilt(bool IsBuilt) => OnTowerBuilt?.Invoke(IsBuilt);   
+    public static void GemSpent(int gems) => OnGemSpent?.Invoke(gems);
 }

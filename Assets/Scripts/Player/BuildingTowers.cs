@@ -5,6 +5,7 @@ public class BuildingTowers : MonoBehaviour
 {
     bool IsBuilding;
     float RotateAmount = 50f;
+    int BPressed;
     Tower tower;
     [SerializeField] Tower TowerPrefab;
     [SerializeField] Material BuildingMat;
@@ -13,29 +14,43 @@ public class BuildingTowers : MonoBehaviour
     void Start()
     {
         IsBuilding = false;
+        BPressed = 0;
     }
     void Update()
     {
-        Debug.Log(transform.forward);
-        if (Input.GetKeyDown(KeyCode.B) && !IsBuilding)
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            BPressed++;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.B) && !IsBuilding && BPressed == 1)
+        {
             Building();
+            
+        }
 
+        Debug.Log(BPressed);
 
         if (IsBuilding)
         {
             RotateTower();
 
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.B) && BPressed == 2)
             {
                 IsBuilding = false;
                 Destroy(tower.gameObject);
                 tower = null;
+                BPressed = 0;
+                
+
             }
             else if (Input.GetKeyDown(KeyCode.N))
             {
                 IsBuilding = false;
                 tower.ChangeIsBuilt(true);
                 MaterialChange(PlacedMat);
+                TowerEvents.GemSpent(towerData.Cost);
+                BPressed = 0;
             }
         }
     }
@@ -44,10 +59,6 @@ public class BuildingTowers : MonoBehaviour
     {
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
         Vector3 TowerPos = transform.position+(transform.forward)*10;
-        
-
-        
-
         TowerPos.y = -1;
         tower = Instantiate(TowerPrefab, TowerPos, Quaternion.identity);
 
