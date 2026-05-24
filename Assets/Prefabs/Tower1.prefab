@@ -408,8 +408,6 @@ MonoBehaviour:
   Pivotpoint: {fileID: 6205841863784687368}
   rotationSpeed: 90
   towerData: {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
-  Range: 0
-  FirePoint: {fileID: 220744742339995345}
 --- !u!114 &3620096770221495004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
-  towerData: {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
+  FirePoint: {fileID: 220744742339995345}
 --- !u!1 &7539251726621009819
 GameObject:
   m_ObjectHideFlags: 0

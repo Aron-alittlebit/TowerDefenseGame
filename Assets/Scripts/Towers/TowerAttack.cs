@@ -3,49 +3,48 @@ using UnityEngine;
 
 public class TowerAttack : MonoBehaviour
 {
-    public TowerData towerData;
+    
     public Transform FirePoint;
-    protected float CoolDown;
     protected float currentCoolDown;
-    protected int Damage;
     
 
-    protected void Start()
+    protected virtual void Start()
     {
-        Damage = towerData.Damage;
-        CoolDown = towerData.CoolDown;
-        currentCoolDown = CoolDown;
+
+        currentCoolDown = 0;
         
     }
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         GunEvents.OnTowerAttack += Attack;
     }
 
-    protected void OnDisable()
+    protected virtual void OnDisable()
     {
         GunEvents.OnTowerAttack -= Attack;
     }
 
     
-    protected void Update()
+    protected virtual void Update()
     {
         currentCoolDown -= Time.deltaTime;
+        Debug.Log(currentCoolDown);
     }
 
-    protected void Attack(float Range)
+    protected virtual void Attack(TowerData towerData, GameObject sender)
     {
-
+        if (sender != gameObject) return;
         if (currentCoolDown <= 0)
         {
             if (Physics.Raycast(FirePoint.position, FirePoint.forward, out RaycastHit hitInfo,
-                Range, Tower.Instance.EntityLayer))
+                towerData.Range, Tower.Instance.EntityLayer))
             {
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
                 
-                enemy.TakeDamage(Damage);
+                enemy.TakeDamage(towerData.Damage);
             }
-            currentCoolDown = CoolDown;
+            
+            currentCoolDown = towerData.CoolDown;
         }
     }
 

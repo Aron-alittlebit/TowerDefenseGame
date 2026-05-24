@@ -44,7 +44,7 @@ public class TowerRotator : MonoBehaviour
         {
             originalDistance = Vector3.Distance(transform.position, target.transform.position);
             RotateTower(target.transform.position, originalDistance);
-            GunEvents.TowerAttack(Range);
+            GunEvents.TowerAttack(towerData, gameObject);
             
         }
 

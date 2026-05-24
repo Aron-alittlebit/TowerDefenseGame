@@ -2,30 +2,36 @@ using UnityEngine;
 
 public class DeathArrowAttack : TowerAttack
 {
-    
-    protected void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        GunEvents.OnTowerAttack += Attack;
     }
 
-    
-    protected void Update()
+    protected override void OnDisable()
     {
-        base.Update();
+        GunEvents.OnTowerAttack -= Attack;
     }
 
-    protected void OnEnable()
+    protected override void Update()
     {
-        base.OnEnable();
+        currentCoolDown -= Time.deltaTime;
+        
     }
-
-    protected void OnDisable()
+    protected override void Attack(TowerData towerData, GameObject sender)
     {
-        base.OnDisable();
-    }
+        if (sender != gameObject) return;
+        if (currentCoolDown <= 0)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, towerData.Range,
+            Tower.Instance.EntityLayer);
+            foreach (var collider in colliders)
+            {
 
-    protected void Attack(float range)
-    {
-        base.Attack(range);
+                Entity enemy = collider.GetComponent<Entity>();
+                enemy.TakeDamage(towerData.Damage);
+
+            }
+            currentCoolDown = towerData.CoolDown;
+        }
     }
 }

@@ -19,9 +19,8 @@ public class NonTurnableTowers : MonoBehaviour
             Tower.Instance.EntityLayer);
         foreach (var collider in colliders)
         {
-
-            Entity enemy = collider.GetComponent<Entity>();
-            GunEvents.TowerAttack(Range);
+            GunEvents.TowerAttack(towerData, gameObject);
+            break;
 
         }
     }

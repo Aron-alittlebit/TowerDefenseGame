@@ -10,7 +10,7 @@ public class PhaseHandler : MonoBehaviour
     float BuildingPhasePeriod = 30;
     float Timer;
     bool waveCompleted = false;
-    //[SerializeField] TextMeshProUGUI ToFightingPhaseText;
+    
     
     void Start()
     {
@@ -24,7 +24,6 @@ public class PhaseHandler : MonoBehaviour
     {
         if (NumberOfWaves <= 0 || LeftOfWaves <= 0) return;
         CompletedWave();
-        //Debug.Log($"{CurrentPhase}, {LeftOfWaves}");
         Timer -= Time.deltaTime;
         if(CurrentPhase == Phase.BuildingPhase)
         {

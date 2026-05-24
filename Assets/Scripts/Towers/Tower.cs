@@ -12,8 +12,8 @@ public class Tower : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        
-        GetComponent<TowerRotator>().enabled = false;
+        if(GetComponent<TowerRotator>() != null)
+            GetComponent<TowerRotator>().enabled = false;
         GetComponent<TowerAttack>().enabled = false;
     }
 
