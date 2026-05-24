@@ -7,14 +7,12 @@ public class TowerRotator : MonoBehaviour
     [SerializeField] Transform Pivotpoint;
     [SerializeField] float rotationSpeed = 90f;
     [SerializeField] TowerData towerData;
-    public float Range;
-    
+    float Range;
     float closest = float.MaxValue;
     Entity target = null;
     Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
     (float,float,float) OriginalRotaion;
     
-    [SerializeField] Transform FirePoint;
     
     
     private void Start()
@@ -46,7 +44,7 @@ public class TowerRotator : MonoBehaviour
         {
             originalDistance = Vector3.Distance(transform.position, target.transform.position);
             RotateTower(target.transform.position, originalDistance);
-            GunEvents.TowerAttack(FirePoint, Range);
+            GunEvents.TowerAttack(Range);
             
         }
 

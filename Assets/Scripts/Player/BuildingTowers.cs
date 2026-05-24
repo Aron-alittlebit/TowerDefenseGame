@@ -7,7 +7,7 @@ public class BuildingTowers : MonoBehaviour
     float RotateAmount = 50f;
     int BPressed;
     Tower tower;
-    [SerializeField] Tower TowerPrefab;
+    
     [SerializeField] Material BuildingMat;
     [SerializeField] Material PlacedMat;
     [SerializeField] TowerData towerData;
@@ -58,7 +58,7 @@ public class BuildingTowers : MonoBehaviour
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
         Vector3 TowerPos = transform.position+(transform.forward)*10;
         TowerPos.y = -1;
-        tower = Instantiate(TowerPrefab, TowerPos, Quaternion.identity);
+        tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
 
         MaterialChange(BuildingMat);
 
