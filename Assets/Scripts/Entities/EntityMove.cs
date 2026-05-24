@@ -10,7 +10,9 @@ public class EntityMove : MonoBehaviour
 
     private void Start()
     {
-        transform.LookAt(Crystal.transform);
+        Crystal = FindAnyObjectByType<Crystal>();
+        if (Crystal == null) Debug.LogError("No Crystal found in scene!", this);
+        else transform.LookAt(Crystal.transform);
     }
 
     void Update()

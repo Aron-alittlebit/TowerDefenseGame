@@ -1108,6 +1108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca90b90772e332047af620ed825dba3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhaseHandler
+  NumberOfWaves: 2
   CurrentPhase: 0
 --- !u!4 &1335788949
 Transform:

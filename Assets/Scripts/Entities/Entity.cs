@@ -4,6 +4,7 @@ public class Entity : LivingAbstractClass
 {
     
     [SerializeField] GameObject GemPrefab;
+    bool HasDied = false;
     public override void TakeDamage(int damage)
     {
         health -= damage;
@@ -12,7 +13,7 @@ public class Entity : LivingAbstractClass
 
     protected override void Die()
     {
-        if(health <= 0)
+        if(health <= 0 && !HasDied)
         {
             EntitiesEvent.EntityDeath(transform.GetInstanceID());
             GameObject gem = Instantiate(GemPrefab, transform.position, Quaternion.identity);
@@ -22,6 +23,7 @@ public class Entity : LivingAbstractClass
                 rb.AddExplosionForce(500f, transform.position, 5f);
                 
             }
+            HasDied = true;
             Destroy(gameObject);
         }
     }

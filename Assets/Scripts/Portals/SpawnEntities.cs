@@ -52,7 +52,8 @@ public class SpawnEntities : MonoBehaviour
 
         while (EntitesToSpawn > 0) 
         {
-            Vector3 pos = transform.position + transform.forward * 10;
+            int randomSide = Random.Range(-10, 10);
+            Vector3 pos = transform.position + transform.right * randomSide;
             pos.y = 5;
 
             Entity entity = Instantiate(Entity, pos, transform.rotation);
