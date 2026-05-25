@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TowerRotator : MonoBehaviour
 {
-    [SerializeField] Transform Pivotpoint;
+    [SerializeField] protected Transform Pivotpoint;
     [SerializeField] float rotationSpeed = 90f;
-    [SerializeField] TowerData towerData;
+    protected TowerData towerData;
     [SerializeField] float RotationMinLimitY;
     [SerializeField] float RotationMaxLimitY;
-    [SerializeField] float RotationLimitX;
-    float Range;
+    [SerializeField] protected float RotationLimitX;
+    protected float Range;
     float closest = float.MaxValue;
     Entity target = null;
     Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
@@ -18,27 +18,29 @@ public class TowerRotator : MonoBehaviour
     
     
     
-    private void Start()
+    protected virtual void Start()
     {
-        Range = towerData.Range;
+        
         OriginalRotaion = (Pivotpoint.localEulerAngles.x, 
             Pivotpoint.localEulerAngles.y, Pivotpoint.localEulerAngles.z);
     }
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         EntitiesEvent.OnEntityDeath += RemoveEntityFromDictionary;
+        TowerEvents.OnTowerBuilt += SetTowerData;
         
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         EntitiesEvent.OnEntityDeath -= RemoveEntityFromDictionary;
-        
+        TowerEvents.OnTowerBuilt -= SetTowerData;
+
     }
 
     
 
-    void Update()
+    protected virtual void Update()
     {
         
         float originalDistance = 0f;
@@ -47,7 +49,7 @@ public class TowerRotator : MonoBehaviour
         {
             originalDistance = Vector3.Distance(transform.position, target.transform.position);
             RotateTower(target.transform.position, originalDistance);
-            GunEvents.TowerAttack(towerData, gameObject);
+            GunEvents.TowerAttack(gameObject);
             
         }
 
@@ -96,6 +98,12 @@ public class TowerRotator : MonoBehaviour
 
         if (target != null && EntitiesDistance[target.GetInstanceID()] >= closest)
             closest = float.MaxValue;
+    }
+
+    protected virtual void SetTowerData(TowerData td)
+    {
+        towerData = td;
+        Range = towerData.Range;
     }
 
     void RemoveEntityFromDictionary(int id)

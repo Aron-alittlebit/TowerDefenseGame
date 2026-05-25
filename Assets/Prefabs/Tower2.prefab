@@ -405,8 +405,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.415758, z: 1}
-  m_Center: {x: 0, y: 0.70787776, z: 0}
+  m_Size: {x: 1.225564, y: 2.415758, z: 1.2694336}
+  m_Center: {x: -0.03537817, y: 0.70787764, z: 0.03146973}
 --- !u!114 &3828613578752150982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,11 +434,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec6d62109dd2a44489f622e5a11296f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NonTurnableTowers
-  FirePoint: {fileID: 0}
-  towerData: {fileID: 11400000, guid: ccb345c7c1f568f4e9a2b16aa90b00b3, type: 2}
-  CanTurnXAxis: 0
-  RotationLimitX: 0
   Pivotpoint: {fileID: 0}
+  rotationSpeed: 90
+  RotationMinLimitY: 0
+  RotationMaxLimitY: 0
+  RotationLimitX: 0
+  FirePoint: {fileID: 0}
+  CanTurnXAxis: 0
 --- !u!114 &4157788509056487311
 MonoBehaviour:
   m_ObjectHideFlags: 0

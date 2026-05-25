@@ -3,23 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class NonTurnableTowers : MonoBehaviour
+public class NonTurnableTowers : TowerRotator
 {
     [SerializeField] Transform FirePoint;
-    [SerializeField] TowerData towerData;
     [SerializeField] bool CanTurnXAxis;
-    [SerializeField] float RotationLimitX;
-    [SerializeField] Transform Pivotpoint;
-    float Range;
     float originalX;
 
-    private void Start()
+    protected override void Start()
     {
-        Range = towerData.Range;
         originalX = Pivotpoint.localEulerAngles.x;
     }
 
-    void Update()
+    protected override void OnEnable()
+    {
+      
+        TowerEvents.OnTowerBuilt += SetTowerData;
+
+    }
+
+    protected override void OnDisable()
+    {
+       
+        TowerEvents.OnTowerBuilt -= SetTowerData;
+
+    }
+
+    protected override void Update()
     {
         if (CanTurnXAxis)
         {
@@ -28,7 +37,7 @@ public class NonTurnableTowers : MonoBehaviour
             {
                 RotateTower(hitInfo.collider.transform.position,
                 Vector3.Distance(hitInfo.collider.transform.position, Pivotpoint.position));
-                GunEvents.TowerAttack(towerData, gameObject);
+                GunEvents.TowerAttack(gameObject);
             }
             
         }
@@ -38,7 +47,7 @@ public class NonTurnableTowers : MonoBehaviour
             Tower.Instance.EntityLayer);
             foreach (var collider in colliders)
             {
-                GunEvents.TowerAttack(towerData, gameObject);
+                GunEvents.TowerAttack(gameObject);
                 break;
 
             }
@@ -65,4 +74,6 @@ public class NonTurnableTowers : MonoBehaviour
             targetRotation,
             Time.deltaTime * 5f);
     }
+
+    
 }

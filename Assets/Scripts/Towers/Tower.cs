@@ -5,9 +5,11 @@ public class Tower : MonoBehaviour
     public static Tower Instance;
     public LayerMask EntityLayer;
     public int Cost { get; private set; }
+    public int Tier { get; private set; }
    
     void Awake()
     {
+        Tier = 1;
         Instance = this;
         if(GetComponent<TowerRotator>() != null)
             GetComponent<TowerRotator>().enabled = false;
@@ -24,6 +26,12 @@ public class Tower : MonoBehaviour
     public void SetCost(int cost)
     {
         Cost = cost;
+    }
+
+    public void IncreaseTier()
+    {
+        if(Tier>=5) return;
+        Tier++;
     }
 
     

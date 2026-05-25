@@ -7,6 +7,7 @@ public class BuildingTowers : MonoBehaviour
     float RotateAmount = 50f;
     int Cost;
     Tower tower;
+    TowerData defaultTowerData;
     
     [SerializeField] Material BuildingMat;
     [SerializeField] Material PlacedMat;
@@ -42,6 +43,7 @@ public class BuildingTowers : MonoBehaviour
         if (IsBuilding)
         {
             RotateTower();
+            //Debug.Log(tower.Tier);
 
             if (Input.GetKeyDown(KeyCode.B))
             {
@@ -57,7 +59,8 @@ public class BuildingTowers : MonoBehaviour
                 IsBuilding = false;
                 tower.TowerIsBuilt(true);
                 MaterialChange(PlacedMat);
-                TowerEvents.GemSpent(Cost);
+                TowerEvents.GemSpent(defaultTowerData.Cost);
+                TowerEvents.TowerBuilt(defaultTowerData);
                 
             }
         }
@@ -66,6 +69,7 @@ public class BuildingTowers : MonoBehaviour
     void Building(TowerData towerData)
     {
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
+        defaultTowerData = towerData;
         Vector3 TowerPos = transform.position+(transform.forward)*10;
         TowerPos.y = 0;
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);

@@ -107,11 +107,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec6d62109dd2a44489f622e5a11296f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NonTurnableTowers
-  FirePoint: {fileID: 3913735264411482527}
-  towerData: {fileID: 11400000, guid: 099cc73d2827be6479f364ef40c0faa7, type: 2}
-  CanTurnXAxis: 1
-  RotationLimitX: -20
   Pivotpoint: {fileID: 2701562039587225418}
+  rotationSpeed: 90
+  RotationMinLimitY: 0
+  RotationMaxLimitY: 0
+  RotationLimitX: -20
+  FirePoint: {fileID: 3913735264411482527}
+  CanTurnXAxis: 1
 --- !u!65 &6227602557122966648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131,8 +133,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12.455928, y: 9.11394, z: 5.336885}
-  m_Center: {x: -4.223032, y: 3.023703, z: -0.23815167}
+  m_Size: {x: 12.623406, y: 9.11394, z: 5.336885}
+  m_Center: {x: -4.1392927, y: 3.023703, z: -0.23815155}
 --- !u!1 &4790357169078906702
 GameObject:
   m_ObjectHideFlags: 0

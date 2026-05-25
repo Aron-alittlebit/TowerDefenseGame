@@ -10,6 +10,7 @@ public class SellTower : MonoBehaviour
             Tower tower = hitInfo.collider.GetComponent<Tower>();
             if (tower != null)
             {
+
                 TowerEvents.TowerSold(tower.Cost);
                 Destroy(tower.gameObject);
             }
