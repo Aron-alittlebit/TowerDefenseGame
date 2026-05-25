@@ -69,6 +69,7 @@ public class BuildingTowers : MonoBehaviour
         Vector3 TowerPos = transform.position+(transform.forward)*10;
         TowerPos.y = 0;
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
+        tower.SetCost(towerData.Cost);
         Cost = towerData.Cost;
 
         MaterialChange(BuildingMat);

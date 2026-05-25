@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1614006650029761286}
   - component: {fileID: 6866426736164523792}
   - component: {fileID: 6344806539385783952}
+  - component: {fileID: 6227602557122966648}
   m_Layer: 0
   m_Name: Tower3
   m_TagString: Untagged
@@ -111,6 +112,27 @@ MonoBehaviour:
   CanTurnXAxis: 1
   RotationLimitX: -20
   Pivotpoint: {fileID: 2701562039587225418}
+--- !u!65 &6227602557122966648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685345030223027081}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.455928, y: 9.11394, z: 5.336885}
+  m_Center: {x: -4.223032, y: 3.023703, z: -0.23815167}
 --- !u!1 &4790357169078906702
 GameObject:
   m_ObjectHideFlags: 0

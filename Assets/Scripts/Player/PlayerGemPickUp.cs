@@ -14,11 +14,13 @@ public class PlayerGemPickUp : MonoBehaviour
 
     private void OnEnable()
     {
-        TowerEvents.OnGemSpent += UpdateGemCounterText;
+        TowerEvents.OnGemSpent += SpentGems;
+        TowerEvents.OnTowerSold += SoldTower;
     }
     private void OnDisable()
     {
-        TowerEvents.OnGemSpent -= UpdateGemCounterText;
+        TowerEvents.OnGemSpent -= SpentGems;
+        TowerEvents.OnTowerSold -= SoldTower;
     }
     void Update()
     {
@@ -32,9 +34,17 @@ public class PlayerGemPickUp : MonoBehaviour
         }
     }
 
-    void UpdateGemCounterText(int gems)
+    void SpentGems(int gems)
     {
         GemCounter -= gems;
         GemCounterText.text = $"{GemCounter}";
     }
+
+    void SoldTower(int gems)
+    {
+        GemCounter += gems;
+        GemCounterText.text = $"{GemCounter}";
+    }
+
+
 }

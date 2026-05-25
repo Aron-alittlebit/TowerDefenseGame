@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 325740558}
   - component: {fileID: 325740559}
   - component: {fileID: 325740560}
+  - component: {fileID: 325740561}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -365,6 +366,18 @@ MonoBehaviour:
   towerData1: {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
   towerData2: {fileID: 11400000, guid: ccb345c7c1f568f4e9a2b16aa90b00b3, type: 2}
   towerData3: {fileID: 11400000, guid: 099cc73d2827be6479f364ef40c0faa7, type: 2}
+--- !u!114 &325740561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325740549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8adcfe38c01110f458786257060e1914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SellTower
 --- !u!1 &328058417
 GameObject:
   m_ObjectHideFlags: 0

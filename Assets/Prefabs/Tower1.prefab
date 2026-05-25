@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 3844656792843723955}
   - component: {fileID: 4585493142347077546}
   - component: {fileID: 3620096770221495004}
+  - component: {fileID: 5631099100276538455}
   m_Layer: 0
   m_Name: Tower1
   m_TagString: Untagged
@@ -424,6 +425,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
   FirePoint: {fileID: 220744742339995345}
+--- !u!65 &5631099100276538455
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7106089004324222773}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 10.23801, z: 5}
+  m_Center: {x: 0, y: 2.6190052, z: 0}
 --- !u!1 &7539251726621009819
 GameObject:
   m_ObjectHideFlags: 0
