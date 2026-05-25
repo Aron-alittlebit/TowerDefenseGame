@@ -28,7 +28,7 @@ public class TowerAttack : MonoBehaviour
     protected virtual void Update()
     {
         currentCoolDown -= Time.deltaTime;
-        Debug.Log(currentCoolDown);
+        
     }
 
     protected virtual void Attack(TowerData towerData, GameObject sender)

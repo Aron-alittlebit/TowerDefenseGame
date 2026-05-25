@@ -5,10 +5,7 @@ public class Tower : MonoBehaviour
     public static Tower Instance;
     public LayerMask EntityLayer;
     
-    //public bool IsBuilt;
-    
-        
-
+   
     void Awake()
     {
         Instance = this;
@@ -17,9 +14,12 @@ public class Tower : MonoBehaviour
         GetComponent<TowerAttack>().enabled = false;
     }
 
-    public void ChangeIsBuilt(bool value)
+    public void TowerIsBuilt(bool value)
     {
-        GetComponent<TowerRotator>().enabled = value;
+        if(GetComponent<TowerRotator>() != null)
+            GetComponent<TowerRotator>().enabled = value;
         GetComponent<TowerAttack>().enabled = value;
     }
+
+    
 }

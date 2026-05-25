@@ -5,60 +5,72 @@ public class BuildingTowers : MonoBehaviour
 {
     bool IsBuilding;
     float RotateAmount = 50f;
-    int BPressed;
+    int Cost;
     Tower tower;
     
     [SerializeField] Material BuildingMat;
     [SerializeField] Material PlacedMat;
-    [SerializeField] TowerData towerData;
+    [SerializeField] TowerData towerData1;
+    [SerializeField] TowerData towerData2;
+    [SerializeField] TowerData towerData3;
     void Start()
     {
         IsBuilding = false;
-        BPressed = 0;
+       
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (!IsBuilding)
         {
-            BPressed++;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Building(towerData1);
+
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Building(towerData2);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Building(towerData3);
+            }
         }
         
-        if (Input.GetKeyDown(KeyCode.B) && !IsBuilding && BPressed == 1)
-        {
-            Building();
-            
-        }
+        
 
         if (IsBuilding)
         {
             RotateTower();
 
-            if (Input.GetKeyDown(KeyCode.B) && BPressed == 2)
+            if (Input.GetKeyDown(KeyCode.B))
             {
                 IsBuilding = false;
                 Destroy(tower.gameObject);
                 tower = null;
-                BPressed = 0;
+                
                 
 
             }
             else if (Input.GetKeyDown(KeyCode.N))
             {
                 IsBuilding = false;
-                tower.ChangeIsBuilt(true);
+                tower.TowerIsBuilt(true);
                 MaterialChange(PlacedMat);
-                TowerEvents.GemSpent(towerData.Cost);
-                BPressed = 0;
+                TowerEvents.GemSpent(Cost);
+                
             }
         }
     }
 
-    void Building()
+    void Building(TowerData towerData)
     {
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
         Vector3 TowerPos = transform.position+(transform.forward)*10;
-        TowerPos.y = -1;
+        if (Physics.Raycast(TowerPos + Vector3.up * 50f, Vector3.down, out RaycastHit hit, 100f))
+            TowerPos.y = hit.point.y;
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
+        Cost = towerData.Cost;
 
         MaterialChange(BuildingMat);
 

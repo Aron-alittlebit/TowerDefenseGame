@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DeathArrowAttack : TowerAttack
+public class LightningTowerAttack : TowerAttack
 {
     protected override void OnEnable()
     {
@@ -15,7 +15,7 @@ public class DeathArrowAttack : TowerAttack
     protected override void Update()
     {
         currentCoolDown -= Time.deltaTime;
-        
+        Debug.Log(currentCoolDown);
     }
     protected override void Attack(TowerData towerData, GameObject sender)
     {

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d810f3a3c97454ebf34b1986c7899e, type: 3}
-  m_Name: DeathArrow
+  m_Name: LightningTower
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
-  Cost: 15
-  TowerPrefab: {fileID: 6866426736164523792, guid: 02c9837e4c81455459dc6039d4925ac3, type: 3}
-  TowerName: Death Arrow
+  Cost: 10
+  TowerPrefab: {fileID: 3828613578752150982, guid: 9ab3df515d806724e8045397bee83e06, type: 3}
+  TowerName: Lightning Tower
   Damage: 100
   Range: 100
-  CoolDown: 3
+  CoolDown: 5

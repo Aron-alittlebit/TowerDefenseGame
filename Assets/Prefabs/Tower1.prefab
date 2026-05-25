@@ -371,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 7106089004324222773}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.9, y: -0.5, z: 34.82935}
+  m_LocalPosition: {x: 9.9, y: -5, z: 34.82935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -408,6 +408,8 @@ MonoBehaviour:
   Pivotpoint: {fileID: 6205841863784687368}
   rotationSpeed: 90
   towerData: {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
+  RotationLimitY: 180
+  RotationLimitX: 30
 --- !u!114 &3620096770221495004
 MonoBehaviour:
   m_ObjectHideFlags: 0

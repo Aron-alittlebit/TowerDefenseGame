@@ -7,6 +7,8 @@ public class TowerRotator : MonoBehaviour
     [SerializeField] Transform Pivotpoint;
     [SerializeField] float rotationSpeed = 90f;
     [SerializeField] TowerData towerData;
+    [SerializeField] float RotationLimitY;
+    [SerializeField] float RotationLimitX;
     float Range;
     float closest = float.MaxValue;
     Entity target = null;
@@ -110,11 +112,13 @@ public class TowerRotator : MonoBehaviour
             Quaternion.LookRotation(Pivotpoint.parent.InverseTransformDirection(directionToEnemy));
 
         Vector3 targetEuler = targetRotation.eulerAngles;
-        targetEuler.x = Mathf.Clamp(Mathf.Lerp(30f, 0f, steps / Range), 0f, 30f);
+        float min = Mathf.Min(0f,RotationLimitX);
+        float max = Mathf.Max(0f,RotationLimitX);
+        targetEuler.x = Mathf.Clamp(Mathf.Lerp(max, min, steps / Range), min, max);
         targetRotation = Quaternion.Euler(targetEuler);
 
         float targetY = targetRotation.eulerAngles.y;
-        if (targetY < 180)
+        if (targetY < RotationLimitY)
         {
             targetRotation = Quaternion.Euler(
                 OriginalRotaion.Item1,

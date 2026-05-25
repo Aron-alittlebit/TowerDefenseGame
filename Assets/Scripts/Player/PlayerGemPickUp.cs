@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerGemPickUp : MonoBehaviour
 {
     [SerializeField]float Radius = 5f;
-    public static int GemCounter = 5;
+    public static int GemCounter = 15;
     public LayerMask GemLayer;
     public TextMeshProUGUI GemCounterText;
     private void Start()
