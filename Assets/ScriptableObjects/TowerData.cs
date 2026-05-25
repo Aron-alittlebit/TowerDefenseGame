@@ -9,5 +9,4 @@ public class TowerData : ScriptableObject
     public int Damage;
     public float Range;
     public float CoolDown;
-    
 }

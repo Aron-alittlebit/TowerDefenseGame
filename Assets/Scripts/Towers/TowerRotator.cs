@@ -7,7 +7,8 @@ public class TowerRotator : MonoBehaviour
     [SerializeField] Transform Pivotpoint;
     [SerializeField] float rotationSpeed = 90f;
     [SerializeField] TowerData towerData;
-    [SerializeField] float RotationLimitY;
+    [SerializeField] float RotationMinLimitY;
+    [SerializeField] float RotationMaxLimitY;
     [SerializeField] float RotationLimitX;
     float Range;
     float closest = float.MaxValue;
@@ -115,10 +116,11 @@ public class TowerRotator : MonoBehaviour
         float min = Mathf.Min(0f,RotationLimitX);
         float max = Mathf.Max(0f,RotationLimitX);
         targetEuler.x = Mathf.Clamp(Mathf.Lerp(max, min, steps / Range), min, max);
-        targetRotation = Quaternion.Euler(targetEuler);
 
+
+        targetRotation = Quaternion.Euler(targetEuler);
         float targetY = targetRotation.eulerAngles.y;
-        if (targetY < RotationLimitY)
+        if (targetY < RotationMinLimitY || targetY > RotationMaxLimitY)
         {
             targetRotation = Quaternion.Euler(
                 OriginalRotaion.Item1,

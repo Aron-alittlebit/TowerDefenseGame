@@ -67,8 +67,7 @@ public class BuildingTowers : MonoBehaviour
     {
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
         Vector3 TowerPos = transform.position+(transform.forward)*10;
-        if (Physics.Raycast(TowerPos + Vector3.up * 50f, Vector3.down, out RaycastHit hit, 100f))
-            TowerPos.y = hit.point.y;
+        TowerPos.y = 0;
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
         Cost = towerData.Cost;
 
