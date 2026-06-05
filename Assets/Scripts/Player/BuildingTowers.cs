@@ -36,6 +36,9 @@ public class BuildingTowers : MonoBehaviour
             {
                 Building(towerData3);
             }
+            
+                
+            
         }
         
         
@@ -44,6 +47,13 @@ public class BuildingTowers : MonoBehaviour
         {
             RotateTower();
             //Debug.Log(tower.Tier);
+            if (tower != null)
+            {
+                Vector3 newPos = transform.position + (transform.forward) * 10;
+                newPos.y = 0;
+                tower.transform.position = newPos;
+                
+            }
 
             if (Input.GetKeyDown(KeyCode.B))
             {
