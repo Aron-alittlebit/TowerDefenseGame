@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec6d62109dd2a44489f622e5a11296f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NonTurnableTowers
-  Pivotpoint: {fileID: 0}
+  Pivotpoint: {fileID: 1048793881953082317}
   rotationSpeed: 90
   RotationMinLimitY: 0
   RotationMaxLimitY: 0

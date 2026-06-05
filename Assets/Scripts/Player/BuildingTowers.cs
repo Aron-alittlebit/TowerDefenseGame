@@ -50,7 +50,7 @@ public class BuildingTowers : MonoBehaviour
             if (tower != null)
             {
                 Vector3 newPos = transform.position + (transform.forward) * 10;
-                newPos.y = 0;
+                newPos.y = transform.position.y;
                 tower.transform.position = newPos;
                 
             }
@@ -81,7 +81,7 @@ public class BuildingTowers : MonoBehaviour
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
         defaultTowerData = towerData;
         Vector3 TowerPos = transform.position+(transform.forward)*10;
-        TowerPos.y = 0;
+        TowerPos.y = transform.position.y;
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
         tower.SetCost(towerData.Cost);
         Cost = towerData.Cost;
