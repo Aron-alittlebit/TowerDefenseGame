@@ -8,6 +8,7 @@ public class EntityMove : MonoBehaviour
     [SerializeField] Crystal Crystal;
     [SerializeField] float speed = 10f;
     [SerializeField] float attackDst = 6f;
+    [SerializeField] LayerMask Ally;
     List<Vector3> path = new List<Vector3>();
     bool HasReachedWayPoint = false;
     int indexer = 0;
@@ -32,8 +33,20 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
-        //if(Physics.Raycast())
-        MoveTowardsWayPoints();
+        if (Physics.Raycast(transform.position, 
+            transform.forward, out RaycastHit hitInfo, attackDst, Ally))
+        {
+
+            LivingAbstractClass ally = hitInfo.collider.GetComponent<LivingAbstractClass>();
+
+            EntitiesEvent.EntityAttack(ally);
+                
+        }
+        else
+        {
+            MoveTowardsWayPoints();
+        }
+        
     }
 
     void SetPath(List<Vector3> GivenPath)
@@ -76,13 +89,9 @@ public class EntityMove : MonoBehaviour
         }
         else
         {
-            cooldown -= Time.deltaTime;
-            if (cooldown <= 0)
-            {
-                EntitiesEvent.EntityAttack();
-                cooldown = 1;
-            }
-
+           EntitiesEvent.EntityAttack(Crystal);
         }
     }
+
+    
 }

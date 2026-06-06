@@ -245,6 +245,9 @@ MonoBehaviour:
   Crystal: {fileID: 7166260832637262602, guid: 35d2c19c0305a594b83b347f8d7c2c86, type: 3}
   speed: 10
   attackDst: 6
+  Ally:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1220077656602077103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67200015e4e6eb42948e178c3cd54f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
+  damage: 100
+  CoolDown: 2
 --- !u!114 &3553618084665372189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,4 +274,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048ececdc828d6349b5593ae02061ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity
+  health: 100
   GemPrefab: {fileID: 5163178437046360733, guid: d8a93eeeb3fbbdf43ad995e2cbf877ba, type: 3}

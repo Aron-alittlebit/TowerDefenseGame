@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : LivingAbstractClass
 {
     public static Tower Instance;
     public LayerMask EntityLayer;
