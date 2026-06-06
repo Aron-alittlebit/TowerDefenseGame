@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 149062937358126603}
   - component: {fileID: 6354718807155699891}
   - component: {fileID: 1333899795529398918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 7227263469319126659}
   - component: {fileID: 7855951680087012380}
   - component: {fileID: 3989517482175816973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 3870776830277203648}
   - component: {fileID: 2596825671151970208}
   - component: {fileID: 8287929891865384645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 4585493142347077546}
   - component: {fileID: 3620096770221495004}
   - component: {fileID: 5631099100276538455}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 220744742339995345}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6205841863784687368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PivotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3913735264411482527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6866426736164523792}
   - component: {fileID: 6344806539385783952}
   - component: {fileID: 6227602557122966648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5189501733876894449}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 519316025293088972}
   - component: {fileID: 4266294728715449508}
   - component: {fileID: 1511472890133351310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2701562039587225418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PivotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 6702190420540541276}
   - component: {fileID: 5498366173882755747}
   - component: {fileID: 374654712137556266}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 5265519799609589460}
   - component: {fileID: 4129508727678282816}
   - component: {fileID: 6088215073800228447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 8228844485236537518}
   - component: {fileID: 1275914090887890698}
   - component: {fileID: 6975843412517673440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

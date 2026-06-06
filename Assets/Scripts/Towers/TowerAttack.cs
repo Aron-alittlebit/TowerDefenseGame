@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngineInternal;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 public class TowerAttack : MonoBehaviour
@@ -66,12 +67,11 @@ public class TowerAttack : MonoBehaviour
         currentCoolDown = CoolDown;
     }
 
-    protected virtual void SetDataAfterUpgrade(int tier)
+    protected virtual void SetDataAfterUpgrade(Tower tower)
     {
-        //towerData.Upgrade();
-        Damage += 2 * tier;
-        Range += 2 * tier;
-        CoolDown -= 0.1f * tier;
+        Damage += 2 * tower.Tier;
+        Range += 2 * tower.Tier;
+        CoolDown -= 0.1f * tower.Tier;
         currentCoolDown = CoolDown;
     }
 

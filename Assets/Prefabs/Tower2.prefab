@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2030763383661534549}
   - component: {fileID: 777953861768851347}
   - component: {fileID: 3991102028466582314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1935899667959478686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 760294968769229738}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pivotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 8154737179137296639}
   - component: {fileID: 8923772432886480306}
   - component: {fileID: 8362319473585173135}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 3828613578752150982}
   - component: {fileID: 940108098578999207}
   - component: {fileID: 4157788509056487311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

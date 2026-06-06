@@ -32,7 +32,7 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
-
+        //if(Physics.Raycast())
         MoveTowardsWayPoints();
     }
 
