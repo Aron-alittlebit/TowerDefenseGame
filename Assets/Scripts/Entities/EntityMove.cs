@@ -2,6 +2,7 @@ using NUnit.Framework;
 using NUnit.Framework.Internal.Builders;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EntityMove : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(transform.position.y);
+        
         if (Physics.Raycast(transform.position, 
             transform.forward, out RaycastHit hitInfo, attackDst, Ally))
         {
@@ -63,10 +64,10 @@ public class EntityMove : MonoBehaviour
     {
         if(indexer < path.Count)
         {
-            transform.LookAt(path[indexer]);
+            Turn(path[indexer]);
             if (Vector3.Distance(transform.position, path[indexer]) >= 0.1)
             {
-
+                
                 transform.position = Vector3.MoveTowards(transform.position,
                 path[indexer], speed * Time.deltaTime);
             }
@@ -84,8 +85,10 @@ public class EntityMove : MonoBehaviour
 
     void MoveTowardsCrystal()
     {
-        transform.LookAt(Crystal.transform);
-        if (Vector3.Distance(transform.position, Crystal.transform.position) >= attackDst)
+        Turn(Crystal.transform.position);
+        
+
+        if (Vector3.Distance(transform.position, Crystal.transform.position) > attackDst)
         {
             Vector3 newPos = Crystal.transform.position;
             newPos.y = transform.position.y;
@@ -95,7 +98,21 @@ public class EntityMove : MonoBehaviour
         }
         else
         {
-           EntitiesEvent.EntityAttack(Crystal);
+            animator.SetBool("Walk", false);
+            EntitiesEvent.EntityAttack(Crystal);
+        }
+    }
+
+    void Turn(Vector3 target)
+    {
+        Vector3 direction = target - transform.position;
+        direction.y = 0f; 
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation,
+                targetRotation, Time.deltaTime * 5);
         }
     }
 
