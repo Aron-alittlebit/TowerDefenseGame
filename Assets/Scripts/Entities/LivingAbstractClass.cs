@@ -4,7 +4,7 @@ public abstract class LivingAbstractClass : MonoBehaviour
 {
     [SerializeField] protected int StartingHealth;
     protected int health;
-    //public int Health => health;
+    public int Health => health;
 
     protected virtual void Start()
     {

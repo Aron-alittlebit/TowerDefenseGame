@@ -19,7 +19,7 @@ public class GunDamage : MonoBehaviour
         {
             
             Entity enemy = hitInfo.collider.GetComponent<Entity>();
-            if (enemy != null)
+            if (enemy != null && enemy.Health > 0)
             {
                 enemy.TakeDamage(damage);
             }

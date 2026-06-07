@@ -27,11 +27,13 @@ public class EntityMove : MonoBehaviour
     private void OnEnable()
     {
         EntitiesEvent.OnSetPath += SetPath;
+        EntitiesEvent.OnEntityDeath += SetSpeedToZero;
     }
 
     private void OnDisable()
     {
         EntitiesEvent.OnSetPath -= SetPath;
+        EntitiesEvent.OnEntityDeath -= SetSpeedToZero;
     }
 
     void Update()
@@ -114,6 +116,12 @@ public class EntityMove : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation,
                 targetRotation, Time.deltaTime * 5);
         }
+    }
+
+    void SetSpeedToZero(int id)
+    {
+        if(id == transform.GetInstanceID())
+            speed = 0f; 
     }
 
     

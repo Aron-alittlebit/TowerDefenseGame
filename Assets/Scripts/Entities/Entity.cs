@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Entity : LivingAbstractClass
@@ -13,6 +14,7 @@ public class Entity : LivingAbstractClass
     }
     public override void TakeDamage(int damage)
     {
+        if (health <= 0) return;
         animator.SetTrigger("TakeDamage");
         health -= damage;
         Die();
@@ -22,18 +24,30 @@ public class Entity : LivingAbstractClass
     {
         if(health <= 0 && !HasDied)
         {
-            animator.SetTrigger("Death");
-            EntitiesEvent.EntityDeath(transform.GetInstanceID());
-            GameObject gem = Instantiate(GemPrefab, transform.position, Quaternion.identity);
-            Rigidbody rb = gem.GetComponent<Rigidbody>();
-            if(rb != null)
-            {
-                rb.AddExplosionForce(500f, transform.position, 5f);
-                
-            }
-            HasDied = true;
-            Destroy(gameObject);
+            animator.SetBool("Walk", false);
+            StartCoroutine(DeathAnimation());
         }
+    }
+
+    IEnumerator DeathAnimation()
+    {
+        animator.SetTrigger("Death");
+        CapsuleCollider[] colliders = GetComponents<CapsuleCollider>();
+        foreach (var col in colliders)
+        {
+            col.enabled = false;
+        }
+        EntitiesEvent.EntityDeath(transform.GetInstanceID());
+        GameObject gem = Instantiate(GemPrefab, transform.position, Quaternion.identity);
+        Rigidbody rb = gem.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.AddExplosionForce(500f, transform.position, 5f);
+
+        }
+        HasDied = true;
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
     
 }
