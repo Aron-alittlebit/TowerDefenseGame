@@ -21,6 +21,8 @@ public class EntityAttack : MonoBehaviour
     }
     private void Update()
     {
+        //Debug.Log(currentCoolDown);
+        //Debug.Log(damage);
         currentCoolDown -= Time.deltaTime;
     }
     void Attack(LivingAbstractClass entity)

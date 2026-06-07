@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba754824de6df04baad2985422748cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tower
-  health: 100
+  StartingHealth: 150
   EntityLayer:
     serializedVersion: 2
     m_Bits: 128

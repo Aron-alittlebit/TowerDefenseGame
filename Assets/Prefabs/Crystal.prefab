@@ -19512,6 +19512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c753e49d454dd458bf707d712819ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crystal
+  StartingHealth: 500
 --- !u!136 &4922820115026187403
 CapsuleCollider:
   m_ObjectHideFlags: 0

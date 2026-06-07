@@ -12,7 +12,7 @@ public class EntityMove : MonoBehaviour
     List<Vector3> path = new List<Vector3>();
     bool HasReachedWayPoint = false;
     int indexer = 0;
-    float cooldown = 1;
+    
 
     private void Start()
     {
