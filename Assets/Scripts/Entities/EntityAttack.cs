@@ -6,10 +6,12 @@ public class EntityAttack : MonoBehaviour
     [SerializeField] int damage;
     public float CoolDown;
     float currentCoolDown;
+    Animator animator;
 
     private void Start()
     {
         currentCoolDown = CoolDown;
+        animator = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -31,6 +33,7 @@ public class EntityAttack : MonoBehaviour
         {
             entity.TakeDamage(damage);
             currentCoolDown = CoolDown;
+            animator.SetTrigger("Attack");
         }
         
     }

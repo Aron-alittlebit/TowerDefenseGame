@@ -19,7 +19,7 @@ public class Crystal : LivingAbstractClass
 
             if(NumbersOfCrystals <= 0)
             {
-                
+                ReloadScene();
             }
         }
 

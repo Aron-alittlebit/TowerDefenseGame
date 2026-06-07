@@ -12,10 +12,12 @@ public class EntityMove : MonoBehaviour
     List<Vector3> path = new List<Vector3>();
     bool HasReachedWayPoint = false;
     int indexer = 0;
+    Animator animator;
     
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         Crystal = FindAnyObjectByType<Crystal>();
         if (Crystal == null) Debug.LogError("No Crystal found in scene!", this);
         else transform.LookAt(Crystal.transform);
@@ -33,17 +35,19 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(transform.position.y);
         if (Physics.Raycast(transform.position, 
             transform.forward, out RaycastHit hitInfo, attackDst, Ally))
         {
 
             LivingAbstractClass ally = hitInfo.collider.GetComponent<LivingAbstractClass>();
-
+            animator.SetBool("Walk", false);
             EntitiesEvent.EntityAttack(ally);
                 
         }
         else
         {
+            animator.SetBool("Walk", true);
             MoveTowardsWayPoints();
         }
         
@@ -83,9 +87,11 @@ public class EntityMove : MonoBehaviour
         transform.LookAt(Crystal.transform);
         if (Vector3.Distance(transform.position, Crystal.transform.position) >= attackDst)
         {
+            Vector3 newPos = Crystal.transform.position;
+            newPos.y = transform.position.y;
 
             transform.position = Vector3.MoveTowards(transform.position,
-            Crystal.transform.position, speed * Time.deltaTime);
+            newPos, speed * Time.deltaTime);
         }
         else
         {

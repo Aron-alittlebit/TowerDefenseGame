@@ -12,6 +12,7 @@ public class SpawnEntities : MonoBehaviour
     public static bool CanSpawn;
     public static int NumberOfAllEntities;
     [SerializeField] GameObject path;
+    [SerializeField] Transform SpawnPoint;
     void Start()
     {
         CanSpawn = false;
@@ -57,7 +58,7 @@ public class SpawnEntities : MonoBehaviour
         {
             int randomSide = Random.Range(-10, 10);
             Vector3 pos = transform.position + transform.right * randomSide;
-            pos.y = transform.position.y;
+            pos.y = SpawnPoint.position.y;
 
             Entity entity = Instantiate(Entity, pos, transform.rotation);
             EntitiesEvent.SetPath(GeneratePath());
@@ -74,7 +75,7 @@ public class SpawnEntities : MonoBehaviour
         foreach(Transform child in path.GetComponentInChildren<Transform>())
         {
             Vector3 newPos = child.transform.position;
-            newPos.y = transform.position.y;
+            
             child.transform.position = newPos;
             waypoints.Add(child.transform.position);
         }
