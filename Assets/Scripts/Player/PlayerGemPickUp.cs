@@ -4,11 +4,15 @@ using UnityEngine;
 public class PlayerGemPickUp : MonoBehaviour
 {
     [SerializeField]float Radius = 5f;
-    public static int GemCounter = 15;
+    [SerializeField] int StartingGemCount = 15;
+    public static int ReadOnlyStartingGem;
+    public static int GemCounter;
     public LayerMask GemLayer;
     public TextMeshProUGUI GemCounterText;
     private void Start()
     {
+        ReadOnlyStartingGem = StartingGemCount;
+        GemCounter = StartingGemCount;
         GemCounterText.text = $"{GemCounter}";
     }
 
@@ -45,6 +49,8 @@ public class PlayerGemPickUp : MonoBehaviour
         GemCounter += gems;
         GemCounterText.text = $"{GemCounter}";
     }
+
+    
 
 
 }
