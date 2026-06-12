@@ -67,7 +67,7 @@ public class BuildingTowers : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.N))
             {
                 IsBuilding = false;
-                tower.TowerIsBuilt(true);
+                tower.TowerIsBuilt();
                 MaterialChange(PlacedMat);
                 TowerEvents.GemSpent(defaultTowerData.Cost);
                 TowerEvents.TowerBuilt(defaultTowerData);

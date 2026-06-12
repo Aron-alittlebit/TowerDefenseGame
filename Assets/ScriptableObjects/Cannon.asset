@@ -15,6 +15,6 @@ MonoBehaviour:
   Cost: 5
   TowerPrefab: {fileID: 3844656792843723955, guid: 2aec729388f83da448a5dfeaabb358b2, type: 3}
   TowerName: Cannon
-  Damage: 100
+  Damage: 50
   Range: 25
   CoolDown: 1

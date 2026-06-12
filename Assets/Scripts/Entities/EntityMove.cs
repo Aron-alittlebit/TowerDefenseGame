@@ -44,9 +44,35 @@ public class EntityMove : MonoBehaviour
         {
 
             LivingAbstractClass ally = hitInfo.collider.GetComponent<LivingAbstractClass>();
-            animator.SetBool("Walk", false);
-            EntitiesEvent.EntityAttack(ally);
-                
+            if(ally != null)
+            {
+                if (ally.GetComponent<Tower>() != null)
+                {
+                    Debug.Log(ally.GetComponent<Tower>().IsBuilt);
+                    if (ally.GetComponent<Tower>().IsBuilt)
+                    {
+                        animator.SetBool("Walk", false);
+                        EntitiesEvent.EntityAttack(ally);
+                    }
+                    else
+                    {
+                        animator.SetBool("Walk", true);
+                        MoveTowardsWayPoints();
+                    }
+
+                }
+                else
+                {
+                    animator.SetBool("Walk", false);
+                    EntitiesEvent.EntityAttack(ally);
+                }
+            }
+            else
+            {
+                animator.SetBool("Walk", true);
+                MoveTowardsWayPoints();
+            }
+
         }
         else
         {

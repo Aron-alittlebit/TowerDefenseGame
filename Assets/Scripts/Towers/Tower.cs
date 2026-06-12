@@ -6,9 +6,11 @@ public class Tower : LivingAbstractClass
     public LayerMask EntityLayer;
     public int Cost { get; private set; }
     public int Tier { get; private set; }
+    public bool IsBuilt { get; private set; }
    
     void Awake()
     {
+        IsBuilt = false;
         Tier = 1;
         Instance = this;
         if(GetComponent<TowerRotator>() != null)
@@ -16,11 +18,12 @@ public class Tower : LivingAbstractClass
         GetComponent<TowerAttack>().enabled = false;
     }
 
-    public void TowerIsBuilt(bool value)
+    public void TowerIsBuilt()
     {
         if(GetComponent<TowerRotator>() != null)
-            GetComponent<TowerRotator>().enabled = value;
-        GetComponent<TowerAttack>().enabled = value;
+            GetComponent<TowerRotator>().enabled = true;
+        GetComponent<TowerAttack>().enabled = true;
+        IsBuilt = true;
     }
 
     public void SetCost(int cost)

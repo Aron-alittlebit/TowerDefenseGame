@@ -49,10 +49,18 @@ public class PhaseHandler : MonoBehaviour
             waveCompleted = true;
             LeftOfWaves -= 1;
             CurrentPhase = Phase.BuildingPhase;
+
+            if(LeftOfWaves == NumberOfWaves)
+                BuildingPhasePeriod = 90;
+            else
+                BuildingPhasePeriod = 30;
+
             Timer = BuildingPhasePeriod;
+
+            //Gives player gems after each wave
             if(LeftOfWaves > 0)
             {
-                TowerEvents.TowerSold(5 * Mathf.Abs(NumberOfWaves - LeftOfWaves));
+                TowerEvents.TowerSold(10);
             }
         }
     }
