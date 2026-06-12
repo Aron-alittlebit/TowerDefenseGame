@@ -60,8 +60,10 @@ public class SpawnEntities : MonoBehaviour
             Vector3 pos = transform.position + transform.right * randomSide;
             pos.y = SpawnPoint.position.y;
 
+
             Entity entity = Instantiate(Entity, pos, transform.rotation);
-            EntitiesEvent.SetPath(GeneratePath());
+            
+            entity.GetComponent<EntityMove>().SetPath(GeneratePath());
             EntitesToSpawn--;
             
             yield return new WaitForSeconds(TimeToSpawn);
@@ -71,13 +73,10 @@ public class SpawnEntities : MonoBehaviour
     List<Vector3> GeneratePath()
     {
         List<Vector3> waypoints = new List<Vector3>();
-
-        foreach(Transform child in path.GetComponentInChildren<Transform>())
+        
+        foreach(Transform child in path.transform)
         {
-            Vector3 newPos = child.transform.position;
-            
-            child.transform.position = newPos;
-            waypoints.Add(child.transform.position);
+            waypoints.Add(child.position);
         }
 
         return waypoints;

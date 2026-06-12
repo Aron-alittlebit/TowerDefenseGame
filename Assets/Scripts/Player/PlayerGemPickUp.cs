@@ -1,16 +1,18 @@
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerGemPickUp : MonoBehaviour
 {
     [SerializeField]float Radius = 5f;
-    [SerializeField] int StartingGemCount = 15;
+    [SerializeField] int StartingGemCount ;
     public static int ReadOnlyStartingGem;
     public static int GemCounter;
     public LayerMask GemLayer;
     public TextMeshProUGUI GemCounterText;
     private void Start()
     {
+        StartingGemCount = 10 * FindObjectsByType<SpawnEntities>(FindObjectsSortMode.None).Length;
         ReadOnlyStartingGem = StartingGemCount;
         GemCounter = StartingGemCount;
         GemCounterText.text = $"{GemCounter}";

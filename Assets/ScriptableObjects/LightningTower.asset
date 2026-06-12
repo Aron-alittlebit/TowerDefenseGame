@@ -16,5 +16,5 @@ MonoBehaviour:
   TowerPrefab: {fileID: 3828613578752150982, guid: 9ab3df515d806724e8045397bee83e06, type: 3}
   TowerName: Lightning Tower
   Damage: 100
-  Range: 100
+  Range: 20
   CoolDown: 5

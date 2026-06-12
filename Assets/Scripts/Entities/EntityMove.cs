@@ -11,13 +11,13 @@ public class EntityMove : MonoBehaviour
     [SerializeField] float attackDst = 6f;
     [SerializeField] LayerMask Ally;
     List<Vector3> path = new List<Vector3>();
-    bool HasReachedWayPoint = false;
     int indexer = 0;
     Animator animator;
     
 
     private void Start()
     {
+        
         animator = GetComponent<Animator>();
         Crystal = FindAnyObjectByType<Crystal>();
         if (Crystal == null) Debug.LogError("No Crystal found in scene!", this);
@@ -26,13 +26,13 @@ public class EntityMove : MonoBehaviour
 
     private void OnEnable()
     {
-        EntitiesEvent.OnSetPath += SetPath;
+        
         EntitiesEvent.OnEntityDeath += SetSpeedToZero;
     }
 
     private void OnDisable()
     {
-        EntitiesEvent.OnSetPath -= SetPath;
+        
         EntitiesEvent.OnEntityDeath -= SetSpeedToZero;
     }
 
@@ -48,11 +48,11 @@ public class EntityMove : MonoBehaviour
             {
                 if (ally.GetComponent<Tower>() != null)
                 {
-                    Debug.Log(ally.GetComponent<Tower>().IsBuilt);
+                    
                     if (ally.GetComponent<Tower>().IsBuilt)
                     {
                         animator.SetBool("Walk", false);
-                        EntitiesEvent.EntityAttack(ally);
+                        EntitiesEvent.EntityAttack(ally, gameObject);
                     }
                     else
                     {
@@ -64,7 +64,7 @@ public class EntityMove : MonoBehaviour
                 else
                 {
                     animator.SetBool("Walk", false);
-                    EntitiesEvent.EntityAttack(ally);
+                    EntitiesEvent.EntityAttack(ally, gameObject);
                 }
             }
             else
@@ -79,17 +79,21 @@ public class EntityMove : MonoBehaviour
             animator.SetBool("Walk", true);
             MoveTowardsWayPoints();
         }
-        
+
+
     }
 
-    void SetPath(List<Vector3> GivenPath)
+
+    public void SetPath(List<Vector3> GivenPath)
     {
+        indexer = 0;
         path.Clear();
         path = GivenPath;
     }
 
     void MoveTowardsWayPoints()
     {
+        //Debug.Log(path.Count);
         if(indexer < path.Count)
         {
             Turn(path[indexer]);
@@ -127,7 +131,7 @@ public class EntityMove : MonoBehaviour
         else
         {
             animator.SetBool("Walk", false);
-            EntitiesEvent.EntityAttack(Crystal);
+            EntitiesEvent.EntityAttack(Crystal, gameObject);
         }
     }
 

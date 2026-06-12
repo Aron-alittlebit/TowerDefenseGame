@@ -4,7 +4,7 @@ using UnityEngine;
 public class EntityAttack : MonoBehaviour
 {
     [SerializeField] int damage;
-    public float CoolDown;
+    [SerializeField] float CoolDown;
     float currentCoolDown;
     Animator animator;
 
@@ -27,13 +27,14 @@ public class EntityAttack : MonoBehaviour
         //Debug.Log(damage);
         currentCoolDown -= Time.deltaTime;
     }
-    void Attack(LivingAbstractClass entity)
+    void Attack(LivingAbstractClass entity, GameObject sender)
     {
+        if (sender != gameObject) return;
         if(currentCoolDown <= 0)
         {
             entity.TakeDamage(damage);
-            currentCoolDown = CoolDown;
             animator.SetTrigger("Attack");
+            currentCoolDown = CoolDown;
         }
         
     }

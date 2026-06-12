@@ -18,6 +18,11 @@ public class Tower : LivingAbstractClass
         GetComponent<TowerAttack>().enabled = false;
     }
 
+    private void Update()
+    {
+        Debug.Log(health);
+    }
+
     public void TowerIsBuilt()
     {
         if(GetComponent<TowerRotator>() != null)
