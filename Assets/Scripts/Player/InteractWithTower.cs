@@ -6,42 +6,23 @@ public class InteractWithTower : MonoBehaviour
     [SerializeField] LayerMask TowerMask;
     void Update()
     {
-        //if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo1, 10f,
-        //    TowerMask) && Input.GetKey(KeyCode.H))
-        //{
-        //    Tower tower = hitInfo1.collider.GetComponent<Tower>();
-        //    if (tower != null)
-        //    {
-
-
-        //    }
-        //}
-        //else if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo2, 10f
-        //    , TowerMask) && Input.GetKey(KeyCode.U))
-        //{
-        //    Tower tower = hitInfo2.collider.GetComponent<Tower>();
-        //    if (tower != null && PlayerGemPickUp.GemCounter >= 5 * tower.Tier)
-        //    {
-
-                
-
-        //    }
-        //}
 
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 10f,
             TowerMask))
         {
+            
             Tower tower = hitInfo.collider.GetComponent<Tower>();
+            Debug.Log(tower.Tier);
 
-            if (Input.GetKey(KeyCode.H))
+            if (Input.GetKeyDown(KeyCode.H))
             {
                 SellTower(tower);
             }
-            else if (Input.GetKey(KeyCode.U) && PlayerGemPickUp.GemCounter >= 5 * tower.Tier)
+            else if (Input.GetKeyDown(KeyCode.U) && PlayerGemPickUp.GemCounter >= 5 * tower.Tier)
             {
                 UpgradeTower(tower);
             }
-            else if (Input.GetKey(KeyCode.I))
+            else if (Input.GetKeyDown(KeyCode.I))
             {
                 Debug.Log(tower.Tier);
             }
@@ -57,9 +38,8 @@ public class InteractWithTower : MonoBehaviour
 
     void UpgradeTower(Tower tower)
     {
-        TowerEvents.GemSpent(5 * tower.Tier);
-        tower.IncreaseTier();
-        TowerEvents.TowerUpgraded(tower);
+        
+        TowerEvents.TowerUpgraded(tower, tower.gameObject);
     }
 
 

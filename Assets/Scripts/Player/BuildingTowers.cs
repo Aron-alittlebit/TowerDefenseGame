@@ -68,6 +68,7 @@ public class BuildingTowers : MonoBehaviour
             {
                 IsBuilding = false;
                 tower.TowerIsBuilt();
+                
                 MaterialChange(PlacedMat);
                 TowerEvents.GemSpent(defaultTowerData.Cost);
                 TowerEvents.TowerBuilt(defaultTowerData);
@@ -121,4 +122,6 @@ public class BuildingTowers : MonoBehaviour
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
             tower.transform.Rotate(0, -RotateAmount, 0);
     }
+
+    
 }

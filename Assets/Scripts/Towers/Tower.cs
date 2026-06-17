@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 public class Tower : LivingAbstractClass
 {
@@ -6,6 +7,7 @@ public class Tower : LivingAbstractClass
     public LayerMask EntityLayer;
     public int Cost { get; private set; }
     public int Tier { get; private set; }
+    //public string Name { get; private set; }
     public bool IsBuilt { get; private set; }
    
     void Awake()
@@ -38,9 +40,31 @@ public class Tower : LivingAbstractClass
 
     public void IncreaseTier()
     {
-        if(Tier>=5) return;
-        Tier++;
+        if(Tier>=4) return;
+        Tier += 1;
     }
 
-    
+    //public void SetName(string name)
+    //{
+    //    Name = name;
+    //}
+
+    // in Tower.cs
+    [SerializeField] TowerData towerData;
+    GameObject Visual;
+
+    protected override void Start()
+    {
+        base.Start();
+        Visual = transform.GetChild(0).gameObject;
+    }
+
+    public void UpgradeVisual()
+    {
+        Visual = towerData.TierPrefabs[Tier-1];
+
+       
+    }
+
+
 }

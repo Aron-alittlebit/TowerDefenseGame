@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Cannon
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 5
-  TowerPrefab: {fileID: 3844656792843723955, guid: 2aec729388f83da448a5dfeaabb358b2, type: 3}
+  TowerPrefab: {fileID: 7628077126649123113, guid: a795e51a522887244b1131abd4a3a8bc, type: 3}
+  TierPrefabs:
+  - {fileID: 6600623658154420595, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
+  - {fileID: 2507857462180137906, guid: 4b4461f01395c5e44a0db5e4e2876a1a, type: 3}
+  - {fileID: 8671637467687091871, guid: be1167cb067f8aa45a253aac76da2d29, type: 3}
+  - {fileID: 2549582001120558232, guid: 309a44090c67f2b4093333abfd2dc1fa, type: 3}
   TowerName: Cannon
   Damage: 50
   Range: 25

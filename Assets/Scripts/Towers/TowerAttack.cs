@@ -67,8 +67,14 @@ public class TowerAttack : MonoBehaviour
         currentCoolDown = CoolDown;
     }
 
-    protected virtual void SetDataAfterUpgrade(Tower tower)
+    protected virtual void SetDataAfterUpgrade(Tower tower, GameObject sender)
     {
+        if (gameObject != sender) return;
+
+        TowerEvents.GemSpent(5 * tower.Tier);
+        tower.IncreaseTier();
+        tower.UpgradeVisual();
+
         Damage += 2 * tower.Tier;
         Range += 2 * tower.Tier;
         CoolDown -= 0.1f * tower.Tier;

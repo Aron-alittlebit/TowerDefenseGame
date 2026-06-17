@@ -725,63 +725,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 713c943ccbfcab0449993d096180948d, type: 3}
---- !u!1001 &311273279
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 503.38275
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00000771414
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 459.21112
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5823700304144970697, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600623658154420595, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
-      propertyPath: m_Name
-      value: RapidFireCannon_1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 374c6ba29fb69ea4b9065368a821b03d, type: 3}
 --- !u!1001 &327512441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3913,6 +3856,14 @@ PrefabInstance:
       propertyPath: GemCounterText
       value: 
       objectReference: {fileID: 484707022}
+    - target: {fileID: 6580469838847543036, guid: f8342ce4964296c4ab4fcbe21c87031e, type: 3}
+      propertyPath: towerData2
+      value: 
+      objectReference: {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
+    - target: {fileID: 6580469838847543036, guid: f8342ce4964296c4ab4fcbe21c87031e, type: 3}
+      propertyPath: towerData3
+      value: 
+      objectReference: {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
     - target: {fileID: 7193672015199479807, guid: f8342ce4964296c4ab4fcbe21c87031e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4955,4 +4906,3 @@ SceneRoots:
   - {fileID: 1431320183}
   - {fileID: 1906690533}
   - {fileID: 2139754288}
-  - {fileID: 311273279}
