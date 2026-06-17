@@ -14,19 +14,7 @@ public class NonTurnableTowers : TowerRotator
         originalX = Pivotpoint.localEulerAngles.x;
     }
 
-    protected override void OnEnable()
-    {
-      
-        TowerEvents.OnTowerBuilt += SetTowerData;
-
-    }
-
-    protected override void OnDisable()
-    {
-       
-        TowerEvents.OnTowerBuilt -= SetTowerData;
-
-    }
+    
 
     protected override void Update()
     {

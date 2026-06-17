@@ -4,7 +4,7 @@ using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 public class BuildingTowers : MonoBehaviour
 {
     bool IsBuilding;
-    float RotateAmount = 50f;
+    float RotateAmount = 5f;
     int Cost;
     Tower tower;
     TowerData defaultTowerData;
@@ -92,9 +92,11 @@ public class BuildingTowers : MonoBehaviour
         {
             foreach (var render in renderers)
             {
-                PlacedMat = render.material;
+                PlacedMat = render.sharedMaterial;
             }
         }
+
+       
 
         MaterialChange(BuildingMat);
 
@@ -121,7 +123,9 @@ public class BuildingTowers : MonoBehaviour
 
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
             tower.transform.Rotate(0, -RotateAmount, 0);
+
+
     }
 
-    
+   
 }

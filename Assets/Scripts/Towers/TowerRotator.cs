@@ -10,7 +10,7 @@ public class TowerRotator : MonoBehaviour
     [SerializeField] float RotationMinLimitY;
     [SerializeField] float RotationMaxLimitY;
     [SerializeField] protected float RotationLimitX;
-    protected float Range;
+    protected int Range;
     float closest = float.MaxValue;
     Entity target = null;
     Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
@@ -27,14 +27,14 @@ public class TowerRotator : MonoBehaviour
     protected virtual void OnEnable()
     {
         EntitiesEvent.OnEntityDeath += RemoveEntityFromDictionary;
-        TowerEvents.OnTowerBuilt += SetTowerData;
+        
         
     }
 
     protected virtual void OnDisable()
     {
         EntitiesEvent.OnEntityDeath -= RemoveEntityFromDictionary;
-        TowerEvents.OnTowerBuilt -= SetTowerData;
+        
 
     }
 
@@ -42,13 +42,14 @@ public class TowerRotator : MonoBehaviour
 
     protected virtual void Update()
     {
-        
+        Debug.Log(Range);
         float originalDistance = 0f;
         
         if (target != null)
         {
             originalDistance = Vector3.Distance(transform.position, target.transform.position);
             RotateTower(target.transform.position, originalDistance);
+            
             GunEvents.TowerAttack(gameObject);
             
         }
@@ -100,10 +101,9 @@ public class TowerRotator : MonoBehaviour
             closest = float.MaxValue;
     }
 
-    protected virtual void SetTowerData(TowerData td)
+    public void SetRange(int range)
     {
-        towerData = td;
-        Range = towerData.Range;
+        Range = range;
     }
 
     void RemoveEntityFromDictionary(int id)
@@ -140,7 +140,13 @@ public class TowerRotator : MonoBehaviour
             Pivotpoint.localRotation,
             targetRotation,
             Time.deltaTime * 5f);
+
+
     }
+
+    
+
+    
 
 
 }

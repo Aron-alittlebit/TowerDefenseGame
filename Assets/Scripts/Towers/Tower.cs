@@ -15,9 +15,10 @@ public class Tower : LivingAbstractClass
         IsBuilt = false;
         Tier = 1;
         Instance = this;
-        if(GetComponent<TowerRotator>() != null)
-            GetComponent<TowerRotator>().enabled = false;
-        GetComponent<TowerAttack>().enabled = false;
+        if(GetComponentInChildren<TowerRotator>() != null)
+            GetComponentInChildren<TowerRotator>().enabled = false;
+        if (GetComponentInChildren<TowerAttack>() != null)
+            GetComponentInChildren<TowerAttack>().enabled = false;
     }
 
     private void Update()
@@ -27,9 +28,10 @@ public class Tower : LivingAbstractClass
 
     public void TowerIsBuilt()
     {
-        if(GetComponent<TowerRotator>() != null)
-            GetComponent<TowerRotator>().enabled = true;
-        GetComponent<TowerAttack>().enabled = true;
+        if(GetComponentInChildren<TowerRotator>() != null)
+            GetComponentInChildren<TowerRotator>().enabled = true;
+        if (GetComponentInChildren<TowerAttack>() != null)
+            GetComponentInChildren<TowerAttack>().enabled = true;
         IsBuilt = true;
     }
 
@@ -44,12 +46,6 @@ public class Tower : LivingAbstractClass
         Tier += 1;
     }
 
-    //public void SetName(string name)
-    //{
-    //    Name = name;
-    //}
-
-    // in Tower.cs
     [SerializeField] TowerData towerData;
     GameObject Visual;
 
@@ -61,9 +57,15 @@ public class Tower : LivingAbstractClass
 
     public void UpgradeVisual()
     {
-        Visual = towerData.TierPrefabs[Tier-1];
+        DestroyImmediate(Visual);
+        Visual = Instantiate(
+            towerData.TierPrefabs[Tier - 1],
+            transform.position,
+            transform.rotation,
+            transform
+        );
 
-       
+        TowerEvents.TowerBuilt(towerData);
     }
 
 

@@ -12,20 +12,25 @@ public class InteractWithTower : MonoBehaviour
         {
             
             Tower tower = hitInfo.collider.GetComponent<Tower>();
-            Debug.Log(tower.Tier);
+            if(tower != null)
+            {
+                
+                if (Input.GetKeyDown(KeyCode.H))
+                {
+                    SellTower(tower);
+                }
+                else if (Input.GetKeyDown(KeyCode.U) && PlayerGemPickUp.GemCounter >= 5 * tower.Tier)
+                {
+                    
+                    UpgradeTower(tower);
+                }
+                else if (Input.GetKeyDown(KeyCode.I))
+                {
+                    Debug.Log(tower.Tier);
+                }
+            }
 
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                SellTower(tower);
-            }
-            else if (Input.GetKeyDown(KeyCode.U) && PlayerGemPickUp.GemCounter >= 5 * tower.Tier)
-            {
-                UpgradeTower(tower);
-            }
-            else if (Input.GetKeyDown(KeyCode.I))
-            {
-                Debug.Log(tower.Tier);
-            }
+            
         }
 
     }
@@ -39,7 +44,7 @@ public class InteractWithTower : MonoBehaviour
     void UpgradeTower(Tower tower)
     {
         
-        TowerEvents.TowerUpgraded(tower, tower.gameObject);
+        TowerEvents.TowerUpgraded(tower, tower.transform.GetChild(0).gameObject);
     }
 
 

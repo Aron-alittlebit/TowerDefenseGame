@@ -10,7 +10,7 @@ public class TowerAttack : MonoBehaviour
     protected float currentCoolDown;
     protected TowerData towerData;
     protected int Damage;
-    protected float Range;
+    protected int Range;
     protected float CoolDown;
     
 
@@ -75,12 +75,16 @@ public class TowerAttack : MonoBehaviour
         tower.IncreaseTier();
         tower.UpgradeVisual();
 
-        Damage += 2 * tower.Tier;
-        Range += 2 * tower.Tier;
+        Damage += 10 * tower.Tier;
+        Range += 10 * tower.Tier;
+        transform.GetComponentInChildren<TowerRotator>().SetRange(Range);
         CoolDown -= 0.1f * tower.Tier;
         currentCoolDown = CoolDown;
         tower.SetHealth(tower.Health + 5 * tower.Tier);
+
+        //Debug.Log(Damage);
     }
+    
 
 
 

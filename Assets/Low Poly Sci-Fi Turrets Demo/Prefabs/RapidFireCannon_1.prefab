@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6372562932211573445}
   m_Layer: 0
-  m_Name: PivotPoint
+  m_Name: PivotPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,6 +74,8 @@ GameObject:
   - component: {fileID: 5823700304144970697}
   - component: {fileID: 7457445342119345260}
   - component: {fileID: 4655275396415801510}
+  - component: {fileID: 5233368056562777909}
+  - component: {fileID: -8398361741745443982}
   m_Layer: 0
   m_Name: RapidFireCannon_1
   m_TagString: Untagged
@@ -154,6 +156,36 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5233368056562777909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600623658154420595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
+  FirePoint: {fileID: 1149441496279084820}
+--- !u!114 &-8398361741745443982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600623658154420595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eeb7a846af2aa34b88ed35148e2eb22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerRotator
+  Pivotpoint: {fileID: 6372562932211573445}
+  rotationSpeed: 90
+  RotationMinLimitY: 180
+  RotationMaxLimitY: 360
+  RotationLimitX: 30
 --- !u!1001 &1949599465469814632
 PrefabInstance:
   m_ObjectHideFlags: 0

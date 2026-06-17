@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6690042531903055183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,9 @@ GameObject:
   - component: {fileID: 2992188676676456712}
   - component: {fileID: 2173470788935491245}
   - component: {fileID: 4165072517714733671}
-  m_Layer: 0
+  - component: {fileID: 713459257226436542}
+  - component: {fileID: 329764577730313430}
+  m_Layer: 8
   m_Name: RapidFireCannon_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,6 +124,36 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &713459257226436542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507857462180137906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
+  FirePoint: {fileID: 6690042531903055183}
+--- !u!114 &329764577730313430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507857462180137906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eeb7a846af2aa34b88ed35148e2eb22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerRotator
+  Pivotpoint: {fileID: 7260840944233096398}
+  rotationSpeed: 90
+  RotationMinLimitY: 180
+  RotationMaxLimitY: 360
+  RotationLimitX: 30
 --- !u!1 &3859366670126457164
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3859366670126457165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,8 +197,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260840944233096398}
-  m_Layer: 0
-  m_Name: PivotPoint
+  m_Layer: 8
+  m_Name: PivotPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,14 +212,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6658941789034049086}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3859366670126457165}
   m_Father: {fileID: 2992188676676456712}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!1001 &3859366669718078217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,6 +295,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9359234e1495fb64eae2e8f9138d88fd, type: 3}
       propertyPath: m_Name
       value: Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9359234e1495fb64eae2e8f9138d88fd, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -349,6 +385,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9359234e1495fb64eae2e8f9138d88fd, type: 3}
       propertyPath: m_Name
       value: Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9359234e1495fb64eae2e8f9138d88fd, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
