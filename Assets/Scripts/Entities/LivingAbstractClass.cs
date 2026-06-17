@@ -30,4 +30,9 @@ public abstract class LivingAbstractClass : MonoBehaviour
 
     }
 
+    public void SetHealth(int value)
+    {
+        health = value;
+    }
+
 }

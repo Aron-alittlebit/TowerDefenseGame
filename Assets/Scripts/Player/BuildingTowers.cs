@@ -10,7 +10,7 @@ public class BuildingTowers : MonoBehaviour
     TowerData defaultTowerData;
     
     [SerializeField] Material BuildingMat;
-    [SerializeField] Material PlacedMat;
+    Material PlacedMat;
     [SerializeField] TowerData towerData1;
     [SerializeField] TowerData towerData2;
     [SerializeField] TowerData towerData3;
@@ -85,6 +85,15 @@ public class BuildingTowers : MonoBehaviour
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
         tower.SetCost(towerData.Cost);
         Cost = towerData.Cost;
+
+        var renderers = tower.GetComponentsInChildren<Renderer>();
+        if (renderers != null)
+        {
+            foreach (var render in renderers)
+            {
+                PlacedMat = render.material;
+            }
+        }
 
         MaterialChange(BuildingMat);
 

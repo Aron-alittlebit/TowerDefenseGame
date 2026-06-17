@@ -20,7 +20,7 @@ public class Tower : LivingAbstractClass
 
     private void Update()
     {
-        Debug.Log(health);
+        
     }
 
     public void TowerIsBuilt()

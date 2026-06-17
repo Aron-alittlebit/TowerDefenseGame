@@ -73,6 +73,7 @@ public class TowerAttack : MonoBehaviour
         Range += 2 * tower.Tier;
         CoolDown -= 0.1f * tower.Tier;
         currentCoolDown = CoolDown;
+        tower.SetHealth(tower.Health + 5 * tower.Tier);
     }
 
 

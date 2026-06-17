@@ -41,6 +41,10 @@ public class InteractWithTower : MonoBehaviour
             {
                 UpgradeTower(tower);
             }
+            else if (Input.GetKey(KeyCode.I))
+            {
+                Debug.Log(tower.Tier);
+            }
         }
 
     }
