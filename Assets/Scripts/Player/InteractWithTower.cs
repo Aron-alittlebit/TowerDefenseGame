@@ -44,7 +44,7 @@ public class InteractWithTower : MonoBehaviour
     void UpgradeTower(Tower tower)
     {
         TowerEvents.GemSpent(5 * tower.Tier);
-        tower.SetHealth(tower.Health + 5 * tower.Tier);
+        tower.SetHealth((tower.Health / 2) + tower.Health + 5 * tower.Tier);
         tower.IncreaseTier();
         
         tower.UpgradeVisual();

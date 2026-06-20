@@ -13,7 +13,10 @@ public class EntityMove : MonoBehaviour
     List<Vector3> path = new List<Vector3>();
     int indexer = 0;
     Animator animator;
-    
+    bool AllyNearby;
+    LivingAbstractClass Target = null;
+    float MinDst = float.MaxValue;
+
 
     private void Start()
     {
@@ -38,50 +41,49 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, attackDst, Ally);
+        AllyNearby = colliders.Length > 0;
+
         
-        if (Physics.Raycast(transform.position, 
-            transform.forward, out RaycastHit hitInfo, attackDst, Ally))
+        foreach (var collider in colliders)
         {
-
-            LivingAbstractClass ally = hitInfo.collider.GetComponent<LivingAbstractClass>();
-            if(ally != null)
+            if(Vector3.Distance(transform.position, collider.transform.position) <= MinDst)
             {
-                if (ally.GetComponent<Tower>() != null)
-                {
-                    
-                    if (ally.GetComponent<Tower>().IsBuilt)
-                    {
-                        animator.SetBool("Walk", false);
-                        EntitiesEvent.EntityAttack(ally, gameObject);
-                    }
-                    else
-                    {
-                        animator.SetBool("Walk", true);
-                        MoveTowardsWayPoints();
-                    }
+                Target = collider.GetComponent<LivingAbstractClass>();
+                MinDst = Vector3.Distance(transform.position, collider.transform.position);
+            }
+        }
 
+        
+            if(Target != null)
+            {
+                if (Target.GetComponent<Tower>() != null && Target.GetComponent<Tower>().IsBuilt)
+                {
+                    animator.SetBool("Walk", false);
+                    EntitiesEvent.EntityAttack(Target, gameObject);
+                }
+                else if(Target.GetComponent<PlayerHealth>() != null)
+                {
+                    animator.SetBool("Walk", false);
+                    EntitiesEvent.EntityAttack(Target, gameObject);
                 }
                 else
                 {
-                    animator.SetBool("Walk", false);
-                    EntitiesEvent.EntityAttack(ally, gameObject);
+                    MinDst = float.MaxValue;
+                    animator.SetBool("Walk", true);
+                    MoveTowardsWayPoints();
                 }
             }
             else
             {
+                MinDst = float.MaxValue;
                 animator.SetBool("Walk", true);
                 MoveTowardsWayPoints();
             }
 
-        }
-        else
-        {
-            animator.SetBool("Walk", true);
-            MoveTowardsWayPoints();
-        }
 
-
-    }
+}
+    
 
 
     public void SetPath(List<Vector3> GivenPath)

@@ -40,8 +40,7 @@ public class TowerAttack : MonoBehaviour
     protected virtual void Update()
     {
         currentCoolDown -= Time.deltaTime;
-        Debug.Log($"{Damage}, {Range}, {currentCoolDown}, {CoolDown} {FirePoint != null}");
-        //Debug.Log(Damage);
+        
         
     }
 

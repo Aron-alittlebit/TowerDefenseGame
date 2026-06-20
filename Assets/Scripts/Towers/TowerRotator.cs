@@ -20,7 +20,6 @@ public class TowerRotator : MonoBehaviour
     
     protected virtual void Start()
     {
-        
         OriginalRotaion = (Pivotpoint.localEulerAngles.x, 
             Pivotpoint.localEulerAngles.y, Pivotpoint.localEulerAngles.z);
     }
@@ -29,8 +28,6 @@ public class TowerRotator : MonoBehaviour
         EntitiesEvent.OnEntityDeath += RemoveEntityFromDictionary;
         TowerEvents.OnTowerBuilt += SetTowerData;
         TowerEvents.OnTowerUpgraded += SetDataAfterUpgrade;
-
-
     }
 
     protected virtual void OnDisable()
@@ -38,15 +35,13 @@ public class TowerRotator : MonoBehaviour
         EntitiesEvent.OnEntityDeath -= RemoveEntityFromDictionary;
         TowerEvents.OnTowerBuilt -= SetTowerData;
         TowerEvents.OnTowerUpgraded -= SetDataAfterUpgrade;
-
-
     }
 
     
 
     protected virtual void Update()
     {
-        //Debug.Log($"Range:{Range}, {name}");
+        
         float originalDistance = 0f;
         
         if (target != null)
@@ -55,14 +50,10 @@ public class TowerRotator : MonoBehaviour
             RotateTower(target.transform.position, originalDistance);
             
             GunEvents.TowerAttack(gameObject);
-            Debug.Log("Shoot");
-            
-            
         }
 
         else if(target == null)
         {
-
            Pivotpoint.localRotation = Quaternion.Slerp(
                 Pivotpoint.localRotation,
                 Quaternion.Euler(OriginalRotaion.Item1, 
@@ -90,7 +81,6 @@ public class TowerRotator : MonoBehaviour
                 {
                     closest = EntitiesDistance[key];
                     target = enemy;
-                    
                 }
             }
             else
@@ -101,18 +91,11 @@ public class TowerRotator : MonoBehaviour
 
         }
 
-
-
         if (target != null && EntitiesDistance[target.GetInstanceID()] >= closest)
             closest = float.MaxValue;
     }
 
-    //public void SetRange(int range)
-    //{
-    //    //Debug.Log($"Old range: {Range}");
-    //    Range = range;
-    //    //Debug.Log($"New range: {Range}");
-    //}
+   
 
     protected virtual void SetTowerData(TowerData td, GameObject sender)
     {

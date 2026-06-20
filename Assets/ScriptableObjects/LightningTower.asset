@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: LightningTower
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 10
-  TowerPrefab: {fileID: 3828613578752150982, guid: 9ab3df515d806724e8045397bee83e06, type: 3}
+  TowerPrefab: {fileID: 8330585442469874185, guid: 7792c894f17d2c3428b3aa2ebee31cac, type: 3}
+  TierPrefabs:
+  - {fileID: 2426208691792125568, guid: 541ccabd339a3ae468f4de93fae7fcc5, type: 3}
+  - {fileID: 302416288760532056, guid: 109f6198d5bf74d48976c7b2da4119f4, type: 3}
+  - {fileID: 4144023990754284853, guid: b4db6d174d9fc5f4cbb7c8774532213b, type: 3}
   TowerName: Lightning Tower
   Damage: 100
   Range: 20

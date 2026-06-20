@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d810f3a3c97454ebf34b1986c7899e, type: 3}
-  m_Name: Cannon
+  m_Name: Barricade
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 5
-  TowerPrefab: {fileID: 7628077126649123113, guid: a795e51a522887244b1131abd4a3a8bc, type: 3}
+  TowerPrefab: {fileID: 6465611686593222590, guid: 9a3118b8bdc17e34ca6b2f58c3bbea33, type: 3}
   TierPrefabs:
-  - {fileID: 2507857462180137906, guid: 4b4461f01395c5e44a0db5e4e2876a1a, type: 3}
-  - {fileID: 8671637467687091871, guid: be1167cb067f8aa45a253aac76da2d29, type: 3}
-  - {fileID: 2549582001120558232, guid: 309a44090c67f2b4093333abfd2dc1fa, type: 3}
-  TowerName: Cannon
-  Damage: 100
-  Range: 25
-  CoolDown: 1
+  - {fileID: 5066501572960707589, guid: 1decab08cce374b46b7859cc12d0701f, type: 3}
+  - {fileID: 3206159795785803125, guid: 07304635fad39434eb5c420e3db54623, type: 3}
+  - {fileID: 7007309563368288384, guid: 4893e5502c232f9489136018b8affeb9, type: 3}
+  TowerName: Barricade
+  Damage: 0
+  Range: 0
+  CoolDown: 0

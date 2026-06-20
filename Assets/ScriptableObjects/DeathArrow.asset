@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: DeathArrow
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 15
-  TowerPrefab: {fileID: 6866426736164523792, guid: 02c9837e4c81455459dc6039d4925ac3, type: 3}
+  TowerPrefab: {fileID: -8593560820183594329, guid: e3a17861190329049b55ea7e3a96fca3, type: 3}
+  TierPrefabs:
+  - {fileID: 4086746565953127633, guid: 8151877a2bbf0284f801c6351201b38a, type: 3}
+  - {fileID: 2078255646064876985, guid: d86d062a4e81cd94c86e0e0dc7fb49fc, type: 3}
+  - {fileID: 1338786952316084145, guid: b5de68c174b70694088e98ed003216c2, type: 3}
   TowerName: Death Arrow
   Damage: 100
   Range: 100

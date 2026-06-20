@@ -14,6 +14,7 @@ public class BuildingTowers : MonoBehaviour
     [SerializeField] TowerData towerData1;
     [SerializeField] TowerData towerData2;
     [SerializeField] TowerData towerData3;
+    [SerializeField] TowerData towerData4;
     void Start()
     {
         IsBuilding = false;
@@ -36,9 +37,13 @@ public class BuildingTowers : MonoBehaviour
             {
                 Building(towerData3);
             }
-            
-                
-            
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                Building(towerData4);
+            }
+
+
+
         }
         
         
