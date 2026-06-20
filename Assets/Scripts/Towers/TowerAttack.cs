@@ -1,4 +1,5 @@
 
+using UnityEditor;
 using UnityEngine;
 using UnityEngineInternal;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
@@ -58,8 +59,10 @@ public class TowerAttack : MonoBehaviour
         }
     }
 
-    protected virtual void SetTowerData(TowerData td)
+    protected virtual void SetTowerData(TowerData td, GameObject sender)
     {
+        //Debug.Log(sender != gameObject);
+        //if (sender != gameObject) return;
         towerData = td;
         Range = towerData.Range;
         Damage = towerData.Damage;
@@ -73,14 +76,17 @@ public class TowerAttack : MonoBehaviour
 
         TowerEvents.GemSpent(5 * tower.Tier);
         tower.IncreaseTier();
-        tower.UpgradeVisual();
 
-        Damage += 10 * tower.Tier;
-        Range += 10 * tower.Tier;
-        transform.GetComponentInChildren<TowerRotator>().SetRange(Range);
+
+        Damage = towerData.Damage + (10 * (tower.Tier - 1));
+        Range = towerData.Range + (10 * (tower.Tier - 1));
+        Debug.Log($"Attack set range: {Range} = 10 * {tower.Tier} => {10*tower.Tier}");
+        transform.GetComponent<TowerRotator>().SetRange(Range);
         CoolDown -= 0.1f * tower.Tier;
         currentCoolDown = CoolDown;
         tower.SetHealth(tower.Health + 5 * tower.Tier);
+
+        tower.UpgradeVisual();
 
         //Debug.Log(Damage);
     }

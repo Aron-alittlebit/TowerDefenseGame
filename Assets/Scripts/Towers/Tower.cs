@@ -21,10 +21,7 @@ public class Tower : LivingAbstractClass
             GetComponentInChildren<TowerAttack>().enabled = false;
     }
 
-    private void Update()
-    {
-        
-    }
+   
 
     public void TowerIsBuilt()
     {
@@ -35,9 +32,24 @@ public class Tower : LivingAbstractClass
         IsBuilt = true;
     }
 
-    public void SetCost(int cost)
+    protected virtual void OnEnable()
     {
-        Cost = cost;
+        
+        TowerEvents.OnTowerBuilt += SetTowerData;
+        
+    }
+
+    protected virtual void OnDisable()
+    {
+
+        TowerEvents.OnTowerBuilt -= SetTowerData;
+
+    }
+
+    public void SetTowerData(TowerData td, GameObject sender)
+    {
+        if (sender != gameObject) return;
+        Cost = td.Cost;
     }
 
     public void IncreaseTier()
@@ -65,7 +77,7 @@ public class Tower : LivingAbstractClass
             transform
         );
 
-        TowerEvents.TowerBuilt(towerData);
+        TowerEvents.TowerBuilt(towerData, gameObject);
     }
 
 

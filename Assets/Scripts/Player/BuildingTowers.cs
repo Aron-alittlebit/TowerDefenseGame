@@ -5,7 +5,7 @@ public class BuildingTowers : MonoBehaviour
 {
     bool IsBuilding;
     float RotateAmount = 5f;
-    int Cost;
+    
     Tower tower;
     TowerData defaultTowerData;
     
@@ -46,11 +46,11 @@ public class BuildingTowers : MonoBehaviour
         if (IsBuilding)
         {
             RotateTower();
-            //Debug.Log(tower.Tier);
+           
             if (tower != null)
             {
                 Vector3 newPos = transform.position + (transform.forward) * 10;
-                newPos.y = transform.position.y;
+                newPos.y = transform.position.y-1;
                 tower.transform.position = newPos;
                 
             }
@@ -71,7 +71,7 @@ public class BuildingTowers : MonoBehaviour
                 
                 MaterialChange(PlacedMat);
                 TowerEvents.GemSpent(defaultTowerData.Cost);
-                TowerEvents.TowerBuilt(defaultTowerData);
+                TowerEvents.TowerBuilt(defaultTowerData, gameObject);
                 
             }
         }
@@ -81,12 +81,11 @@ public class BuildingTowers : MonoBehaviour
     {
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
         defaultTowerData = towerData;
-        Vector3 TowerPos = transform.position+(transform.forward)*10;
-        TowerPos.y = transform.position.y;
-        tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
-        tower.SetCost(towerData.Cost);
-        Cost = towerData.Cost;
 
+        Vector3 TowerPos = transform.position + (transform.forward) * 10;
+        TowerPos.y = transform.position.y - 1;
+        tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
+        tower.transform.GetComponentInChildren<TowerRotator>().SetRange(towerData.Range);
         var renderers = tower.GetComponentsInChildren<Renderer>();
         if (renderers != null)
         {

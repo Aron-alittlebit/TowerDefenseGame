@@ -27,14 +27,16 @@ public class TowerRotator : MonoBehaviour
     protected virtual void OnEnable()
     {
         EntitiesEvent.OnEntityDeath += RemoveEntityFromDictionary;
-        
-        
+        TowerEvents.OnTowerBuilt += SetTowerData;
+
+
     }
 
     protected virtual void OnDisable()
     {
         EntitiesEvent.OnEntityDeath -= RemoveEntityFromDictionary;
-        
+        TowerEvents.OnTowerBuilt -= SetTowerData;
+
 
     }
 
@@ -42,7 +44,7 @@ public class TowerRotator : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log(Range);
+        //Debug.Log($"Range:{Range}, {name}");
         float originalDistance = 0f;
         
         if (target != null)
@@ -51,6 +53,7 @@ public class TowerRotator : MonoBehaviour
             RotateTower(target.transform.position, originalDistance);
             
             GunEvents.TowerAttack(gameObject);
+            Debug.Log("Shoot");
             
         }
 
@@ -103,7 +106,16 @@ public class TowerRotator : MonoBehaviour
 
     public void SetRange(int range)
     {
+        //Debug.Log($"Old range: {Range}");
         Range = range;
+        //Debug.Log($"New range: {Range}");
+    }
+
+    protected virtual void SetTowerData(TowerData td, GameObject sender)
+    {
+        if (sender != gameObject) return;
+        Range = td.Range;
+        
     }
 
     void RemoveEntityFromDictionary(int id)

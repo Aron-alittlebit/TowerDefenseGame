@@ -26,7 +26,7 @@ public class InteractWithTower : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.I))
                 {
-                    Debug.Log(tower.Tier);
+                    Debug.Log("aha");
                 }
             }
 
