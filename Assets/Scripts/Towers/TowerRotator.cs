@@ -55,6 +55,7 @@ public class TowerRotator : MonoBehaviour
             GunEvents.TowerAttack(gameObject);
             Debug.Log("Shoot");
             
+            
         }
 
         else if(target == null)

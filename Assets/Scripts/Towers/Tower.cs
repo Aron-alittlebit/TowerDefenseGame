@@ -32,24 +32,11 @@ public class Tower : LivingAbstractClass
         IsBuilt = true;
     }
 
-    protected virtual void OnEnable()
+   
+
+    public void SetCost(int cost)
     {
-        
-        TowerEvents.OnTowerBuilt += SetTowerData;
-        
-    }
-
-    protected virtual void OnDisable()
-    {
-
-        TowerEvents.OnTowerBuilt -= SetTowerData;
-
-    }
-
-    public void SetTowerData(TowerData td, GameObject sender)
-    {
-        if (sender != gameObject) return;
-        Cost = td.Cost;
+        Cost = cost;
     }
 
     public void IncreaseTier()
@@ -58,7 +45,7 @@ public class Tower : LivingAbstractClass
         Tier += 1;
     }
 
-    [SerializeField] TowerData towerData;
+    public TowerData towerData;
     GameObject Visual;
 
     protected override void Start()
@@ -71,13 +58,15 @@ public class Tower : LivingAbstractClass
     {
         DestroyImmediate(Visual);
         Visual = Instantiate(
-            towerData.TierPrefabs[Tier - 1],
+            towerData.TierPrefabs[Tier - 2],
             transform.position,
             transform.rotation,
             transform
         );
 
-        TowerEvents.TowerBuilt(towerData, gameObject);
+        
+
+        //TowerEvents.TowerBuilt(towerData, gameObject);
     }
 
 

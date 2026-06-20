@@ -71,7 +71,7 @@ public class BuildingTowers : MonoBehaviour
                 
                 MaterialChange(PlacedMat);
                 TowerEvents.GemSpent(defaultTowerData.Cost);
-                TowerEvents.TowerBuilt(defaultTowerData, gameObject);
+                TowerEvents.TowerBuilt(defaultTowerData, tower.transform.GetChild(0).gameObject);
                 
             }
         }
@@ -85,7 +85,10 @@ public class BuildingTowers : MonoBehaviour
         Vector3 TowerPos = transform.position + (transform.forward) * 10;
         TowerPos.y = transform.position.y - 1;
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
-        tower.transform.GetComponentInChildren<TowerRotator>().SetRange(towerData.Range);
+
+        //tower.transform.GetComponentInChildren<TowerRotator>().SetRange(towerData.Range);
+        tower.SetCost(towerData.Cost);
+
         var renderers = tower.GetComponentsInChildren<Renderer>();
         if (renderers != null)
         {

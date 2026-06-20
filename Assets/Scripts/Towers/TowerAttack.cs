@@ -39,11 +39,14 @@ public class TowerAttack : MonoBehaviour
     protected virtual void Update()
     {
         currentCoolDown -= Time.deltaTime;
+        Debug.Log($"{Damage}, {Range}, {currentCoolDown}, {CoolDown} {FirePoint != null}");
+        //Debug.Log(Damage);
         
     }
 
     protected virtual void Attack(GameObject sender)
     {
+        //Debug.Log(FirePoint != null);
         if (sender != gameObject) return;
         if (currentCoolDown <= 0)
         {
@@ -62,7 +65,7 @@ public class TowerAttack : MonoBehaviour
     protected virtual void SetTowerData(TowerData td, GameObject sender)
     {
         //Debug.Log(sender != gameObject);
-        //if (sender != gameObject) return;
+        if (sender != gameObject) return;
         towerData = td;
         Range = towerData.Range;
         Damage = towerData.Damage;
@@ -72,25 +75,19 @@ public class TowerAttack : MonoBehaviour
 
     protected virtual void SetDataAfterUpgrade(Tower tower, GameObject sender)
     {
+        
         if (gameObject != sender) return;
-
-        TowerEvents.GemSpent(5 * tower.Tier);
-        tower.IncreaseTier();
-
-
+        towerData = tower.towerData;
         Damage = towerData.Damage + (10 * (tower.Tier - 1));
         Range = towerData.Range + (10 * (tower.Tier - 1));
-        Debug.Log($"Attack set range: {Range} = 10 * {tower.Tier} => {10*tower.Tier}");
         transform.GetComponent<TowerRotator>().SetRange(Range);
         CoolDown -= 0.1f * tower.Tier;
         currentCoolDown = CoolDown;
-        tower.SetHealth(tower.Health + 5 * tower.Tier);
 
-        tower.UpgradeVisual();
 
-        //Debug.Log(Damage);
+        
     }
-    
+
 
 
 
