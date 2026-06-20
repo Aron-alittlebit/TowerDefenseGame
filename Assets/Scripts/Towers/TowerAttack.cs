@@ -1,5 +1,6 @@
 
 using UnityEditor;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngineInternal;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
@@ -78,10 +79,13 @@ public class TowerAttack : MonoBehaviour
         
         if (gameObject != sender) return;
         towerData = tower.towerData;
-        Damage = towerData.Damage + (10 * (tower.Tier - 1));
-        Range = towerData.Range + (10 * (tower.Tier - 1));
-        transform.GetComponent<TowerRotator>().SetRange(Range);
-        CoolDown -= 0.1f * tower.Tier;
+        Damage = towerData.Damage + (10 * (tower.Tier));
+        Range = towerData.Range + (10 * (tower.Tier));
+        
+        CoolDown = towerData.CoolDown -  (0.1f * tower.Tier);
+        if (CoolDown <= 0)
+            CoolDown = 0.1f;
+
         currentCoolDown = CoolDown;
 
 

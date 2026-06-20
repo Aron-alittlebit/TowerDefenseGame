@@ -28,6 +28,7 @@ public class TowerRotator : MonoBehaviour
     {
         EntitiesEvent.OnEntityDeath += RemoveEntityFromDictionary;
         TowerEvents.OnTowerBuilt += SetTowerData;
+        TowerEvents.OnTowerUpgraded += SetDataAfterUpgrade;
 
 
     }
@@ -36,6 +37,7 @@ public class TowerRotator : MonoBehaviour
     {
         EntitiesEvent.OnEntityDeath -= RemoveEntityFromDictionary;
         TowerEvents.OnTowerBuilt -= SetTowerData;
+        TowerEvents.OnTowerUpgraded -= SetDataAfterUpgrade;
 
 
     }
@@ -105,18 +107,26 @@ public class TowerRotator : MonoBehaviour
             closest = float.MaxValue;
     }
 
-    public void SetRange(int range)
-    {
-        //Debug.Log($"Old range: {Range}");
-        Range = range;
-        //Debug.Log($"New range: {Range}");
-    }
+    //public void SetRange(int range)
+    //{
+    //    //Debug.Log($"Old range: {Range}");
+    //    Range = range;
+    //    //Debug.Log($"New range: {Range}");
+    //}
 
     protected virtual void SetTowerData(TowerData td, GameObject sender)
     {
         if (sender != gameObject) return;
         Range = td.Range;
         
+    }
+
+    protected virtual void SetDataAfterUpgrade(Tower tower, GameObject sender)
+    {
+        if (gameObject != sender) return;
+        towerData = tower.towerData;
+        Range = towerData.Range + (10 * (tower.Tier - 1));
+
     }
 
     void RemoveEntityFromDictionary(int id)
