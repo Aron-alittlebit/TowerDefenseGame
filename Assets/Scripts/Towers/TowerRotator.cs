@@ -11,7 +11,7 @@ public class TowerRotator : MonoBehaviour
     [SerializeField] float RotationMaxLimitY;
     [SerializeField] protected float RotationLimitX;
     protected int Range;
-    float closest = float.MaxValue;
+    
     Entity target = null;
     Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
     (float,float,float) OriginalRotaion;
@@ -25,14 +25,14 @@ public class TowerRotator : MonoBehaviour
     }
     protected virtual void OnEnable()
     {
-        EntitiesEvent.OnEntityDeath += RemoveEntityFromDictionary;
+        
         TowerEvents.OnTowerBuilt += SetTowerData;
         TowerEvents.OnTowerUpgraded += SetDataAfterUpgrade;
     }
 
     protected virtual void OnDisable()
     {
-        EntitiesEvent.OnEntityDeath -= RemoveEntityFromDictionary;
+        
         TowerEvents.OnTowerBuilt -= SetTowerData;
         TowerEvents.OnTowerUpgraded -= SetDataAfterUpgrade;
     }
@@ -43,6 +43,8 @@ public class TowerRotator : MonoBehaviour
     {
         
         float originalDistance = 0f;
+
+        target = FindClosestEnemy();
         
         if (target != null)
         {
@@ -51,8 +53,7 @@ public class TowerRotator : MonoBehaviour
             
             GunEvents.TowerAttack(gameObject);
         }
-
-        else if(target == null)
+        else
         {
            Pivotpoint.localRotation = Quaternion.Slerp(
                 Pivotpoint.localRotation,
@@ -60,39 +61,33 @@ public class TowerRotator : MonoBehaviour
                 OriginalRotaion.Item2, OriginalRotaion.Item3),
                 5 * Time.deltaTime);
         }
+
+        if (target != null && Vector3.Distance(transform.position, target.transform.position)
+            > Range)
+        {
+            target = null;
+        }
             
+    }
 
-
-
-
+    Entity FindClosestEnemy()
+    {
+        float min = float.MaxValue;
+        Entity target = null;
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range,
             Tower.Instance.EntityLayer);
-        foreach (var collider in colliders)
+
+        foreach(var collider in colliders)
         {
-            
-            Entity enemy = collider.GetComponent<Entity>();
-            int key = enemy.GetInstanceID();
-
-
-            if (EntitiesDistance.ContainsKey(key))
+            float dst = Vector3.Distance(transform.position, collider.transform.position);
+            if (dst < min)
             {
-                EntitiesDistance[key] = Vector3.Distance(transform.position, enemy.transform.position);
-                if(EntitiesDistance[key] <= closest)
-                {
-                    closest = EntitiesDistance[key];
-                    target = enemy;
-                }
+                target = collider.GetComponent<Entity>();
+                min = dst;
             }
-            else
-            {
-                EntitiesDistance.Add(key,
-                    Vector3.Distance(transform.position, enemy.transform.position));
-            }
-
         }
 
-        if (target != null && EntitiesDistance[target.GetInstanceID()] >= closest)
-            closest = float.MaxValue;
+        return target;
     }
 
    
@@ -112,10 +107,7 @@ public class TowerRotator : MonoBehaviour
 
     }
 
-    void RemoveEntityFromDictionary(int id)
-    {
-        EntitiesDistance.Remove(id);
-    }
+    
 
     void RotateTower(Vector3 enemyPos, float steps)
     {

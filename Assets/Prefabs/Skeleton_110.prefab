@@ -514,6 +514,7 @@ MonoBehaviour:
   Crystal: {fileID: 7166260832637262602, guid: 35d2c19c0305a594b83b347f8d7c2c86, type: 3}
   speed: 10
   attackDst: 6
+  Range: 20
   Ally:
     serializedVersion: 2
     m_Bits: 256

@@ -37,7 +37,7 @@ public class Entity : LivingAbstractClass
         {
             col.enabled = false;
         }
-        EntitiesEvent.EntityDeath(transform.GetInstanceID());
+        
         GameObject gem = Instantiate(GemPrefab, transform.position, Quaternion.identity);
         Rigidbody rb = gem.GetComponent<Rigidbody>();
         if (rb != null)

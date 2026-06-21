@@ -46,13 +46,14 @@ public class TowerAttack : MonoBehaviour
 
     protected virtual void Attack(GameObject sender)
     {
-        //Debug.Log(FirePoint != null);
+        
         if (sender != gameObject) return;
         if (currentCoolDown <= 0)
         {
-            if (Physics.Raycast(FirePoint.position, FirePoint.forward, out RaycastHit hitInfo,
+            if (Physics.SphereCast(FirePoint.position, 0.5f ,FirePoint.forward, out RaycastHit hitInfo,
                 Range, Tower.Instance.EntityLayer))
             {
+                
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
                 
                 enemy.TakeDamage(Damage);
@@ -64,7 +65,7 @@ public class TowerAttack : MonoBehaviour
 
     protected virtual void SetTowerData(TowerData td, GameObject sender)
     {
-        //Debug.Log(sender != gameObject);
+        
         if (sender != gameObject) return;
         towerData = td;
         Range = towerData.Range;

@@ -8,7 +8,8 @@ public class EntityMove : MonoBehaviour
 {
     [SerializeField] Crystal Crystal;
     [SerializeField] float speed = 10f;
-    [SerializeField] float attackDst = 6f;
+    [SerializeField] float attackDst = 15f;
+    [SerializeField] float Range;
     [SerializeField] LayerMask Ally;
     List<Vector3> path = new List<Vector3>();
     int indexer = 0;
@@ -41,7 +42,7 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, attackDst, Ally);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
 
         if (AllyNearby)
@@ -56,42 +57,38 @@ public class EntityMove : MonoBehaviour
             }
         }
 
-        //Debug.Log(Vector3.Distance(transform.position, Target.transform.position) > attackDst
-        //        && Target != null);
-
         if (Target != null)
         {
             
+            bool validTarget = Target.GetComponent<LivingAbstractClass>() != null
+                || Target.GetComponent<Tower>().IsBuilt;
+            float dst = Vector3.Distance(transform.position, Target.transform.position);
 
-            if (Target.GetComponent<LivingAbstractClass>() != null 
-                || Target.GetComponent<Tower>().IsBuilt)
-            {
-                if(Vector3.Distance(transform.position, Target.transform.position) <= attackDst)
-                {
-                    Turn(Target.transform.position);
-                    animator.SetBool("Walk", false);
-                    EntitiesEvent.EntityAttack(Target, gameObject);
-                }
-                else
-                {
-                    animator.SetBool("Walk", true);
-                    Vector3 newPos = Target.transform.position;
-                    newPos.y = transform.position.y;
-                    transform.position = Vector3.MoveTowards(transform.position,
-                    newPos, speed * Time.deltaTime);
+            
 
-                    
-                }
-   
-            }
-
-            if(Vector3.Distance(transform.position, Target.transform.position) > attackDst + 1f)
+            if (!validTarget || dst > attackDst)
             {
                 MinDst = float.MaxValue;
                 Target = null;
                 animator.SetBool("Walk", true);
                 MoveTowardsWayPoints();
             }
+            else if (dst <= attackDst)
+            {
+                Turn(Target.transform.position);
+                animator.SetBool("Walk", false);
+                EntitiesEvent.EntityAttack(Target, gameObject);
+            }
+            else
+            {
+                animator.SetBool("Walk", true);
+                Vector3 newPos = Target.transform.position;
+                newPos.y = transform.position.y;
+                transform.position = Vector3.MoveTowards(transform.position,
+                newPos, speed * Time.deltaTime);
+
+            }
+
         }
         else
         {
