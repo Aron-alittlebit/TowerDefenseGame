@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 8671637467687091871, guid: be1167cb067f8aa45a253aac76da2d29, type: 3}
   - {fileID: 2549582001120558232, guid: 309a44090c67f2b4093333abfd2dc1fa, type: 3}
   TowerName: Cannon
-  Damage: 100
+  Damage: 10
   Range: 25
   CoolDown: 1

@@ -72,12 +72,14 @@ public class EntityMove : MonoBehaviour
                 Target = null;
                 animator.SetBool("Walk", true);
                 MoveTowardsWayPoints();
+                Debug.Log("1");
             }
             else if (dst <= attackDst)
             {
                 Turn(Target.transform.position);
                 animator.SetBool("Walk", false);
                 EntitiesEvent.EntityAttack(Target, gameObject);
+                Debug.Log("2");
             }
             else
             {
@@ -86,6 +88,7 @@ public class EntityMove : MonoBehaviour
                 newPos.y = transform.position.y;
                 transform.position = Vector3.MoveTowards(transform.position,
                 newPos, speed * Time.deltaTime);
+                Debug.Log("3");
 
             }
 
@@ -96,6 +99,7 @@ public class EntityMove : MonoBehaviour
             Target = null;
             animator.SetBool("Walk", true);
             MoveTowardsWayPoints();
+            Debug.Log("4");
         }
     }
     

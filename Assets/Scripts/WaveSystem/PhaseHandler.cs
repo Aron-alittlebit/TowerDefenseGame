@@ -9,13 +9,13 @@ public class PhaseHandler : MonoBehaviour
     public Phase CurrentPhase;
     float BuildingPhasePeriod = 30;
     float Timer;
-    bool waveCompleted = false;
+    bool waveCompleted;
     
     
     
     void Start()
     {
-        
+        waveCompleted = false;
         LeftOfWaves = NumberOfWaves;
         Timer = BuildingPhasePeriod;
         CurrentPhase = Phase.BuildingPhase;
@@ -24,7 +24,7 @@ public class PhaseHandler : MonoBehaviour
     
     void Update()
     {
-       
+        Debug.Log(CurrentPhase);
         if (NumberOfWaves <= 0 || LeftOfWaves <= 0) return;
         CompletedWave();
         Timer -= Time.deltaTime;
@@ -51,9 +51,9 @@ public class PhaseHandler : MonoBehaviour
             CurrentPhase = Phase.BuildingPhase;
 
             if(LeftOfWaves == NumberOfWaves)
-                BuildingPhasePeriod = 90;
+                BuildingPhasePeriod = 3600;
             else
-                BuildingPhasePeriod = 30;
+                BuildingPhasePeriod = 90;
 
             Timer = BuildingPhasePeriod;
 

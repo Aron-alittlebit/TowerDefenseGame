@@ -24,6 +24,7 @@ public class Entity : LivingAbstractClass
     {
         if(health <= 0 && !HasDied)
         {
+            EntitiesEvent.EntityDeath(GetInstanceID());
             animator.SetBool("Walk", false);
             StartCoroutine(DeathAnimation());
         }
