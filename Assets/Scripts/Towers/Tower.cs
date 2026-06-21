@@ -32,10 +32,7 @@ public class Tower : LivingAbstractClass
         IsBuilt = true;
     }
 
-    private void Update()
-    {
-        Debug.Log(health);
-    }
+    
 
     public void SetCost(int cost)
     {

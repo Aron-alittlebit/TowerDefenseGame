@@ -44,45 +44,63 @@ public class EntityMove : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, attackDst, Ally);
         AllyNearby = colliders.Length > 0;
 
-        
-        foreach (var collider in colliders)
+        if (AllyNearby)
         {
-            if(Vector3.Distance(transform.position, collider.transform.position) <= MinDst)
+            foreach (var collider in colliders)
             {
-                Target = collider.GetComponent<LivingAbstractClass>();
-                MinDst = Vector3.Distance(transform.position, collider.transform.position);
+                if (Vector3.Distance(transform.position, collider.transform.position) <= MinDst)
+                {
+                    Target = collider.GetComponent<LivingAbstractClass>();
+                    MinDst = Vector3.Distance(transform.position, collider.transform.position);
+                }
             }
         }
 
-        
-            if(Target != null)
+        //Debug.Log(Vector3.Distance(transform.position, Target.transform.position) > attackDst
+        //        && Target != null);
+
+        if (Target != null)
+        {
+            
+
+            if (Target.GetComponent<LivingAbstractClass>() != null 
+                || Target.GetComponent<Tower>().IsBuilt)
             {
-                if (Target.GetComponent<Tower>() != null && Target.GetComponent<Tower>().IsBuilt)
+                if(Vector3.Distance(transform.position, Target.transform.position) <= attackDst)
                 {
-                    animator.SetBool("Walk", false);
-                    EntitiesEvent.EntityAttack(Target, gameObject);
-                }
-                else if(Target.GetComponent<PlayerHealth>() != null)
-                {
+                    Turn(Target.transform.position);
                     animator.SetBool("Walk", false);
                     EntitiesEvent.EntityAttack(Target, gameObject);
                 }
                 else
                 {
-                    MinDst = float.MaxValue;
                     animator.SetBool("Walk", true);
-                    MoveTowardsWayPoints();
+                    Vector3 newPos = Target.transform.position;
+                    newPos.y = transform.position.y;
+                    transform.position = Vector3.MoveTowards(transform.position,
+                    newPos, speed * Time.deltaTime);
+
+                    
                 }
+   
             }
-            else
+
+            if(Vector3.Distance(transform.position, Target.transform.position) > attackDst + 1f)
             {
                 MinDst = float.MaxValue;
+                Target = null;
                 animator.SetBool("Walk", true);
                 MoveTowardsWayPoints();
             }
-
-
-}
+        }
+        else
+        {
+            MinDst = float.MaxValue;
+            Target = null;
+            animator.SetBool("Walk", true);
+            MoveTowardsWayPoints();
+        }
+    }
     
 
 
@@ -95,7 +113,7 @@ public class EntityMove : MonoBehaviour
 
     void MoveTowardsWayPoints()
     {
-        //Debug.Log(path.Count);
+        
         if(indexer < path.Count)
         {
             Turn(path[indexer]);

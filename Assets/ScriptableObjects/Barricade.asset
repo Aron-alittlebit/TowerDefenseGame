@@ -15,9 +15,9 @@ MonoBehaviour:
   Cost: 5
   TowerPrefab: {fileID: 6465611686593222590, guid: 9a3118b8bdc17e34ca6b2f58c3bbea33, type: 3}
   TierPrefabs:
-  - {fileID: 5066501572960707589, guid: 1decab08cce374b46b7859cc12d0701f, type: 3}
-  - {fileID: 3206159795785803125, guid: 07304635fad39434eb5c420e3db54623, type: 3}
-  - {fileID: 7007309563368288384, guid: 4893e5502c232f9489136018b8affeb9, type: 3}
+  - {fileID: 166622814881813300, guid: 1decab08cce374b46b7859cc12d0701f, type: 3}
+  - {fileID: 346427822342116642, guid: 07304635fad39434eb5c420e3db54623, type: 3}
+  - {fileID: 3085228067413313699, guid: 4893e5502c232f9489136018b8affeb9, type: 3}
   TowerName: Barricade
   Damage: 0
   Range: 0

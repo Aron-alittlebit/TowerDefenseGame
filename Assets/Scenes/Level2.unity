@@ -1874,9 +1874,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2253684188658283315, guid: 35d2c19c0305a594b83b347f8d7c2c86, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3545439886858780605, guid: 35d2c19c0305a594b83b347f8d7c2c86, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573560983306972253, guid: 35d2c19c0305a594b83b347f8d7c2c86, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6784797934092578039, guid: 35d2c19c0305a594b83b347f8d7c2c86, type: 3}
       propertyPath: m_Name
       value: Crystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784797934092578039, guid: 35d2c19c0305a594b83b347f8d7c2c86, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
