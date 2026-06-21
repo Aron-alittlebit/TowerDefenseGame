@@ -24,7 +24,7 @@ public class PhaseHandler : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(CurrentPhase);
+        
         if (NumberOfWaves <= 0 || LeftOfWaves <= 0) return;
         CompletedWave();
         Timer -= Time.deltaTime;

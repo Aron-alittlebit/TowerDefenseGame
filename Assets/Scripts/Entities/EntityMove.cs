@@ -8,7 +8,7 @@ public class EntityMove : MonoBehaviour
 {
     [SerializeField] Crystal Crystal;
     [SerializeField] float speed = 10f;
-    [SerializeField] float attackDst = 15f;
+    [SerializeField] float attackDst = 6f;
     [SerializeField] float Range;
     [SerializeField] LayerMask Ally;
     List<Vector3> path = new List<Vector3>();
@@ -72,7 +72,7 @@ public class EntityMove : MonoBehaviour
                 Target = null;
                 animator.SetBool("Walk", true);
                 MoveTowardsWayPoints();
-                Debug.Log("1");
+                Debug.Log($"1 {validTarget}");
             }
             else if (dst <= attackDst)
             {
