@@ -9,6 +9,7 @@ public static class TowerEvents
     public static event Action<TowerData, GameObject> OnTowerBuilt;
     
     public static event Action<Tower, GameObject> OnTowerUpgraded;
+    
 
     public static void GemSpent(int gems) => OnGemSpent?.Invoke(gems);
     public static void TowerSold(int gems) => OnTowerSold?.Invoke(gems);

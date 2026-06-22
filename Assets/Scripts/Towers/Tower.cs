@@ -5,13 +5,19 @@ public class Tower : LivingAbstractClass
 {
     public static Tower Instance;
     public LayerMask EntityLayer;
+    public TowerData towerData;
+    GameObject Visual;
+
+    public Sprite Icon {  get; private set; }
     public int Cost { get; private set; }
     public int Tier { get; private set; }
-    //public string Name { get; private set; }
+    public string Name { get; private set; }
     public bool IsBuilt { get; private set; }
    
     void Awake()
     {
+        Name = towerData.name;
+        Icon = towerData.Icon;
         IsBuilt = false;
         Tier = 1;
         Instance = this;
@@ -45,8 +51,7 @@ public class Tower : LivingAbstractClass
         Tier += 1;
     }
 
-    public TowerData towerData;
-    GameObject Visual;
+    
 
     protected override void Start()
     {

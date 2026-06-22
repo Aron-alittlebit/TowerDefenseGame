@@ -4,13 +4,13 @@ using UnityEngine;
 public class EntityAttack : MonoBehaviour
 {
     [SerializeField] int damage;
-    [SerializeField] float CoolDown;
+    [SerializeField] float coolDown;
     float currentCoolDown;
     Animator animator;
 
     private void Start()
     {
-        currentCoolDown = CoolDown;
+        currentCoolDown = coolDown;
         animator = GetComponent<Animator>();
     }
     private void OnEnable()
@@ -34,7 +34,7 @@ public class EntityAttack : MonoBehaviour
         {
             entity.TakeDamage(damage);
             animator.SetTrigger("Attack");
-            currentCoolDown = CoolDown;
+            currentCoolDown = coolDown;
         }
         
     }

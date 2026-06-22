@@ -11,14 +11,18 @@ public class TowerAttack : MonoBehaviour
     public Transform FirePoint;
     protected float currentCoolDown;
     protected TowerData towerData;
-    protected int Damage;
-    protected int Range;
-    protected float CoolDown;
+    protected int damage;
+    protected int range;
+    protected float coolDown;
+    public int KillCount { get; private set; }
+    public int Damage => damage;
+    public int Range => range;
+    public float CoolDown => coolDown;
     
 
     protected virtual void Start()
     {
-
+        KillCount = 0;
         currentCoolDown = 0;
         
     }
@@ -51,15 +55,19 @@ public class TowerAttack : MonoBehaviour
         if (currentCoolDown <= 0)
         {
             if (Physics.SphereCast(FirePoint.position, 0.5f ,FirePoint.forward, out RaycastHit hitInfo,
-                Range, Tower.Instance.EntityLayer))
+                range, Tower.Instance.EntityLayer))
             {
                 
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
                 
-                enemy.TakeDamage(Damage);
+                enemy.TakeDamage(damage);
+                if(enemy.Health <= 0)
+                {
+                    KillCount++;
+                }
             }
             
-            currentCoolDown = CoolDown;
+            currentCoolDown = coolDown;
         }
     }
 
@@ -68,10 +76,10 @@ public class TowerAttack : MonoBehaviour
         
         if (sender != gameObject) return;
         towerData = td;
-        Range = towerData.Range;
-        Damage = towerData.Damage;
-        CoolDown = towerData.CoolDown;
-        currentCoolDown = CoolDown;
+        range = towerData.Range;
+        damage = towerData.Damage;
+        coolDown = towerData.CoolDown;
+        currentCoolDown = coolDown;
     }
 
     protected virtual void SetDataAfterUpgrade(Tower tower, GameObject sender)
@@ -79,21 +87,15 @@ public class TowerAttack : MonoBehaviour
         
         if (gameObject != sender) return;
         towerData = tower.towerData;
-        Damage = towerData.Damage + (10 * (tower.Tier));
-        Range = towerData.Range + (10 * (tower.Tier));
+        damage = towerData.Damage + (10 * (tower.Tier));
+        range = towerData.Range + (10 * (tower.Tier));
         
-        CoolDown = towerData.CoolDown -  (0.1f * tower.Tier);
-        if (CoolDown <= 0)
-            CoolDown = 0.1f;
+        coolDown = towerData.CoolDown -  (0.1f * tower.Tier);
+        if (coolDown <= 0)
+            coolDown = 0.1f;
 
-        currentCoolDown = CoolDown;
-
-
-        
+        currentCoolDown = coolDown;
+ 
     }
-
-
-
-
 
 }

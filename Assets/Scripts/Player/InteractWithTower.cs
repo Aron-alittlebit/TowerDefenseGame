@@ -4,6 +4,7 @@ using UnityEngine;
 public class InteractWithTower : MonoBehaviour
 {
     [SerializeField] LayerMask TowerMask;
+    [SerializeField] TowerInfoUIController TowerInfo;
     void Update()
     {
 
@@ -26,7 +27,18 @@ public class InteractWithTower : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.I))
                 {
-                    Debug.Log("aha");
+                   TowerAttack ta = tower.GetComponentInChildren<TowerAttack>();
+                   TowerUIModell ui = new(tower, ta);
+
+                    if (!TowerInfo.IsOpened)
+                    {
+                        TowerInfo.Show(ui);
+                    }
+                    else
+                    {
+                        TowerInfo.Hide();
+                    }
+                    
                 }
             }
 

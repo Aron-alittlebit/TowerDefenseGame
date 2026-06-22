@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="TowerInfo" style="flex-grow: 1; background-color: rgb(15, 43, 18); position: absolute; height: 300px; width: 400px; top: 151px; left: 136px; border-top-left-radius: 16px; border-top-right-radius: 16px; border-bottom-right-radius: 16px; border-bottom-left-radius: 16px;">
+        <ui:VisualElement name="TowerImage" style="flex-grow: 1; position: absolute; height: 150px; width: 150px; top: 32px; left: 32px; background-color: rgb(255, 255, 255);"/>
+        <ui:Label text="Tower Name" name="TowerName" style="position: absolute; height: 50px; width: 170px; top: 32px; left: 200px; font-size: 28px; color: rgb(219, 186, 7);"/>
+        <ui:Label text="Tier" name="Tier" style="position: absolute; top: 100px; left: 200px; width: 150px; height: 50px; font-size: 32px; color: rgb(250, 203, 22); align-items: auto; justify-content: flex-start; align-self: auto; align-content: auto; padding-left: 26px; padding-top: -30px; padding-bottom: 4px;"/>
+        <ui:GroupBox name="DataHolder" style="height: 99px; position: absolute; top: 192px; width: 400px; left: -2px;">
+            <ui:Label text="Damage:" name="Damage" style="position: absolute; height: 50px; width: 150px; top: 11px; left: 11px; color: rgb(255, 224, 1); font-size: 16px;"/>
+            <ui:Label text="Range:" name="Range" style="position: absolute; height: 50px; width: 108px; top: 11px; left: 211px; color: rgb(255, 224, 1); font-size: 16px;"/>
+            <ui:Label text="Fire Rate:" name="FireRate" style="position: absolute; height: 50px; width: 150px; top: 61px; left: 11px; color: rgb(255, 224, 1); font-size: 16px;"/>
+            <ui:Label text="Kill Count:" name="KillCount" style="position: absolute; height: 50px; width: 159px; top: 61px; left: 211px; color: rgb(255, 224, 1); font-size: 16px;"/>
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>
