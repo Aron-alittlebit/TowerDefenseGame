@@ -27,9 +27,9 @@ public class InteractWithTower : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.I))
                 {
-                   TowerAttack ta = tower.GetComponentInChildren<TowerAttack>();
-                   TowerUIModell ui = new(tower, ta);
-
+                    TowerAttack ta = tower.GetComponentInChildren<TowerAttack>();
+                    TowerUIModell ui = new(tower, ta);
+                    
                     if (!TowerInfo.IsOpened)
                     {
                         TowerInfo.Show(ui);
@@ -40,9 +40,15 @@ public class InteractWithTower : MonoBehaviour
                     }
                     
                 }
+                
             }
+            
 
             
+        }
+        else if(TowerInfo.IsOpened)
+        {
+            TowerInfo.Hide();
         }
 
     }
