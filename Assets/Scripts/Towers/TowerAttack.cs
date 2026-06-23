@@ -14,7 +14,7 @@ public class TowerAttack : MonoBehaviour
     protected int damage;
     protected int range;
     protected float coolDown;
-    public int KillCount { get; private set; }
+   
     public int Damage => damage;
     public int Range => range;
     public float CoolDown => coolDown;
@@ -22,7 +22,7 @@ public class TowerAttack : MonoBehaviour
 
     protected virtual void Start()
     {
-        KillCount = 0;
+        
         currentCoolDown = 0;
         
     }
@@ -63,7 +63,7 @@ public class TowerAttack : MonoBehaviour
                 enemy.TakeDamage(damage);
                 if(enemy.Health <= 0)
                 {
-                    KillCount++;
+                    TowerEvents.TowerKilledEntity(gameObject);
                 }
             }
             

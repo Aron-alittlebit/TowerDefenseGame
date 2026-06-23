@@ -18,10 +18,11 @@ public class TowerUIModell
         TowerName = tower.Name;
         Tier = tower.Tier;
         TowerIcon = tower.Icon;
+        KillCount = tower.KillCount;
 
         Damage = attack.Damage;
         FireRate = attack.CoolDown;
         Range = attack.Range;
-        KillCount = attack.KillCount;
+        
     }
 }

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: DeathArrow
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 15
+  Name: Shocker
+  Icon: {fileID: 0}
   TowerPrefab: {fileID: -8593560820183594329, guid: e3a17861190329049b55ea7e3a96fca3, type: 3}
   TierPrefabs:
   - {fileID: 4086746565953127633, guid: 8151877a2bbf0284f801c6351201b38a, type: 3}

@@ -3443,6 +3443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1538191643}
   - component: {fileID: 1538191642}
+  - component: {fileID: 1538191644}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -3488,6 +3489,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1538191644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538191641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13aea26ad24d97f4ea966c1cb798c9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerInfoUIController
+  uidocument: {fileID: 1538191642}
 --- !u!1001 &1557363429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3981,6 +3995,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2051832238201605019, guid: f8342ce4964296c4ab4fcbe21c87031e, type: 3}
+      propertyPath: TowerInfo
+      value: 
+      objectReference: {fileID: 1538191644}
     - target: {fileID: 3698101738494787635, guid: f8342ce4964296c4ab4fcbe21c87031e, type: 3}
       propertyPath: Speed
       value: 50

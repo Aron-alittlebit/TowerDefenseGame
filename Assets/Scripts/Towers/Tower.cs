@@ -13,6 +13,8 @@ public class Tower : LivingAbstractClass
     public int Tier { get; private set; }
     public string Name { get; private set; }
     public bool IsBuilt { get; private set; }
+
+    public int KillCount { get; private set; }
    
     void Awake()
     {
@@ -50,8 +52,17 @@ public class Tower : LivingAbstractClass
         if(Tier>=4) return;
         Tier += 1;
     }
+    protected virtual void OnEnable()
+    {
+        TowerEvents.OnTowerKilledEntity += IncreaseKillCount;
+    }
 
-    
+    protected virtual void OnDisable()
+    {
+        TowerEvents.OnTowerKilledEntity -= IncreaseKillCount;
+    }
+
+
 
     protected override void Start()
     {
@@ -69,9 +80,13 @@ public class Tower : LivingAbstractClass
             transform
         );
 
-        
+    }
 
-        //TowerEvents.TowerBuilt(towerData, gameObject);
+    void IncreaseKillCount(GameObject sender)
+    {
+        if (transform.GetChild(0).gameObject != sender) return;
+
+        KillCount++;
     }
 
 

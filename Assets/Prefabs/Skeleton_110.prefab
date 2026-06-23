@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
   damage: 25
-  CoolDown: 3
+  coolDown: 2
 --- !u!114 &168004459988665981
 MonoBehaviour:
   m_ObjectHideFlags: 0

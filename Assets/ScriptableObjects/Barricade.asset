@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Barricade
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 5
+  Name: Barricade
+  Icon: {fileID: 0}
   TowerPrefab: {fileID: 6465611686593222590, guid: 9a3118b8bdc17e34ca6b2f58c3bbea33, type: 3}
   TierPrefabs:
   - {fileID: 166622814881813300, guid: 1decab08cce374b46b7859cc12d0701f, type: 3}

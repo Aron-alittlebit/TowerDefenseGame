@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Cannon
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 5
+  Name: Cannon
+  Icon: {fileID: 0}
   TowerPrefab: {fileID: 7628077126649123113, guid: a795e51a522887244b1131abd4a3a8bc, type: 3}
   TierPrefabs:
   - {fileID: 2507857462180137906, guid: 4b4461f01395c5e44a0db5e4e2876a1a, type: 3}

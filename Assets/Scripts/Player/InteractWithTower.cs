@@ -12,10 +12,20 @@ public class InteractWithTower : MonoBehaviour
             TowerMask))
         {
             
+            
             Tower tower = hitInfo.collider.GetComponent<Tower>();
             if(tower != null)
             {
-                
+                TowerAttack ta = tower.GetComponentInChildren<TowerAttack>();
+                TowerUIModell ui = new(tower, ta);
+
+                if (TowerInfo.IsOpened)
+                {
+                    ta = tower.GetComponentInChildren<TowerAttack>();
+                    ui = new(tower, ta);
+                    TowerInfo.Show(ui);
+                }
+
                 if (Input.GetKeyDown(KeyCode.H))
                 {
                     SellTower(tower);
@@ -27,9 +37,7 @@ public class InteractWithTower : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.I))
                 {
-                    TowerAttack ta = tower.GetComponentInChildren<TowerAttack>();
-                    TowerUIModell ui = new(tower, ta);
-                    
+
                     if (!TowerInfo.IsOpened)
                     {
                         TowerInfo.Show(ui);
@@ -68,6 +76,10 @@ public class InteractWithTower : MonoBehaviour
         tower.UpgradeVisual();
         TowerEvents.TowerUpgraded(tower, tower.transform.GetChild(0).gameObject);
     }
+
+    
+
+   
 
 
 }
