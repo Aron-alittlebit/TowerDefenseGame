@@ -42,6 +42,7 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
+        Debug.Log($"Target: {Target?.name}, AllyNearby: {AllyNearby}, pathCount: {path.Count}");
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
 
