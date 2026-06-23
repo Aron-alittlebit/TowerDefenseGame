@@ -169,10 +169,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 69e70b105013b9644813068955fda811, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6998868280695174}
   m_SourcePrefab: {fileID: 100100000, guid: 69e70b105013b9644813068955fda811, type: 3}
 --- !u!4 &1026943760718111401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 69e70b105013b9644813068955fda811, type: 3}
   m_PrefabInstance: {fileID: 1026943760718510121}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1026943760718610057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 69e70b105013b9644813068955fda811, type: 3}
+  m_PrefabInstance: {fileID: 1026943760718510121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6998868280695174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026943760718610057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
+  FirePoint: {fileID: 1026943760718111401}

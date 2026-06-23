@@ -4,6 +4,7 @@ using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 public class BuildingTowers : MonoBehaviour
 {
     bool IsBuilding;
+    int CountKeyPressed = 0;
     float RotateAmount = 5f;
     
     Tower tower;
@@ -15,38 +16,34 @@ public class BuildingTowers : MonoBehaviour
     [SerializeField] TowerData towerData2;
     [SerializeField] TowerData towerData3;
     [SerializeField] TowerData towerData4;
+
+    KeyCode selectedTowerKey;
     void Start()
     {
         IsBuilding = false;
-       
     }
     void Update()
     {
-        if (!IsBuilding)
+
+        Debug.Log(CountKeyPressed);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                Building(towerData1);
-
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                Building(towerData2);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                Building(towerData3);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                Building(towerData4);
-            }
-
-
+            DecideToBuildOrCancel(KeyCode.Alpha1, towerData1);
 
         }
-        
-        
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            DecideToBuildOrCancel(KeyCode.Alpha2, towerData2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            DecideToBuildOrCancel(KeyCode.Alpha3, towerData3);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            DecideToBuildOrCancel(KeyCode.Alpha4, towerData4);
+        }
 
         if (IsBuilding)
         {
@@ -60,16 +57,7 @@ public class BuildingTowers : MonoBehaviour
                 
             }
 
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                IsBuilding = false;
-                Destroy(tower.gameObject);
-                tower = null;
-                
-                
-
-            }
-            else if (Input.GetKeyDown(KeyCode.N))
+            if (Input.GetKeyDown(KeyCode.N))
             {
                 IsBuilding = false;
                 tower.TowerIsBuilt();
@@ -85,13 +73,13 @@ public class BuildingTowers : MonoBehaviour
     void Building(TowerData towerData)
     {
         if (PlayerGemPickUp.GemCounter < towerData.Cost) return;
+        
         defaultTowerData = towerData;
 
         Vector3 TowerPos = transform.position + (transform.forward) * 10;
         TowerPos.y = transform.position.y - 1;
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
 
-        //tower.transform.GetComponentInChildren<TowerRotator>().SetRange(towerData.Range);
         tower.SetCost(towerData.Cost);
 
         var renderers = tower.GetComponentsInChildren<Renderer>();
@@ -132,6 +120,32 @@ public class BuildingTowers : MonoBehaviour
             tower.transform.Rotate(0, -RotateAmount, 0);
 
 
+    }
+
+    void CancelBuilding()
+    {
+        if(tower != null)
+        {
+            
+            Destroy(tower.gameObject);
+            tower = null;
+        }
+        IsBuilding = false;
+        
+    }
+
+    void DecideToBuildOrCancel(KeyCode key, TowerData td)
+    {
+        if(selectedTowerKey == key && IsBuilding)
+        {
+            CancelBuilding();
+        }
+        else
+        {
+            CancelBuilding();
+            Building(td);
+            selectedTowerKey = key;
+        }
     }
 
    
