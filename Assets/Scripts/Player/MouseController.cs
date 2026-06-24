@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MouseController : MonoBehaviour
 {
-    public float MouseSensitivity = 500f;
+    public float MouseSensitivity = 250f;
     float xRotation = 0f;
     float yRotattion = 0f;
 

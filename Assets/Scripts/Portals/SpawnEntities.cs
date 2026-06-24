@@ -1,22 +1,34 @@
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
+
+[Serializable]
+public struct SpawnData
+{
+    public Entity entity;
+    public int amount;
+}
 
 public class SpawnEntities : MonoBehaviour
 {
-    [SerializeField] int NumberOfEntities;
-    int EntitesToSpawn;
-    [SerializeField] Entity Entity;
+    //[SerializeField] int NumberOfEntities;
+    [SerializeField] List<SpawnData> EntitiesList;
+    int EntitiesToSpawn;
+    //[SerializeField] Entity Entity;
     [SerializeField] float TimeToSpawn;
     public static bool CanSpawn;
     public static int NumberOfAllEntities;
     [SerializeField] GameObject path;
+    [SerializeField] Crystal Crystal;
     [SerializeField] Transform SpawnPoint;
     void Start()
     {
         CanSpawn = false;
-        EntitesToSpawn = NumberOfEntities;
+        
         //NumberOfAllEntities += NumberOfEntities;
     }
 
@@ -34,8 +46,8 @@ public class SpawnEntities : MonoBehaviour
     void StartSpawn()
     {
         if (!CanSpawn) return;
-        NumberOfAllEntities += NumberOfEntities;
-        EntitesToSpawn = NumberOfEntities;
+        NumberOfAllEntities += EntitiesList.Sum(x => x.amount);
+        
         StartCoroutine(SpawnLogic());
 
     }
@@ -53,21 +65,25 @@ public class SpawnEntities : MonoBehaviour
 
     IEnumerator SpawnLogic()
     {
-
-        while (EntitesToSpawn > 0) 
+        for(int i = 0; i < EntitiesList.Count; i++)
         {
-            int randomSide = Random.Range(-10, 10);
-            Vector3 pos = transform.position + transform.right * randomSide;
-            pos.y = SpawnPoint.position.y;
+            EntitiesToSpawn = EntitiesList[i].amount;
+            while (EntitiesToSpawn > 0)
+            {
+                int randomSide = UnityEngine.Random.Range(-10, 10);
+                Vector3 pos = transform.position + transform.right * randomSide;
+                pos.y = SpawnPoint.position.y;
 
 
-            Entity entity = Instantiate(Entity, pos, transform.rotation);
-            
-            entity.GetComponent<EntityMove>().SetPath(GeneratePath());
-            EntitesToSpawn--;
-            
-            yield return new WaitForSeconds(TimeToSpawn);
+                Entity entity = Instantiate(EntitiesList[i].entity, pos, transform.rotation);
+
+                entity.GetComponent<EntityMove>().SetPath(GeneratePath(), Crystal);
+                EntitiesToSpawn--;
+
+                yield return new WaitForSeconds(TimeToSpawn);
+            }
         }
+        
     }
 
     List<Vector3> GeneratePath()

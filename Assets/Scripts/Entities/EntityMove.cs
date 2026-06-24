@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class EntityMove : MonoBehaviour
 {
-    [SerializeField] Crystal Crystal;
+    Crystal Crystal;
     [SerializeField] float speed = 10f;
     [SerializeField] float attackDst = 6f;
     [SerializeField] float Range;
@@ -42,7 +42,8 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"Target: {Target?.name}, AllyNearby: {AllyNearby}, pathCount: {path.Count}");
+        Debug.Log($"{name}, {transform.rotation.y}");
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
 
@@ -106,11 +107,12 @@ public class EntityMove : MonoBehaviour
     
 
 
-    public void SetPath(List<Vector3> GivenPath)
+    public void SetPath(List<Vector3> GivenPath, Crystal crystal)
     {
         indexer = 0;
         path.Clear();
         path = GivenPath;
+        Crystal = crystal;
     }
 
     void MoveTowardsWayPoints()
