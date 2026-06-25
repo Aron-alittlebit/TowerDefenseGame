@@ -63,6 +63,7 @@ public class BuildingTowers : MonoBehaviour
                 MaterialChange(PlacedMat);
                 TowerEvents.GemSpent(defaultTowerData.Cost);
                 TowerEvents.TowerBuilt(defaultTowerData, tower.transform.GetChild(0).gameObject);
+                tower = null;
                 
             }
         }

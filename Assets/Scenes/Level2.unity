@@ -4721,17 +4721,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8966761021924655253, guid: 8d9ef93c9233b034caec99531e4cd1e2, type: 3}
     - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: Crystal
+      value: 
+      objectReference: {fileID: 2078733938}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: EntitiesList.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: EntitiesList.Array.data[0].amount
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: EntitiesList.Array.data[0].entity
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8966761021924655253, guid: 8d9ef93c9233b034caec99531e4cd1e2, type: 3}
     - target: {fileID: 6073337269668364365, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: m_Name
       value: Portal red (2)
