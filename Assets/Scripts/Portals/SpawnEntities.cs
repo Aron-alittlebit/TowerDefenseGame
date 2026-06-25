@@ -54,7 +54,7 @@ public class SpawnEntities : MonoBehaviour
 
     //private void Update()
     //{
-    //    Debug.Log($"{NumberOfAllEntities}");
+    //    Debug.Log($"{SpawnPoint.rotation}");
     //}
 
     void SubtractFromAllEntites(int id)

@@ -17,12 +17,15 @@ public class EntityMove : MonoBehaviour
     bool AllyNearby;
     LivingAbstractClass Target = null;
     float MinDst = float.MaxValue;
+    bool isDead;
 
 
     private void Start()
     {
-        
+        isDead = false;
         animator = GetComponent<Animator>();
+        
+
         Crystal = FindAnyObjectByType<Crystal>();
         if (Crystal == null) Debug.LogError("No Crystal found in scene!", this);
         else transform.LookAt(Crystal.transform);
@@ -42,8 +45,9 @@ public class EntityMove : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"{name}, {transform.rotation.y}");
-        
+        //transform.rotation = Quaternion.Euler(0, 180, 0);
+        //Debug.Log(transform.rotation);
+        if (isDead) return;
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
 
@@ -162,21 +166,29 @@ public class EntityMove : MonoBehaviour
     void Turn(Vector3 target)
     {
         Vector3 direction = target - transform.position;
-        direction.y = 0f; 
-
+        direction.y = 0f;
+        
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
+
             transform.rotation = Quaternion.Slerp(transform.rotation,
-                targetRotation, Time.deltaTime * 5);
+            targetRotation, Time.deltaTime * 5);
+
         }
     }
 
     void SetSpeedToZero(int id)
     {
         if(id == transform.GetInstanceID())
-            speed = 0f; 
+        {
+            speed = 0f;
+            isDead = true;
+           
+        }
+            
     }
 
-    
+
+
 }

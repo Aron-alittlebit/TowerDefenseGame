@@ -2794,6 +2794,30 @@ PrefabInstance:
       propertyPath: path
       value: 
       objectReference: {fileID: 1431320182}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: Crystal
+      value: 
+      objectReference: {fileID: 2078733938}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: EntitiesList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: EntitiesList.Array.data[0].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: EntitiesList.Array.data[0].entity
+      value: 
+      objectReference: {fileID: 8966761021924655253, guid: 8d9ef93c9233b034caec99531e4cd1e2, type: 3}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: EntitiesList.Array.data[1].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: EntitiesList.Array.data[1].entity
+      value: 
+      objectReference: {fileID: 3607419221818642306, guid: 8a65623d9dcf9f843b39efee24b4825f, type: 3}
     - target: {fileID: 6073337269668364365, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: m_Name
       value: Portal red
@@ -2836,6 +2860,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7848994726753866659, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773650790584017209, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773650790584017209, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773650790584017209, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773650790584017209, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4680,6 +4720,18 @@ PrefabInstance:
       propertyPath: Entity
       value: 
       objectReference: {fileID: 8966761021924655253, guid: 8d9ef93c9233b034caec99531e4cd1e2, type: 3}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: EntitiesList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: EntitiesList.Array.data[0].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
+      propertyPath: EntitiesList.Array.data[0].entity
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6073337269668364365, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: m_Name
       value: Portal red (2)
@@ -4822,6 +4874,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1906690533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2078733938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7166260832637262602, guid: 35d2c19c0305a594b83b347f8d7c2c86, type: 3}
+  m_PrefabInstance: {fileID: 836058236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c753e49d454dd458bf707d712819ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Crystal
 --- !u!1001 &2086480438
 PrefabInstance:
   m_ObjectHideFlags: 0
