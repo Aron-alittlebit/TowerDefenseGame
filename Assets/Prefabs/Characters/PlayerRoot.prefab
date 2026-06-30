@@ -47,6 +47,8 @@ GameObject:
   - component: {fileID: 8921228822516240892}
   - component: {fileID: 3420929507914238296}
   - component: {fileID: -1379254239940009969}
+  - component: {fileID: 8831083901477147822}
+  - component: {fileID: 7719143524242013015}
   m_Layer: 8
   m_Name: PlayerRoot
   m_TagString: Untagged
@@ -198,6 +200,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde1cac5dddbadc4fba609e3c80df49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Knight: {fileID: 0}
+  Mage: {fileID: 0}
+  Ranger: {fileID: 0}
+  Engineer: {fileID: 0}
+--- !u!114 &8831083901477147822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355579683284558574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff05a10a5a1f6548ac174ea61034cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  StartingHealth: 100
+  SpawnPoint: {fileID: 0}
+--- !u!114 &7719143524242013015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355579683284558574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab0327de740c9348b6bf3b6694134fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingTowers
+  BuildingMat: {fileID: 2100000, guid: 1bc5ec41a1fe97f4c84b59a8b4faa7e7, type: 2}
 --- !u!1 &6455164265055474859
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +528,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4481264491018486080, guid: 0392c81ee2327c843b6165522e3b34b5, type: 3}
+    - {fileID: 2935294971461668310, guid: 0392c81ee2327c843b6165522e3b34b5, type: 3}
+    - {fileID: 4561937348769118193, guid: 0392c81ee2327c843b6165522e3b34b5, type: 3}
+    - {fileID: 8257172194296063461, guid: 0392c81ee2327c843b6165522e3b34b5, type: 3}
+    - {fileID: 6346835402414392789, guid: 0392c81ee2327c843b6165522e3b34b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

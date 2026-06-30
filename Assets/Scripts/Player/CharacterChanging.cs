@@ -3,16 +3,16 @@ using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 public class CharacterChanging : MonoBehaviour
 {
-    [SerializeField] GameObject Knight;
-    [SerializeField] GameObject Mage;
-    [SerializeField] GameObject Ranger;
-    [SerializeField] GameObject Engineer;
-    GameObject Visual;
+    [SerializeField] HeroData Knight;
+    [SerializeField] HeroData Mage;
+    [SerializeField] HeroData Ranger;
+    [SerializeField] HeroData Engineer;
+    [SerializeField] GameObject Visual;
     
 
     private void Start()
     {
-        Visual = transform.GetComponentInChildren<PlayerHealth>().gameObject;
+        Change(Knight);
     }
 
     void Update()
@@ -35,14 +35,17 @@ public class CharacterChanging : MonoBehaviour
         }
     }
 
-    private void Change(GameObject hero)
+    private void Change(HeroData hero)
     {
         DestroyImmediate(Visual);
         Visual = Instantiate(
-            hero,
+            hero.ModelPrefab,
             transform.position,
             transform.rotation,
             transform
         );
+        PlayerEvents.HeroChanged(hero);
+        transform.GetComponent<Animator>().runtimeAnimatorController = hero.AnimatorController;
+
     }
 }

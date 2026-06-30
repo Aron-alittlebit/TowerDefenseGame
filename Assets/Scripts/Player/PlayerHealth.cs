@@ -4,6 +4,17 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : LivingAbstractClass
 {
     [SerializeField] Transform SpawnPoint;
+    HeroData heroData;
+
+    private void OnEnable()
+    {
+        PlayerEvents.OnHeroChanged += SetHealth;
+    }
+
+    private void OnDisable()
+    {
+        PlayerEvents.OnHeroChanged -= SetHealth;
+    }
 
     protected override void Start()
     {
@@ -19,5 +30,20 @@ public class PlayerHealth : LivingAbstractClass
             transform.position = SpawnPoint.position;
 
         }
+    }
+
+    public void SetHealth(HeroData hero)
+    {
+        heroData = hero;
+        health = Mathf.Clamp(hero.Health, 0, StartingHealth);
+        Die();
+    }
+
+    public override void TakeDamage(int damage)
+    {
+
+        health -= damage;
+        heroData.SetHealth(health); 
+        Die();
     }
 }

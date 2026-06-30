@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
@@ -11,15 +13,24 @@ public class BuildingTowers : MonoBehaviour
     
     [SerializeField] Material BuildingMat;
     Material PlacedMat;
-    [SerializeField] TowerData towerData1;
-    [SerializeField] TowerData towerData2;
-    [SerializeField] TowerData towerData3;
-    [SerializeField] TowerData towerData4;
+    List<TowerData> towers;
+    
 
     KeyCode selectedTowerKey;
     void Start()
     {
         IsBuilding = false;
+        
+    }
+
+    private void OnEnable()
+    {
+        PlayerEvents.OnHeroChanged += SetTowers;
+    }
+
+    private void OnDisable()
+    {
+        PlayerEvents.OnHeroChanged -= SetTowers;
     }
     void Update()
     {
@@ -27,20 +38,20 @@ public class BuildingTowers : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            DecideToBuildOrCancel(KeyCode.Alpha1, towerData1);
+            DecideToBuildOrCancel(KeyCode.Alpha1, towers[0]);
 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            DecideToBuildOrCancel(KeyCode.Alpha2, towerData2);
+            DecideToBuildOrCancel(KeyCode.Alpha2, towers[1]);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            DecideToBuildOrCancel(KeyCode.Alpha3, towerData3);
+            DecideToBuildOrCancel(KeyCode.Alpha3, towers[2]);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            DecideToBuildOrCancel(KeyCode.Alpha4, towerData4);
+            DecideToBuildOrCancel(KeyCode.Alpha4, towers[3]);
         }
 
         if (IsBuilding)
@@ -50,7 +61,7 @@ public class BuildingTowers : MonoBehaviour
             if (tower != null)
             {
                 Vector3 newPos = transform.position + (transform.forward) * 10;
-                newPos.y = transform.position.y-1;
+                newPos.y = transform.position.y;
                 tower.transform.position = newPos;
                 
             }
@@ -145,6 +156,12 @@ public class BuildingTowers : MonoBehaviour
             Building(td);
             selectedTowerKey = key;
         }
+    }
+
+    void SetTowers(HeroData hero)
+    {
+        if (hero.Towers.Count < 4) return;
+        towers = hero.Towers;
     }
 
    

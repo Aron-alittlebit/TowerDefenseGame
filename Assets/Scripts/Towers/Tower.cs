@@ -89,5 +89,11 @@ public class Tower : LivingAbstractClass
         KillCount++;
     }
 
+    public void SetHealth(int value)
+    {
+        health = Mathf.Clamp(value, 0, StartingHealth);
+        Die();
+    }
+
 
 }

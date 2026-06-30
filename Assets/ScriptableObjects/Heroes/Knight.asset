@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ef440c801fd8f4fbe5f776bf775443, type: 3}
+  m_Name: Knight
+  m_EditorClassIdentifier: Assembly-CSharp::HeroData
+  towers:
+  - {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
+  - {fileID: 11400000, guid: 099cc73d2827be6479f364ef40c0faa7, type: 2}
+  - {fileID: 11400000, guid: ccb345c7c1f568f4e9a2b16aa90b00b3, type: 2}
+  - {fileID: 11400000, guid: b2edbe437dfe8ff4fa233d8ef73704b1, type: 2}
+  health: 200
+  speed: 15
+  animatorController: {fileID: 9100000, guid: 8a2435cccd352244482e2ffec2050338, type: 2}
+  modelPrefab: {fileID: 548708877161957219, guid: 0392c81ee2327c843b6165522e3b34b5, type: 3}

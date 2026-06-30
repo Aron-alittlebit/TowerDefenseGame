@@ -199,11 +199,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4392466946448406437}
-  - component: {fileID: 2024149194416391194}
-  - component: {fileID: 6638022447861036166}
-  - component: {fileID: 4190079433055551873}
-  - component: {fileID: 8085830255895748098}
-  - component: {fileID: 9210109651212257756}
   m_Layer: 0
   m_Name: Mage_01
   m_TagString: Untagged
@@ -228,84 +223,6 @@ Transform:
   - {fileID: 8819432819401170196}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2024149194416391194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7851412864405553303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad88fbabc4297c42adac1daf3ef7a1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunDamage
---- !u!114 &6638022447861036166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7851412864405553303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ab0327de740c9348b6bf3b6694134fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BuildingTowers
-  BuildingMat: {fileID: 2100000, guid: 1bc5ec41a1fe97f4c84b59a8b4faa7e7, type: 2}
-  towerData1: {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
-  towerData2: {fileID: 11400000, guid: ccb345c7c1f568f4e9a2b16aa90b00b3, type: 2}
-  towerData3: {fileID: 11400000, guid: 099cc73d2827be6479f364ef40c0faa7, type: 2}
-  towerData4: {fileID: 11400000, guid: b2edbe437dfe8ff4fa233d8ef73704b1, type: 2}
---- !u!95 &4190079433055551873
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7851412864405553303}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6d6192820c55f1348ba7144159c37946, type: 2}
-  m_Controller: {fileID: 9100000, guid: fe8be8258e87e8b4094ed999dad0137b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8085830255895748098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7851412864405553303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b62283deeed9cf418ecbe8b26dfd7e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gun
-  firePoint: {fileID: 0}
---- !u!114 &9210109651212257756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7851412864405553303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ff05a10a5a1f6548ac174ea61034cea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  StartingHealth: 100
-  SpawnPoint: {fileID: 0}
 --- !u!1 &8014490390082166298
 GameObject:
   m_ObjectHideFlags: 0
