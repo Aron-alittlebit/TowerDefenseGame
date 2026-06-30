@@ -30,6 +30,7 @@ public class Crystal : LivingAbstractClass
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         PlayerGemPickUp.GemCounter = PlayerGemPickUp.ReadOnlyStartingGem;
+        PlayerEvents.LevelReloaded();
     }
 
 }

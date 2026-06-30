@@ -17,16 +17,18 @@ public abstract class LivingAbstractClass : MonoBehaviour
     {
         
         health -= damage;
-        Die();
+        if(health <= 0)
+        {
+            Die();
+        }
+        
     }
 
     protected virtual void Die()
     {
-        if (health <= 0)
-        {
-               
-            Destroy(gameObject);
-        }
+            
+        Destroy(gameObject);
+        
 
     }
 

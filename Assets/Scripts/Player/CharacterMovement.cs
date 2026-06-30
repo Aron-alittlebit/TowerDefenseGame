@@ -15,6 +15,21 @@ public class CharacterMovement : MonoBehaviour
     int jumpCount = 0;
     Animator animator;
 
+    private void Start()
+    {
+        Speed = GetComponent<CharacterChanging>().CurrentHero.Speed;
+    }
+
+    private void OnEnable()
+    {
+        PlayerEvents.OnHeroChanged += SetSpeed;
+    }
+
+    private void OnDisable()
+    {
+        PlayerEvents.OnHeroChanged -= SetSpeed;
+    }
+
     public void SetAnimator(Animator newAnimator) => animator = newAnimator;
 
     void Update()
@@ -46,5 +61,10 @@ public class CharacterMovement : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
 
         characterController.Move(velocity * Time.deltaTime);
+    }
+
+    void SetSpeed(HeroData hero)
+    {
+        Speed = hero.Speed;
     }
 }

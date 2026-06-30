@@ -20,6 +20,16 @@ public class CharacterChanging : MonoBehaviour
         GetComponent<PlayerHealth>().SetHealth(Knight);
     }
 
+    private void OnEnable()
+    {
+        PlayerEvents.OnLevelReloaded += LevelReloaded;
+    }
+
+    private void OnDisable()
+    {
+        PlayerEvents.OnLevelReloaded -= LevelReloaded;
+    }
+
     void Update()
     {
         if (GetComponent<BuildingTowers>().IsBuilding) return;
@@ -54,7 +64,14 @@ public class CharacterChanging : MonoBehaviour
         PlayerEvents.HeroChanged(hero);
         transform.GetComponent<Animator>().runtimeAnimatorController = hero.AnimatorController;
         CurrentHero = hero;
-        
 
     }
+
+    void LevelReloaded()
+    {
+        GetComponent<PlayerHealth>().SetHealth(Knight);
+        CurrentHero.SetHealth(CurrentHero.Health);
+    }
+
+
 }
