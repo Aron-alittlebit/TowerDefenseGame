@@ -13,11 +13,17 @@ public class CharacterMovement : MonoBehaviour
     bool IsGrounded = false;
     float gravity = 2 * -9.18f;
     int jumpCount = 0;
-    
+    Animator animator;
 
-    
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
-    
+
+
+
+
     void Update()
     {
         IsGrounded = Physics.CheckSphere(GroundCheck.position, groundRadius, Ground);
@@ -32,7 +38,16 @@ public class CharacterMovement : MonoBehaviour
 
         Vector3 move = transform.forward * z + transform.right * x;
         move.y = 0;
+
         characterController.Move(Speed * Time.deltaTime * move);
+        if(move == Vector3.zero || !IsGrounded)
+        {
+            animator.SetBool("IsRunning", false);
+        }
+        else
+        {
+            animator.SetBool("IsRunning", true);
+        }
 
         if(IsGrounded && Input.GetButtonDown("Jump"))
         {
