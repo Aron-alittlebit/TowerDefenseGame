@@ -1,10 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : LivingAbstractClass
 {
     [SerializeField] Transform SpawnPoint;
-    HeroData heroData;
+    [SerializeField] TextMeshProUGUI HealthText;
+    
 
     private void OnEnable()
     {
@@ -20,6 +22,12 @@ public class PlayerHealth : LivingAbstractClass
     {
         base.Start();
         transform.position = SpawnPoint.position;
+        HealthText.text = $"{health}";
+    }
+
+    private void Update()
+    {
+        HealthText.text = $"{health}";
     }
     protected override void Die()
     {
@@ -34,16 +42,18 @@ public class PlayerHealth : LivingAbstractClass
 
     public void SetHealth(HeroData hero)
     {
-        heroData = hero;
-        health = Mathf.Clamp(hero.Health, 0, StartingHealth);
+        
+        health = Mathf.Clamp(hero.CurrentHealth, 0, StartingHealth);
+        HealthText.text = $"{health}";
         Die();
     }
 
     public override void TakeDamage(int damage)
     {
 
-        health -= damage;
-        heroData.SetHealth(health); 
-        Die();
+        base.TakeDamage(damage);
+        GetComponent<CharacterChanging>().CurrentHero.SetHealth(health);
     }
+
+
 }

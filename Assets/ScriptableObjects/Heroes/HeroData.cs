@@ -23,4 +23,10 @@ public class HeroData : ScriptableObject
     {
         CurrentHealth = health;
     }
+    private void OnEnable()
+    {
+        CurrentHealth = health;
+    }
+
+
 }

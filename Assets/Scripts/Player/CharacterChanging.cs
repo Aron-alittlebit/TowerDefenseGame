@@ -7,13 +7,17 @@ public class CharacterChanging : MonoBehaviour
     [SerializeField] HeroData Mage;
     [SerializeField] HeroData Ranger;
     [SerializeField] HeroData Engineer;
+    public HeroData CurrentHero { get; private set; }
+    
      GameObject Visual;
     
 
     private void Start()
     {
         Visual = transform.GetChild(0).gameObject;
+        CurrentHero = Knight;
         GetComponent<CharacterMovement>().SetAnimator(Visual.GetComponentInParent<Animator>());
+        GetComponent<PlayerHealth>().SetHealth(Knight);
     }
 
     void Update()
@@ -49,6 +53,8 @@ public class CharacterChanging : MonoBehaviour
         );
         PlayerEvents.HeroChanged(hero);
         transform.GetComponent<Animator>().runtimeAnimatorController = hero.AnimatorController;
+        CurrentHero = hero;
+        
 
     }
 }
