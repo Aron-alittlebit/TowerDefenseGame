@@ -7,16 +7,19 @@ public class CharacterChanging : MonoBehaviour
     [SerializeField] HeroData Mage;
     [SerializeField] HeroData Ranger;
     [SerializeField] HeroData Engineer;
-    [SerializeField] GameObject Visual;
+     GameObject Visual;
     
 
     private void Start()
     {
-        Change(Knight);
+        Visual = transform.GetChild(0).gameObject;
+        GetComponent<CharacterMovement>().SetAnimator(Visual.GetComponentInParent<Animator>());
     }
 
     void Update()
     {
+        if (GetComponent<BuildingTowers>().IsBuilding) return;
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             Change(Knight);

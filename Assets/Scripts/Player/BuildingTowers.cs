@@ -5,7 +5,7 @@ using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 public class BuildingTowers : MonoBehaviour
 {
-    bool IsBuilding;
+    public bool IsBuilding { get; private set; }
     float RotateAmount = 5f;
     
     Tower tower;
@@ -34,7 +34,7 @@ public class BuildingTowers : MonoBehaviour
     }
     void Update()
     {
-
+        
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

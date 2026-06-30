@@ -15,14 +15,7 @@ public class CharacterMovement : MonoBehaviour
     int jumpCount = 0;
     Animator animator;
 
-    private void Start()
-    {
-        animator = GetComponentInChildren<Animator>();
-    }
-
-
-
-
+    public void SetAnimator(Animator newAnimator) => animator = newAnimator;
 
     void Update()
     {
@@ -40,16 +33,10 @@ public class CharacterMovement : MonoBehaviour
         move.y = 0;
 
         characterController.Move(Speed * Time.deltaTime * move);
-        if(move == Vector3.zero || !IsGrounded)
-        {
-            animator.SetBool("IsRunning", false);
-        }
-        else
-        {
-            animator.SetBool("IsRunning", true);
-        }
 
-        if(IsGrounded && Input.GetButtonDown("Jump"))
+        animator.SetBool("IsRunning", move != Vector3.zero);
+
+        if (IsGrounded && Input.GetButtonDown("Jump"))
         {
             
             velocity.y = Mathf.Sqrt(gravity* -2f * JumpHeight);

@@ -5089,6 +5089,10 @@ PrefabInstance:
       propertyPath: Engineer
       value: 
       objectReference: {fileID: 11400000, guid: 7f7870eccf937c84e962612e2da91391, type: 2}
+    - target: {fileID: 533392977048706702, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2902529272038822971, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
       propertyPath: SpawnPoint
       value: 
