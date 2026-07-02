@@ -1,17 +1,20 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EntityAttack : MonoBehaviour
 {
-    [SerializeField] int damage;
+    
     [SerializeField] float coolDown;
     float currentCoolDown;
     Animator animator;
+    bool IsEnabled;
 
     private void Start()
     {
         currentCoolDown = coolDown;
         animator = GetComponent<Animator>();
+        IsEnabled = false;
     }
     private void OnEnable()
     {
@@ -32,12 +35,20 @@ public class EntityAttack : MonoBehaviour
         if (sender != gameObject) return;
         if(currentCoolDown <= 0)
         {
-            entity.TakeDamage(damage);
+            
             animator.SetTrigger("Attack");
             currentCoolDown = coolDown;
         }
         
     }
 
+    public void SetWeapon()
+    {
+        EntitiesEvent.SetWeapon(!IsEnabled);
+    }
+
+
     
+
+
 }

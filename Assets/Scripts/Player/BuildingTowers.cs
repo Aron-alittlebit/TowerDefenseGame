@@ -90,7 +90,7 @@ public class BuildingTowers : MonoBehaviour
         TowerPos.y = transform.position.y - 1;
         tower = Instantiate(towerData.TowerPrefab, TowerPos, Quaternion.identity);
 
-        tower.SetCost(towerData.Cost);
+        tower.SetTowerData(towerData);
 
         var renderers = tower.GetComponentsInChildren<Renderer>();
         if (renderers != null)

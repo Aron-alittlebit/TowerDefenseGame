@@ -5,14 +5,14 @@ using UnityEngine;
 public class TowerRotator : MonoBehaviour
 {
     [SerializeField] protected Transform Pivotpoint;
-    [SerializeField] float rotationSpeed = 90f;
+    [SerializeField] float rotationSpeed = 10f;
     protected TowerData towerData;
     [SerializeField] float RotationMinLimitY;
     [SerializeField] float RotationMaxLimitY;
     [SerializeField] protected float RotationLimitX;
     protected int Range;
     
-    Entity target = null;
+    Entity? target = null;
     Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
     (float,float,float) OriginalRotaion;
     
@@ -70,8 +70,9 @@ public class TowerRotator : MonoBehaviour
             
     }
 
-    Entity FindClosestEnemy()
+    Entity? FindClosestEnemy()
     {
+        if (Tower.Instance == null || Range == 0) return null;
         float min = float.MaxValue;
         Entity target = null;
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range,
@@ -137,7 +138,7 @@ public class TowerRotator : MonoBehaviour
         Pivotpoint.localRotation = Quaternion.Slerp(
             Pivotpoint.localRotation,
             targetRotation,
-            Time.deltaTime * 5f);
+            Time.deltaTime * rotationSpeed);
 
 
     }

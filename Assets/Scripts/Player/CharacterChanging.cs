@@ -16,6 +16,7 @@ public class CharacterChanging : MonoBehaviour
     {
         Visual = transform.GetChild(0).gameObject;
         CurrentHero = Knight;
+        PlayerEvents.HeroChanged(Knight);
         GetComponent<CharacterMovement>().SetAnimator(Visual.GetComponentInParent<Animator>());
         GetComponent<PlayerHealth>().SetHealth(Knight);
     }

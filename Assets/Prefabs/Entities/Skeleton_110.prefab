@@ -661,6 +661,8 @@ GameObject:
   - component: {fileID: 1844798505612200488}
   - component: {fileID: 3329798269162276237}
   - component: {fileID: 707389135931846983}
+  - component: {fileID: 6266190323995098143}
+  - component: {fileID: 6646104757990668073}
   m_Layer: 7
   m_Name: Falchion_01
   m_TagString: Untagged
@@ -740,6 +742,41 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6266190323995098143
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356105600766808210}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.05, y: 0.9859468, z: 0.16151887}
+  m_Center: {x: -0.0058208946, y: 0.49217096, z: -0.005945875}
+--- !u!114 &6646104757990668073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356105600766808210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd15e14b48f16ba4fab8cff402fdf6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityWeaponColliderScript
+  Damage: 25
+  Collider: {fileID: 6266190323995098143}
 --- !u!1 &1446784557646646151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,7 +2691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67200015e4e6eb42948e178c3cd54f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
-  damage: 25
   coolDown: 2
 --- !u!114 &168004459988665981
 MonoBehaviour:

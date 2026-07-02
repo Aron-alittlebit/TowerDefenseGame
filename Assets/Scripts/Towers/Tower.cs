@@ -5,7 +5,7 @@ public class Tower : LivingAbstractClass
 {
     public static Tower Instance;
     public LayerMask EntityLayer;
-    public TowerData towerData;
+    public TowerData towerData { get; private set; }
     GameObject Visual;
 
     public Sprite Icon {  get; private set; }
@@ -18,8 +18,7 @@ public class Tower : LivingAbstractClass
    
     void Awake()
     {
-        Name = towerData.name;
-        Icon = towerData.Icon;
+        
         IsBuilt = false;
         Tier = 1;
         Instance = this;
@@ -42,9 +41,12 @@ public class Tower : LivingAbstractClass
 
     
 
-    public void SetCost(int cost)
+    public void SetTowerData(TowerData td)
     {
-        Cost = cost;
+        towerData = td;
+        Cost = towerData.Cost;
+        Name = towerData.name;
+        Icon = towerData.Icon;
     }
 
     public void IncreaseTier()
@@ -61,7 +63,7 @@ public class Tower : LivingAbstractClass
     {
         TowerEvents.OnTowerKilledEntity -= IncreaseKillCount;
     }
-
+    
 
 
     protected override void Start()
@@ -71,8 +73,10 @@ public class Tower : LivingAbstractClass
     }
 
     public void UpgradeVisual()
-    {
+    {   
+        IncreaseTier();
         DestroyImmediate(Visual);
+        
         Visual = Instantiate(
             towerData.TierPrefabs[Tier - 2],
             transform.position,
@@ -89,11 +93,7 @@ public class Tower : LivingAbstractClass
         KillCount++;
     }
 
-    public void SetHealth(int value)
-    {
-        health = Mathf.Clamp(value, 0, StartingHealth);
-        Die();
-    }
+    
 
 
 }

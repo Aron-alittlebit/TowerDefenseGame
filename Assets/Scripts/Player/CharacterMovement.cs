@@ -12,7 +12,7 @@ public class CharacterMovement : MonoBehaviour
     public float JumpHeight;
     bool IsGrounded = false;
     float gravity = 2 * -9.18f;
-    int jumpCount = 0;
+    
     Animator animator;
 
     private void Start()
