@@ -93,7 +93,12 @@ public class Tower : LivingAbstractClass
         KillCount++;
     }
 
-    
+    public void SetHealth(int value)
+    {
+        StartingHealth = value;
+        health = StartingHealth;
+        
+    }
 
 
 }
