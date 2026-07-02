@@ -505,8 +505,54 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 771d4918ff1ec8641a1f725d8100eb7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5583247865254077486}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 771d4918ff1ec8641a1f725d8100eb7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7541382349957743844}
   m_SourcePrefab: {fileID: 100100000, guid: 771d4918ff1ec8641a1f725d8100eb7e, type: 3}
+--- !u!1 &7056215332529004396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 771d4918ff1ec8641a1f725d8100eb7e, type: 3}
+  m_PrefabInstance: {fileID: 7867190020728382013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5583247865254077486
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7056215332529004396}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4046132, y: 1.157635, z: 0.07834788}
+  m_Center: {x: 0.000000039298993, y: 0.7860635, z: 0.0000000054916525}
+--- !u!114 &7541382349957743844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7056215332529004396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d23f9a0f76815b4a8a3594ed84b4abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloseAttackScript
+  Blade: {fileID: 5583247865254077486}
+  Damage: 100
 --- !u!4 &7685224372276954582 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 771d4918ff1ec8641a1f725d8100eb7e, type: 3}

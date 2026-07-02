@@ -426,8 +426,54 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e299e38c0b845c4499a68737e9e1730d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 426009361385375105}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e299e38c0b845c4499a68737e9e1730d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5169362216681854317}
   m_SourcePrefab: {fileID: 100100000, guid: e299e38c0b845c4499a68737e9e1730d, type: 3}
+--- !u!1 &8390770703961227207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e299e38c0b845c4499a68737e9e1730d, type: 3}
+  m_PrefabInstance: {fileID: 8697410402542273174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &426009361385375105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390770703961227207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d23f9a0f76815b4a8a3594ed84b4abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloseAttackScript
+  Blade: {fileID: 5169362216681854317}
+  Damage: 100
+--- !u!65 &5169362216681854317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390770703961227207}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.31534877, y: 0.69773656, z: 0.14259505}
+  m_Center: {x: -0.00000001586219, y: 0.9980445, z: 2.1302387e-14}
 --- !u!4 &9167589222199895421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e299e38c0b845c4499a68737e9e1730d, type: 3}

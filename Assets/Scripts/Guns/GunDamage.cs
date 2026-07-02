@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GunDamage : MonoBehaviour
 {
+    [SerializeField] Transform FirePoint;
+    [SerializeField] int Damage = 100;
+    [SerializeField] int Range = 100;
     private void OnEnable()
     {
         GunEvents.OnGunShoot += Shoot;
@@ -12,17 +15,19 @@ public class GunDamage : MonoBehaviour
     {
         GunEvents.OnGunShoot -= Shoot;
     }
-    public void Shoot(Transform firePoint,int damage, int range )
+    public void Shoot()
     {
         
-        if (Physics.Raycast(firePoint.position, firePoint.forward, out RaycastHit hitInfo, range))
+        if (Physics.Raycast(FirePoint.position, FirePoint.forward, out RaycastHit hitInfo, Range))
         {
             
             Entity enemy = hitInfo.collider.GetComponent<Entity>();
             if (enemy != null && enemy.Health > 0)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(Damage);
             }
         }
     }
+
+    
 }

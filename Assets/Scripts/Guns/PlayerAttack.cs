@@ -1,23 +1,30 @@
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] Transform firePoint;
-    int damage = 100;
-    int range = 100;
+
     Animator animator;
+    bool IsEnabled;
 
     private void Start()
     {
         animator = GetComponentInParent<Animator>();
+        IsEnabled = false;
     }
     void Update()
     {
-        if (animator == null) Debug.Log("hellnah");
+        
         if (Input.GetButtonDown("Fire1"))
         {
             animator.SetTrigger("Hit");
-            GunEvents.GunShoot(firePoint, damage, range);
+            GunEvents.GunShoot();
         }
     }
+
+    public void SetBlade()
+    {
+        GunEvents.SetBlade(!IsEnabled);
+    }
+
+    
 }

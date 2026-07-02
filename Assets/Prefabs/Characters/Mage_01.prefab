@@ -190,6 +190,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2255297517085336898}
   m_LocalEulerAnglesHint: {x: 9.948297, y: -78.62389, z: 21.891254}
+--- !u!1 &7276011313630799126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9059344467606152066}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9059344467606152066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276011313630799126}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5, y: -0.5000001, z: -0.50000006, w: 0.49999985}
+  m_LocalPosition: {x: 0.01, y: 1.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4763452046189470869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7851412864405553303
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4392466946448406437}
+  - component: {fileID: 6405988175740740258}
   m_Layer: 0
   m_Name: Mage_01
   m_TagString: Untagged
@@ -223,6 +255,21 @@ Transform:
   - {fileID: 8819432819401170196}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6405988175740740258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7851412864405553303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad88fbabc4297c42adac1daf3ef7a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunDamage
+  FirePoint: {fileID: 9059344467606152066}
+  Damage: 100
+  Range: 100
 --- !u!1 &8014490390082166298
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +472,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 53a3f0b446c2c9b4b85690a0adf0317e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9059344467606152066}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53a3f0b446c2c9b4b85690a0adf0317e, type: 3}
 --- !u!4 &4763452046189470869 stripped

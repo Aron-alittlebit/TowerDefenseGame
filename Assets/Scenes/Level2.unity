@@ -5241,7 +5241,7 @@ PrefabInstance:
       objectReference: {fileID: 1538191644}
     - target: {fileID: 4205169248056368036, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 489
+      value: 484
       objectReference: {fileID: 0}
     - target: {fileID: 4205169248056368036, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5249,7 +5249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4205169248056368036, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 273
+      value: 545
       objectReference: {fileID: 0}
     - target: {fileID: 4205169248056368036, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5305,7 +5305,7 @@ PrefabInstance:
       objectReference: {fileID: 478378521}
     - target: {fileID: 8831083901477147822, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
       propertyPath: StartingHealth
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8921228822516240892, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
       propertyPath: GemCounterText

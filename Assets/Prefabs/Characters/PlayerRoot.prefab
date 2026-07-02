@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: -1379254239940009969}
   - component: {fileID: 8831083901477147822}
   - component: {fileID: 7719143524242013015}
+  - component: {fileID: 7368100491787355953}
   m_Layer: 8
   m_Name: PlayerRoot
   m_TagString: Untagged
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   StartingHealth: 100
   SpawnPoint: {fileID: 0}
+  HealthText: {fileID: 0}
 --- !u!114 &7719143524242013015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +233,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingTowers
   BuildingMat: {fileID: 2100000, guid: 1bc5ec41a1fe97f4c84b59a8b4faa7e7, type: 2}
+--- !u!114 &7368100491787355953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355579683284558574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b62283deeed9cf418ecbe8b26dfd7e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
 --- !u!1 &6455164265055474859
 GameObject:
   m_ObjectHideFlags: 0
