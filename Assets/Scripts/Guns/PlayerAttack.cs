@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-
+    [SerializeField] Camera MainCamera;
     Animator animator;
     bool IsEnabled;
 
@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             animator.SetTrigger("Hit");
-            GunEvents.GunShoot();
+            GunEvents.GunShoot(MainCamera);
         }
     }
 

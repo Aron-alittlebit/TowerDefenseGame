@@ -2,23 +2,24 @@ using UnityEngine;
 
 public class LightningTowerAttack : TowerAttack
 {
-    //protected override void OnEnable()
-    //{
-    //    GunEvents.OnTowerAttack += Attack;
-    //}
+    protected override void OnEnable()
+    {
+        GunEvents.OnTowerAttack += Attack;
+    }
 
-    //protected override void OnDisable()
-    //{
-    //    GunEvents.OnTowerAttack -= Attack;
-    //}
+    protected override void OnDisable()
+    {
+        GunEvents.OnTowerAttack -= Attack;
+    }
 
-    //protected override void Update()
-    //{
-    //    currentCoolDown -= Time.deltaTime;
-    //    Debug.Log(currentCoolDown);
-    //}
+    protected override void Update()
+    {
+        currentCoolDown -= Time.deltaTime;
+        
+    }
     protected override void Attack(GameObject sender)
     {
+
         if (sender != gameObject) return;
         if (currentCoolDown <= 0)
         {
@@ -29,6 +30,7 @@ public class LightningTowerAttack : TowerAttack
 
                 Entity enemy = collider.GetComponent<Entity>();
                 enemy.TakeDamage(Damage);
+                Debug.Log("Attacked");
 
             }
             currentCoolDown = CoolDown;

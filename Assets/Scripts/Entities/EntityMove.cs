@@ -33,21 +33,23 @@ public class EntityMove : MonoBehaviour
 
     private void OnEnable()
     {
-        
-        EntitiesEvent.OnEntityDeath += SetSpeedToZero;
+
+        EntitiesEvent.OnEntityDeath += EntityDied;
+        EntitiesEvent.OnEntityRevived += RevivingEntity;
     }
 
     private void OnDisable()
     {
-        
-        EntitiesEvent.OnEntityDeath -= SetSpeedToZero;
+
+        EntitiesEvent.OnEntityDeath -= EntityDied;
+        EntitiesEvent.OnEntityRevived -= RevivingEntity;
     }
 
     void Update()
     {
-        //transform.rotation = Quaternion.Euler(0, 180, 0);
-        //Debug.Log(transform.rotation);
+        
         if (isDead) return;
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
 
@@ -178,16 +180,31 @@ public class EntityMove : MonoBehaviour
         }
     }
 
-    void SetSpeedToZero(int id)
+    void EntityDied(int id)
     {
-        if(id == transform.GetInstanceID())
+        if (id == gameObject.GetInstanceID())
         {
-            speed = 0f;
+            EntityAttack attack = transform.GetComponent<EntityAttack>();
+            attack.enabled = false;
             isDead = true;
-           
+
         }
-            
+
     }
+
+    void RevivingEntity(int id)
+    {
+        if (id == gameObject.GetInstanceID())
+        {
+            EntityAttack attack = transform.GetComponent<EntityAttack>();
+            attack.enabled = true;
+            isDead = false;
+
+        }
+
+    }
+
+
 
 
 
