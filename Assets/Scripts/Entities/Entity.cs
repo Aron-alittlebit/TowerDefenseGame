@@ -5,13 +5,14 @@ public class Entity : LivingAbstractClass
 {
     Animator animator;
     [SerializeField] GameObject GemPrefab;
-    public bool HasDied { get; private set; } = false;
+    public bool HasDied { get; private set; }
     bool Revived = false;
     Coroutine DeathCoroutine;
 
     protected override void Start()
     {
         base.Start();
+        HasDied = false;
         Revived = false;
         animator = GetComponent<Animator>();
     }
@@ -27,6 +28,8 @@ public class Entity : LivingAbstractClass
     {
         if(health <= 0 && !HasDied)
         {
+            HasDied = true;
+            Revived = false;
             EntitiesEvent.EntityDeath(gameObject.GetInstanceID());
             animator.SetBool("Walk", false);
             DeathCoroutine = StartCoroutine(DeathAnimation());
@@ -39,7 +42,8 @@ public class Entity : LivingAbstractClass
         CapsuleCollider[] colliders = GetComponents<CapsuleCollider>();
         foreach (var col in colliders)
         {
-            col.enabled = false;
+            if(!col.isTrigger)
+                col.enabled = false;
         }
         
         GameObject gem = Instantiate(GemPrefab, transform.position, Quaternion.identity);
@@ -49,7 +53,7 @@ public class Entity : LivingAbstractClass
             rb.AddExplosionForce(500f, transform.position, 5f);
 
         }
-        HasDied = true;
+        
         yield return new WaitForSeconds(20);
 
         if (!Revived)
@@ -70,9 +74,10 @@ public class Entity : LivingAbstractClass
         CapsuleCollider[] colliders = GetComponents<CapsuleCollider>();
         foreach (var col in colliders)
         {
-            col.enabled = true;
+            if(!col.isTrigger)
+                col.enabled = true;
         }
-
+        
         animator.ResetTrigger("Death");
         
         EntitiesEvent.ReviveEntity(gameObject.GetInstanceID());

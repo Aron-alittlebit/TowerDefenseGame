@@ -59,12 +59,15 @@ public class TowerAttack : MonoBehaviour
             {
                 
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
-                
-                enemy.TakeDamage(damage);
-                if(enemy.Health <= 0)
+                if(enemy != null)
                 {
-                    TowerEvents.TowerKilledEntity(gameObject);
+                    enemy.TakeDamage(damage);
+                    if (enemy.Health <= 0)
+                    {
+                        TowerEvents.TowerKilledEntity(gameObject);
+                    }
                 }
+                
             }
             
             currentCoolDown = coolDown;
