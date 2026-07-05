@@ -10,9 +10,10 @@ public class PhaseHandler : MonoBehaviour
     float BuildingPhasePeriod = 30;
     float Timer;
     bool waveCompleted;
-    
-    
-    
+    [SerializeField] AudioClip BattleClip;
+    [SerializeField] AudioClip RestBetweenWaves;
+
+
     void Start()
     {
         waveCompleted = false;
@@ -31,8 +32,10 @@ public class PhaseHandler : MonoBehaviour
         if(CurrentPhase == Phase.BuildingPhase)
         {
             SpawnEntities.CanSpawn = false;
-            if(Input.GetKeyDown(KeyCode.G) || Timer <= 0)
+            
+            if (Input.GetKeyDown(KeyCode.G) || Timer <= 0)
             {
+                SoundManager.instance.ChangeMusic(BattleClip);
                 waveCompleted = false;
                 CurrentPhase = Phase.FightPhase;
                 SpawnEntities.CanSpawn = true;
@@ -46,6 +49,7 @@ public class PhaseHandler : MonoBehaviour
         if (SpawnEntities.NumberOfAllEntities <= 0 
             && !waveCompleted && CurrentPhase == Phase.FightPhase)
         {
+            SoundManager.instance.ChangeMusic(RestBetweenWaves);
             waveCompleted = true;
             LeftOfWaves -= 1;
             CurrentPhase = Phase.BuildingPhase;

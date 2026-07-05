@@ -81,10 +81,10 @@ public class TowerRotator : MonoBehaviour
         foreach(var collider in colliders)
         {
             Entity enemy = collider.GetComponent<Entity>();
-            if(enemy != null)
+            if(enemy != null && !enemy.HasDied)
             {
                 float dst = Vector3.Distance(transform.position, enemy.transform.position);
-                if (dst < min && !enemy.HasDied)
+                if (dst < min )
                 {
                     target = enemy;
                     min = dst;

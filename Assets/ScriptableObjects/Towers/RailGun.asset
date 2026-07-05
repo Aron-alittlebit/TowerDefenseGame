@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d810f3a3c97454ebf34b1986c7899e, type: 3}
+  m_Name: RailGun
+  m_EditorClassIdentifier: Assembly-CSharp::TowerData
+  Cost: 20
+  Name: RailGun
+  Icon: {fileID: 0}
+  TowerPrefab: {fileID: 4336559789038606120, guid: c9288b8f65b0c164094ced63076625cc, type: 3}
+  TierPrefabs:
+  - {fileID: 85305032522247500, guid: 61cb3348fdc98fe42a3e9346acc6e773, type: 3}
+  - {fileID: 1459250975727944667, guid: 6db29c5f3d580794db495b1fbeb477c0, type: 3}
+  - {fileID: 6577001798062776661, guid: 8502ed0eaab567e46a07471ad70839e2, type: 3}
+  TowerName: RailGun
+  Damage: 200
+  Range: 100
+  CoolDown: 5
+  DamageType: 0
+  ShootingSound: {fileID: 8300000, guid: ade03cc41862efe45a14c4802b87b026, type: 3}

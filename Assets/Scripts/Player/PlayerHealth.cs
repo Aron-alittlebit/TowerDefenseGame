@@ -6,6 +6,7 @@ public class PlayerHealth : LivingAbstractClass
 {
     [SerializeField] Transform SpawnPoint;
     [SerializeField] TextMeshProUGUI HealthText;
+    [SerializeField] AudioClip RespawnSound;
     
 
     private void OnEnable()
@@ -31,6 +32,7 @@ public class PlayerHealth : LivingAbstractClass
         
         if (health <= 0)
         {
+            SoundManager.instance.PlaySound(RespawnSound, transform, 30f);
             health = StartingHealth;
             
             HealthText.text = $"{health}";

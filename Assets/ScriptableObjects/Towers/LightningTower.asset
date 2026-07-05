@@ -24,3 +24,5 @@ MonoBehaviour:
   Damage: 100
   Range: 20
   CoolDown: 5
+  DamageType: 0
+  ShootingSound: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}

@@ -18,7 +18,7 @@ public class TowerAttack : MonoBehaviour
     protected int damage;
     protected int range;
     protected float coolDown;
-    DamageType damageType;
+    protected DamageType damageType;
     int maxBounces = 5;
    
     public int Damage => damage;
@@ -50,7 +50,7 @@ public class TowerAttack : MonoBehaviour
     protected virtual void Update()
     {
         currentCoolDown -= Time.deltaTime;
-        Debug.Log(damageType);
+        
 
     }
 
@@ -60,14 +60,14 @@ public class TowerAttack : MonoBehaviour
         if (sender != gameObject) return;
         if (currentCoolDown <= 0)
         {
-            if (Physics.SphereCast(FirePoint.position, 0.5f ,FirePoint.forward, out RaycastHit hitInfo,
+            if (Physics.Raycast(FirePoint.position, FirePoint.forward, out RaycastHit hitInfo,
                 range, Tower.Instance.EntityLayer))
             {
-                
+                SoundManager.instance.PlaySound(towerData.ShootingSound, transform, 30f);
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
                 if(enemy != null)
                 {
-                    SoundManager.instance.PlaySound(towerData.ShootingSound, transform, 30f);
+                    
                     if(damageType == DamageType.Electric)
                     {
                         StartElectricChain(enemy);

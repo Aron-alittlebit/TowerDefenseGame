@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}
   - {fileID: 11400000, guid: ccb345c7c1f568f4e9a2b16aa90b00b3, type: 2}
   - {fileID: 11400000, guid: 099cc73d2827be6479f364ef40c0faa7, type: 2}
-  - {fileID: 11400000, guid: b2edbe437dfe8ff4fa233d8ef73704b1, type: 2}
+  - {fileID: 11400000, guid: 3dd3bed19c097da43a8d321c09cb8457, type: 2}
   health: 100
   speed: 20
   animatorController: {fileID: 9100000, guid: f7fa27d32bd8fae488eb3d970088dd1d, type: 2}
