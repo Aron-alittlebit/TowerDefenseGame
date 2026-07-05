@@ -62,8 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerRotator
   Pivotpoint: {fileID: 6506535663564516988}
   rotationSpeed: 90
-  RotationMinLimitY: 250
-  RotationMaxLimitY: 290
+  RotationMinLimitY: 180
+  RotationMaxLimitY: 360
   RotationLimitX: 15
 --- !u!1 &4277694824737463819
 GameObject:

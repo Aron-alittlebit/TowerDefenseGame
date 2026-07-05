@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngineInternal;
+using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 public class TowerAttack : MonoBehaviour
@@ -49,8 +50,8 @@ public class TowerAttack : MonoBehaviour
     protected virtual void Update()
     {
         currentCoolDown -= Time.deltaTime;
-        
-        
+        Debug.Log(damageType);
+
     }
 
     protected virtual void Attack(GameObject sender)
@@ -66,11 +67,16 @@ public class TowerAttack : MonoBehaviour
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
                 if(enemy != null)
                 {
+                    SoundManager.instance.PlaySound(towerData.ShootingSound, transform, 30f);
                     if(damageType == DamageType.Electric)
                     {
                         StartElectricChain(enemy);
                     }
-                    //enemy.TakeDamage(damage);
+                    else if(damageType == DamageType.Normal)
+                    {
+                        enemy.TakeDamage(damage);
+                    }
+
                     if (enemy.Health <= 0)
                     {
                         TowerEvents.TowerKilledEntity(gameObject);
@@ -108,6 +114,7 @@ public class TowerAttack : MonoBehaviour
             coolDown = 0.1f;
 
         currentCoolDown = coolDown;
+        damageType = towerData.DamageType;
  
     }
 
@@ -121,6 +128,7 @@ public class TowerAttack : MonoBehaviour
     IEnumerator ElectricChain(List<Entity> alreadyHit, int BouncesLeft, int damage, Entity Target)
     {
         if (BouncesLeft == 0 || Damage <= 0 || Target == null) yield break;
+        
         Target.TakeDamage(damage);
         alreadyHit.Add(Target);
         yield return new WaitForSeconds(0.1f);

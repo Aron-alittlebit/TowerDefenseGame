@@ -8,6 +8,7 @@ public class ReviveEntities : MonoBehaviour
     [SerializeField] LayerMask EntityMask;
     Animator animator;
     bool foundDead;
+    Entity self;
     
 
     private void Start()
@@ -15,10 +16,12 @@ public class ReviveEntities : MonoBehaviour
         foundDead = false;
         currentCoolDown = CoolDown;
         animator = GetComponent<Animator>();
+        self = GetComponent<Entity>();
         
     }
     void Update()
     {
+        if (self.HasDied) return;
         currentCoolDown -= Time.deltaTime;
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, EntityMask);
         

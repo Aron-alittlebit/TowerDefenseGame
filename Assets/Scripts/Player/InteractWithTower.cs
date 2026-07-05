@@ -5,10 +5,11 @@ public class InteractWithTower : MonoBehaviour
 {
     [SerializeField] LayerMask TowerMask;
     [SerializeField] TowerInfoUIController TowerInfo;
+    [SerializeField] Camera MainCamera;
     void Update()
     {
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 10f,
+        if (Physics.Raycast(MainCamera.transform.position, MainCamera.transform.forward, out RaycastHit hitInfo, 10f,
             TowerMask))
         {
             
@@ -16,6 +17,7 @@ public class InteractWithTower : MonoBehaviour
             Tower tower = hitInfo.collider.GetComponent<Tower>();
             if(tower != null)
             {
+                
                 TowerAttack ta = tower.GetComponentInChildren<TowerAttack>();
                 TowerUIModell ui = new(tower, ta);
 

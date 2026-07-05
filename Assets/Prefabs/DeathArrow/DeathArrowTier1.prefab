@@ -152,8 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerRotator
   Pivotpoint: {fileID: 1560057567701081847}
   rotationSpeed: 90
-  RotationMinLimitY: 250
-  RotationMaxLimitY: 290
+  RotationMinLimitY: 180
+  RotationMaxLimitY: 360
   RotationLimitX: 15
 --- !u!1 &521656393415888126
 GameObject:
@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 3584833979934975646}
   - component: {fileID: -8593560820183594329}
   - component: {fileID: 4684648950284751427}
+  - component: {fileID: 5586463981296235061}
   m_Layer: 8
   m_Name: DeathArrowTier1
   m_TagString: Untagged
@@ -359,7 +360,6 @@ MonoBehaviour:
   EntityLayer:
     serializedVersion: 2
     m_Bits: 128
-  towerData: {fileID: 11400000, guid: 099cc73d2827be6479f364ef40c0faa7, type: 2}
 --- !u!65 &4684648950284751427
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -376,6 +376,27 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.1873474, y: 3.252812, z: 3.512329}
+  m_Center: {x: 0.034561157, y: 1.626406, z: -0.04827881}
+--- !u!65 &5586463981296235061
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4983879040103815826}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

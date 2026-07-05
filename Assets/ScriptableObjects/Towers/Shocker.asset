@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d810f3a3c97454ebf34b1986c7899e, type: 3}
-  m_Name: DeathArrow
+  m_Name: Shocker
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 15
   Name: Shocker
