@@ -22,11 +22,13 @@ public class PhaseHandler : MonoBehaviour
         CurrentPhase = Phase.BuildingPhase;
     }
 
-    
+   
     void Update()
     {
         
         if (NumberOfWaves <= 0 || LeftOfWaves <= 0) return;
+        Debug.Log(SpawnEntities.NumberOfAllEntities);
+
         CompletedWave();
         Timer -= Time.deltaTime;
         if(CurrentPhase == Phase.BuildingPhase)

@@ -34,13 +34,13 @@ public class SpawnEntities : MonoBehaviour
 
     private void OnEnable()
     {
-        EntitiesEvent.OnEntityDeath += SubtractFromAllEntites;
+       
         EntitiesEvent.OnStartSpawning += StartSpawn;
     }
 
     private void OnDisable()
     {
-        EntitiesEvent.OnEntityDeath -= SubtractFromAllEntites;
+        
         EntitiesEvent.OnStartSpawning -= StartSpawn;
     }
     void StartSpawn()
@@ -57,10 +57,7 @@ public class SpawnEntities : MonoBehaviour
     //    Debug.Log($"{SpawnPoint.rotation}");
     //}
 
-    void SubtractFromAllEntites(int id)
-    {
-        NumberOfAllEntities -= 1;
-    }
+    
 
 
     IEnumerator SpawnLogic()

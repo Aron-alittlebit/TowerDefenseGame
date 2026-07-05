@@ -11,7 +11,7 @@ using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 public class TowerAttack : MonoBehaviour
 {
-    
+    [SerializeField] BulletScript Bullet;
     public Transform FirePoint;
     protected float currentCoolDown;
     protected TowerData towerData;
@@ -74,7 +74,10 @@ public class TowerAttack : MonoBehaviour
                     }
                     else if(damageType == DamageType.Normal)
                     {
-                        enemy.TakeDamage(damage);
+                        BulletScript bullet = Instantiate(Bullet, FirePoint.position
+                            , Quaternion.identity);
+                        bullet.SetData(towerData, 
+                            enemy.transform.position-FirePoint.position);
                     }
 
                     if (enemy.Health <= 0)

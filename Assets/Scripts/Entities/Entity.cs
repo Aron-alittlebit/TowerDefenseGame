@@ -30,6 +30,7 @@ public class Entity : LivingAbstractClass
         {
             HasDied = true;
             Revived = false;
+            SpawnEntities.NumberOfAllEntities--;
             EntitiesEvent.EntityDeath(gameObject.GetInstanceID());
             animator.SetBool("Walk", false);
             DeathCoroutine = StartCoroutine(DeathAnimation());
@@ -70,6 +71,7 @@ public class Entity : LivingAbstractClass
         }
         Revived = true;
         HasDied = false;
+        SpawnEntities.NumberOfAllEntities++;
         health = StartingHealth;
         CapsuleCollider[] colliders = GetComponents<CapsuleCollider>();
         foreach (var col in colliders)
