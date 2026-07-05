@@ -30,7 +30,7 @@ public class LightningTowerAttack : TowerAttack
 
                 Entity enemy = collider.GetComponent<Entity>();
                 enemy.TakeDamage(Damage);
-                Debug.Log("Attacked");
+                
 
             }
             currentCoolDown = CoolDown;

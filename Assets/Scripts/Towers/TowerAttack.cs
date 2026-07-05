@@ -1,4 +1,7 @@
 
+using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -14,6 +17,8 @@ public class TowerAttack : MonoBehaviour
     protected int damage;
     protected int range;
     protected float coolDown;
+    DamageType damageType;
+    int maxBounces = 5;
    
     public int Damage => damage;
     public int Range => range;
@@ -61,7 +66,11 @@ public class TowerAttack : MonoBehaviour
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
                 if(enemy != null)
                 {
-                    enemy.TakeDamage(damage);
+                    if(damageType == DamageType.Electric)
+                    {
+                        StartElectricChain(enemy);
+                    }
+                    //enemy.TakeDamage(damage);
                     if (enemy.Health <= 0)
                     {
                         TowerEvents.TowerKilledEntity(gameObject);
@@ -83,6 +92,7 @@ public class TowerAttack : MonoBehaviour
         damage = towerData.Damage;
         coolDown = towerData.CoolDown;
         currentCoolDown = coolDown;
+        damageType = towerData.DamageType;
     }
 
     protected virtual void SetDataAfterUpgrade(Tower tower, GameObject sender)
@@ -101,4 +111,53 @@ public class TowerAttack : MonoBehaviour
  
     }
 
+    void StartElectricChain(Entity FirstTarget)
+    {
+        List<Entity> alreadyHit = new();
+        StartCoroutine(ElectricChain(alreadyHit, maxBounces, damage, FirstTarget));
+        
+    }
+
+    IEnumerator ElectricChain(List<Entity> alreadyHit, int BouncesLeft, int damage, Entity Target)
+    {
+        if (BouncesLeft == 0 || Damage <= 0 || Target == null) yield break;
+        Target.TakeDamage(damage);
+        alreadyHit.Add(Target);
+        yield return new WaitForSeconds(0.1f);
+        Entity nextTarget = FindClosestEnemy(Target.transform.position, alreadyHit);
+
+        if (nextTarget != null)
+            StartCoroutine(ElectricChain(alreadyHit, BouncesLeft - 1, damage - 5, nextTarget));
+    }
+
+    Entity FindClosestEnemy(Vector3 pos, List<Entity> alreadyHit)
+    {
+        Collider[] colliders = Physics.OverlapSphere(pos, 5, Tower.Instance.EntityLayer);
+        Entity closest = null;
+        float minDst = float.MaxValue;
+
+        foreach(var col in colliders)
+        {
+            Entity enemy = col.GetComponent<Entity>();
+            if(enemy != null && !alreadyHit.Contains(enemy))
+            {
+                float dst = Vector3.Distance(pos, enemy.transform.position);
+                if(dst < minDst)
+                {
+                    minDst = dst;
+                    closest = enemy;
+                }
+            }
+        }
+
+        return closest;
+    }
+
+}
+
+public enum DamageType
+{
+    Normal,
+    Electric,
+    Fire
 }

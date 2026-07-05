@@ -24,3 +24,4 @@ MonoBehaviour:
   Damage: 100
   Range: 100
   CoolDown: 3
+  DamageType: 1
