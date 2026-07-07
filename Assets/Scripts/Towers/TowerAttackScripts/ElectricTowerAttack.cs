@@ -18,8 +18,14 @@ public class ElectricTowerAttack : TowerAttack
     [SerializeField] private LightningBoltEffect lightningPrefab;
     [SerializeField] private Color lightningColor = Color.cyan;
     [SerializeField] private float effectDuration = 0.1f;
+    
 
 
+    protected override void Update()
+    {
+        base.Update();
+        Debug.Log(currentCoolDown);
+    }
     protected override void Attack(GameObject sender)
     {
 
@@ -31,18 +37,20 @@ public class ElectricTowerAttack : TowerAttack
             {
                 SoundManager.instance.PlaySound(towerData.ShootingSound, transform, 30f);
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
-                if (enemy != null)
+                if (enemy != null && !enemy.HasDied)
                 {
+                    
                     StartElectricChain(enemy);
                     if (enemy.Health <= 0)
                     {
                         TowerEvents.TowerKilledEntity(gameObject);
                     }
+                    currentCoolDown = coolDown;
                 }
 
             }
 
-            currentCoolDown = coolDown;
+            
         }
     }
 

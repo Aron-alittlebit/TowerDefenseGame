@@ -48,7 +48,8 @@ public class TowerRotator : MonoBehaviour
         
         if (target != null)
         {
-            originalDistance = Vector3.Distance(transform.position, target.transform.position);
+            originalDistance = Vector3.Distance(transform.position,
+                target.transform.position);
             RotateTower(target.transform.position, originalDistance);
             
             GunEvents.TowerAttack(gameObject);
@@ -62,7 +63,8 @@ public class TowerRotator : MonoBehaviour
                 5 * Time.deltaTime);
         }
 
-        if (target != null && Vector3.Distance(transform.position, target.transform.position)
+        if (target != null && Vector3.Distance(transform.position, 
+            target.transform.position)
             > Range)
         {
             target = null;

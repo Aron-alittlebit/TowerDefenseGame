@@ -7,9 +7,11 @@ public class EntityWeaponColliderScript : MonoBehaviour
     [SerializeField] int Damage;
     
     [SerializeField] BoxCollider Collider;
+    bool HasHit;
     private void Start()
     {
         Collider.enabled = false;
+        HasHit = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,9 +19,10 @@ public class EntityWeaponColliderScript : MonoBehaviour
         LivingAbstractClass enemy = other.GetComponent<LivingAbstractClass>();
         
 
-        if (enemy != null && enemy.Health > 0)
+        if (enemy != null && enemy.Health > 0 && HasHit && !enemy.GetComponent<Entity>())
         {
             enemy.TakeDamage(Damage);
+            HasHit = false;
 
         }
     }
@@ -28,6 +31,7 @@ public class EntityWeaponColliderScript : MonoBehaviour
     {
         
         Collider.enabled = value;
+        HasHit = value;
         
     }
 }
