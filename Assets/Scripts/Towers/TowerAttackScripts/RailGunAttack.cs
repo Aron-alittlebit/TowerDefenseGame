@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class RailGunAttack : TowerAttack
 {
-
+    [Header("Railgun Visual Settings")]
+    [SerializeField] private RailGunBeamVisual beamVisualPrefab;
+    [SerializeField] private float chargeDuration = 0.8f;
+    [SerializeField] private float laserDisplayDuration = 0.3f;
     protected override void OnEnable()
     {
         GunEvents.OnTowerAttack += StartAttack;
@@ -20,11 +23,22 @@ public class RailGunAttack : TowerAttack
     }
     protected IEnumerator RailGunAttackWithSound()
     {
-
+        yield return new WaitForSeconds(chargeDuration);
             RaycastHit[] colliders = Physics.SphereCastAll(FirePoint.position, 2f, FirePoint.forward
                 , range, Tower.Instance.EntityLayer);
             SoundManager.instance.PlaySound(towerData.ShootingSound, transform, 30f);
-            yield return new WaitForSeconds(0.9f);
+        if (beamVisualPrefab != null)
+        {
+            RailGunBeamVisual effect = Instantiate(beamVisualPrefab, Vector3.zero,
+                Quaternion.identity);
+
+            Vector3 beamStart = FirePoint.position;
+            Vector3 beamEnd = FirePoint.position + (FirePoint.forward * range);
+
+            effect.PlayVisual(beamStart, beamEnd, chargeDuration,
+                laserDisplayDuration);
+        }
+        yield return new WaitForSeconds(0.9f);
             if (colliders.Length > 0)
             {
 
@@ -55,6 +69,10 @@ public class RailGunAttack : TowerAttack
         if (sender != gameObject) return;
         if (currentCoolDown <= 0)
         {
+            
+
+            
+            
             StartCoroutine(RailGunAttackWithSound());
 
             currentCoolDown = coolDown;

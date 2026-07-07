@@ -154,8 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38967dd85b8f3f46a191b269f8ac7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailGunAttack
-  Bullet: {fileID: 0}
   FirePoint: {fileID: 5735211508955440117}
+  beamVisualPrefab: {fileID: -4233079542038545453, guid: 25fd5c1708126db458090a1246f7f569, type: 3}
+  chargeDuration: 1.2
+  laserDisplayDuration: 0.4
 --- !u!1 &1459250975727944671
 GameObject:
   m_ObjectHideFlags: 0
