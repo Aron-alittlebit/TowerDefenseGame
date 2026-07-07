@@ -14,6 +14,8 @@ public class BuildingTowers : MonoBehaviour
     [SerializeField] Material BuildingMat;
     Material PlacedMat;
     List<TowerData> towers;
+
+    [SerializeField] AudioClip BuiltTowerSound;
     
 
     KeyCode selectedTowerKey;
@@ -73,8 +75,11 @@ public class BuildingTowers : MonoBehaviour
                 
                 MaterialChange(PlacedMat);
                 TowerEvents.GemSpent(defaultTowerData.Cost);
-                TowerEvents.TowerBuilt(defaultTowerData, tower.transform.GetChild(0).gameObject);
+                TowerEvents.TowerBuilt(defaultTowerData, 
+                    tower.transform.GetChild(0).gameObject);
+                SoundManager.instance.PlaySound(BuiltTowerSound, tower.transform, 50f);
                 tower = null;
+                
                 
             }
         }

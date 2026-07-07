@@ -99,8 +99,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 521656393415659738}
-  - component: {fileID: 8221512539678268339}
   - component: {fileID: 4076520237619193538}
+  - component: {fileID: 1851674925668718293}
   m_Layer: 8
   m_Name: Shocker2
   m_TagString: Untagged
@@ -125,23 +125,6 @@ Transform:
   - {fileID: 521656393415659736}
   m_Father: {fileID: 3584833979934975646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8221512539678268339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 521656393415888122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
-  Bullet: {fileID: 0}
-  FirePoint: {fileID: 2119178246327267163}
-  lightningPrefab: {fileID: 8236152042018045644, guid: 3a17e6e76e7975a42bfabb039f7e9314, type: 3}
-  lightningColor: {r: 0, g: 1, b: 1, a: 1}
-  effectDuration: 0.1
 --- !u!114 &4076520237619193538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +142,22 @@ MonoBehaviour:
   RotationMinLimitY: 180
   RotationMaxLimitY: 360
   RotationLimitX: 15
+--- !u!114 &1851674925668718293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521656393415888122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11dee028fd1c19f49a2c068177cc6841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElectricTowerAttack
+  FirePoint: {fileID: 2119178246327267163}
+  lightningPrefab: {fileID: 8236152042018045644, guid: 3a17e6e76e7975a42bfabb039f7e9314, type: 3}
+  lightningColor: {r: 0, g: 1, b: 1, a: 1}
+  effectDuration: 0.1
 --- !u!1 &521656393415888126
 GameObject:
   m_ObjectHideFlags: 0

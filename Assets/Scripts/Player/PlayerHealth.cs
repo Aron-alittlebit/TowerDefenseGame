@@ -30,27 +30,24 @@ public class PlayerHealth : LivingAbstractClass
     protected override void Die()
     {
         
-        if (health <= 0)
+        
+        SoundManager.instance.PlaySound(RespawnSound, SpawnPoint, 50f);
+        health = StartingHealth;
+        GetComponent<CharacterChanging>().CurrentHero.SetHealth(health);
+        HealthText.text = $"{health}";
+        CharacterController cc = GetComponent<CharacterController>();
+
+        if (cc != null)
         {
-            SoundManager.instance.PlaySound(RespawnSound, SpawnPoint, 50f);
-            health = StartingHealth;
-            
-            HealthText.text = $"{health}";
-            CharacterController cc = GetComponent<CharacterController>();
-
-            if (cc != null)
-            {
-                cc.enabled = false;
-
-                transform.position = SpawnPoint.position;
-
-                cc.enabled = true;
-            }
-            else
-            {
-                transform.position = SpawnPoint.position;
-            }
+            cc.enabled = false;
+            transform.position = SpawnPoint.position;
+            cc.enabled = true;
         }
+        else
+        {
+            transform.position = SpawnPoint.position;
+        }
+        
     }
 
     public void SetHealth(HeroData hero)

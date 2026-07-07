@@ -131,8 +131,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2020583264496638536}
-  - component: {fileID: 4022444876755181265}
   - component: {fileID: 9203617492186557821}
+  - component: {fileID: 4204760531532664836}
   m_Layer: 0
   m_Name: Shocker5
   m_TagString: Untagged
@@ -157,19 +157,6 @@ Transform:
   - {fileID: 1138126449010402811}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4022444876755181265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338786952316084145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
-  FirePoint: {fileID: 4457489775067098016}
 --- !u!114 &9203617492186557821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +174,22 @@ MonoBehaviour:
   RotationMinLimitY: 180
   RotationMaxLimitY: 360
   RotationLimitX: 15
+--- !u!114 &4204760531532664836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338786952316084145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11dee028fd1c19f49a2c068177cc6841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElectricTowerAttack
+  FirePoint: {fileID: 4457489775067098016}
+  lightningPrefab: {fileID: 8236152042018045644, guid: 3a17e6e76e7975a42bfabb039f7e9314, type: 3}
+  lightningColor: {r: 0, g: 1, b: 1, a: 1}
+  effectDuration: 0.1
 --- !u!1 &2348671817263672333
 GameObject:
   m_ObjectHideFlags: 0

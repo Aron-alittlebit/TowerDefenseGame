@@ -17,6 +17,7 @@ public class HeroData : ScriptableObject
     public float Speed => speed;
     public RuntimeAnimatorController AnimatorController => animatorController;
     public GameObject ModelPrefab => modelPrefab;
+    public AudioClip ShootingSound;
 
     public int CurrentHealth { get; private set; }
     public void SetHealth(int health)

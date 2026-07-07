@@ -16,8 +16,12 @@ public class PlayerAttack : MonoBehaviour
         
         if (Input.GetButtonDown("Fire1"))
         {
+            
             animator.SetTrigger("Hit");
             GunEvents.GunShoot(MainCamera);
+            SoundManager.instance.PlaySound(
+                GetComponent<CharacterChanging>().CurrentHero.ShootingSound,
+                transform, 30f);
         }
     }
 

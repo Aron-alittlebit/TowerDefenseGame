@@ -21,3 +21,4 @@ MonoBehaviour:
   speed: 20
   animatorController: {fileID: 9100000, guid: f7fa27d32bd8fae488eb3d970088dd1d, type: 2}
   modelPrefab: {fileID: 5755321442667570541, guid: 600083825efa8cd45872134499f6ba47, type: 3}
+  ShootingSound: {fileID: 8300000, guid: fa77d4f0f105b40f2ba7c9cf3fdf3ad7, type: 3}

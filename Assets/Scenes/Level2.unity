@@ -1940,7 +1940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: EntitiesList.Array.data[0].amount
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: EntitiesList.Array.data[0].entity
@@ -5527,6 +5527,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7719143524242013015, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
+      propertyPath: BuiltTowerSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6cdf2b6afcdf03c4fb959f056819ba48, type: 3}
     - target: {fileID: 8831083901477147822, guid: 92b1f7dd78f257e46ad13e23bf715808, type: 3}
       propertyPath: HealthText
       value: 

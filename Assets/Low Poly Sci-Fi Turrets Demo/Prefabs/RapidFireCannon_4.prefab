@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 2894196073985041954}
   - component: {fileID: 2271472737475783047}
   - component: {fileID: 4062549377362337101}
-  - component: {fileID: 1949451747716013549}
   - component: {fileID: 258158328253413567}
+  - component: {fileID: 6251785495227130256}
   m_Layer: 8
   m_Name: RapidFireCannon_4
   m_TagString: Untagged
@@ -125,20 +125,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1949451747716013549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2549582001120558232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
-  Bullet: {fileID: -6258836920682332025, guid: 4ec3597453692f941ade1031a213b071, type: 3}
-  FirePoint: {fileID: 1292113145304821408}
 --- !u!114 &258158328253413567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +142,20 @@ MonoBehaviour:
   RotationMinLimitY: 180
   RotationMaxLimitY: 360
   RotationLimitX: 30
+--- !u!114 &6251785495227130256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549582001120558232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d675a6755918f4c86e4643ea903255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalTowerAttack
+  FirePoint: {fileID: 1292113145304821408}
+  Bullet: {fileID: -6258836920682332025, guid: 4ec3597453692f941ade1031a213b071, type: 3}
 --- !u!1 &5445401497097657306
 GameObject:
   m_ObjectHideFlags: 0
