@@ -137,7 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
+  Bullet: {fileID: 0}
   FirePoint: {fileID: 2119178246327267163}
+  lightningPrefab: {fileID: 8236152042018045644, guid: 3a17e6e76e7975a42bfabb039f7e9314, type: 3}
+  lightningColor: {r: 0, g: 1, b: 1, a: 1}
+  effectDuration: 0.1
 --- !u!114 &4076520237619193538
 MonoBehaviour:
   m_ObjectHideFlags: 0

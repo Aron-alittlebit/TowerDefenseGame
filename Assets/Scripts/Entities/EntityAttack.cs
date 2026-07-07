@@ -6,6 +6,7 @@ public class EntityAttack : MonoBehaviour
 {
     
     [SerializeField] float coolDown;
+    [SerializeField] EntityWeaponColliderScript weaponCollider;
     float currentCoolDown;
     Animator animator;
     bool IsEnabled;
@@ -41,13 +42,11 @@ public class EntityAttack : MonoBehaviour
         
     }
 
-    public void SetWeapon()
-    {
-        EntitiesEvent.SetWeapon(!IsEnabled);
-    }
+    public void EnableWeapon() => weaponCollider.SetWeapon(true);
+    public void DisableWeapon() => weaponCollider.SetWeapon(false);
 
 
-    
+
 
 
 }

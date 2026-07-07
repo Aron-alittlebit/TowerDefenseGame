@@ -27,7 +27,7 @@ public class PhaseHandler : MonoBehaviour
     {
         
         if (NumberOfWaves <= 0 || LeftOfWaves <= 0) return;
-        Debug.Log(SpawnEntities.NumberOfAllEntities);
+        
 
         CompletedWave();
         Timer -= Time.deltaTime;

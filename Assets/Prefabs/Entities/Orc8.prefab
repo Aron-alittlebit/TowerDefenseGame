@@ -1667,6 +1667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
   coolDown: 2
+  weaponCollider: {fileID: 4536362245110926321}
 --- !u!114 &6493188082024467417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,7 +1681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMove
   speed: 10
-  attackDst: 6
+  attackDst: 3
   Range: 20
   Ally:
     serializedVersion: 2

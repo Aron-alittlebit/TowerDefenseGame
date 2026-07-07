@@ -8,7 +8,7 @@ public class EntityMove : MonoBehaviour
 {
     Crystal Crystal;
     [SerializeField] float speed = 10f;
-    [SerializeField] float attackDst = 6f;
+    [SerializeField] float attackDst = 1f;
     [SerializeField] float Range;
     [SerializeField] LayerMask Ally;
     List<Vector3> path = new List<Vector3>();

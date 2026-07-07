@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
+  Bullet: {fileID: -6258836920682332025, guid: 4ec3597453692f941ade1031a213b071, type: 3}
   FirePoint: {fileID: 1292113145304821408}
 --- !u!114 &258158328253413567
 MonoBehaviour:

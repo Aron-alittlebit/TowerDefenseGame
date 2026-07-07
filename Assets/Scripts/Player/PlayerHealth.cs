@@ -32,7 +32,7 @@ public class PlayerHealth : LivingAbstractClass
         
         if (health <= 0)
         {
-            SoundManager.instance.PlaySound(RespawnSound, transform, 30f);
+            SoundManager.instance.PlaySound(RespawnSound, SpawnPoint, 50f);
             health = StartingHealth;
             
             HealthText.text = $"{health}";

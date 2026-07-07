@@ -20,7 +20,13 @@ public class TowerAttack : MonoBehaviour
     protected float coolDown;
     protected DamageType damageType;
     int maxBounces = 5;
-   
+
+    [Header("Visual Effects")]
+    [SerializeField] private LightningBoltEffect lightningPrefab;
+    [SerializeField] private Color lightningColor = Color.cyan;
+    [SerializeField] private float effectDuration = 0.1f;
+
+
     public int Damage => damage;
     public int Range => range;
     public float CoolDown => coolDown;
@@ -50,7 +56,7 @@ public class TowerAttack : MonoBehaviour
     protected virtual void Update()
     {
         currentCoolDown -= Time.deltaTime;
-        
+        Debug.Log($"{Damage}, {Range}");
 
     }
 
@@ -60,8 +66,8 @@ public class TowerAttack : MonoBehaviour
         if (sender != gameObject) return;
         if (currentCoolDown <= 0)
         {
-            if (Physics.Raycast(FirePoint.position, FirePoint.forward, out RaycastHit hitInfo,
-                range, Tower.Instance.EntityLayer))
+            if (Physics.Raycast(FirePoint.position, FirePoint.forward,
+                out RaycastHit hitInfo, range, Tower.Instance.EntityLayer))
             {
                 SoundManager.instance.PlaySound(towerData.ShootingSound, transform, 30f);
                 Entity enemy = hitInfo.collider.GetComponent<Entity>();
@@ -124,26 +130,38 @@ public class TowerAttack : MonoBehaviour
     void StartElectricChain(Entity FirstTarget)
     {
         List<Entity> alreadyHit = new();
-        StartCoroutine(ElectricChain(alreadyHit, maxBounces, damage, FirstTarget));
+        StartCoroutine(ElectricChain(alreadyHit, maxBounces, damage, FirstTarget, 
+            FirePoint.position));
         
     }
 
-    IEnumerator ElectricChain(List<Entity> alreadyHit, int BouncesLeft, int damage, Entity Target)
+    IEnumerator ElectricChain(List<Entity> alreadyHit, int BouncesLeft, int damage, 
+        Entity Target, Vector3 originPosition)
     {
-        if (BouncesLeft == 0 || Damage <= 0 || Target == null) yield break;
-        
+        if (BouncesLeft == 0 || damage <= 0 || Target == null) yield break;
+
+        if (lightningPrefab != null)
+        {
+            LightningBoltEffect bolt = Instantiate(lightningPrefab, Vector3.zero,
+                Quaternion.identity);
+
+            Vector3 targetCenter = Target.transform.position + Vector3.up;
+            bolt.SetupLine(originPosition, targetCenter, effectDuration, lightningColor);
+        }
+
         Target.TakeDamage(damage);
         alreadyHit.Add(Target);
         yield return new WaitForSeconds(0.1f);
         Entity nextTarget = FindClosestEnemy(Target.transform.position, alreadyHit);
 
         if (nextTarget != null)
-            StartCoroutine(ElectricChain(alreadyHit, BouncesLeft - 1, damage - 5, nextTarget));
+            StartCoroutine(ElectricChain(alreadyHit, BouncesLeft - 1, damage - 5, 
+                nextTarget, Target.transform.position + Vector3.up));
     }
 
     Entity FindClosestEnemy(Vector3 pos, List<Entity> alreadyHit)
     {
-        Collider[] colliders = Physics.OverlapSphere(pos, 5, Tower.Instance.EntityLayer);
+        Collider[] colliders = Physics.OverlapSphere(pos, 10, Tower.Instance.EntityLayer);
         Entity closest = null;
         float minDst = float.MaxValue;
 
@@ -163,6 +181,8 @@ public class TowerAttack : MonoBehaviour
 
         return closest;
     }
+
+    
 
 }
 

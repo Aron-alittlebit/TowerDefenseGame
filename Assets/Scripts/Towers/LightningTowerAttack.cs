@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class LightningTowerAttack : TowerAttack
 {
-    protected override void OnEnable()
-    {
-        GunEvents.OnTowerAttack += Attack;
-    }
+    //protected override void OnEnable()
+    //{
+    //    GunEvents.OnTowerAttack += Attack;
+    //}
 
-    protected override void OnDisable()
-    {
-        GunEvents.OnTowerAttack -= Attack;
-    }
+    //protected override void OnDisable()
+    //{
+    //    GunEvents.OnTowerAttack -= Attack;
+    //}
 
     protected override void Update()
     {
@@ -23,13 +23,15 @@ public class LightningTowerAttack : TowerAttack
         if (sender != gameObject) return;
         if (currentCoolDown <= 0)
         {
+            SoundManager.instance.PlaySound(towerData.ShootingSound, transform, 30f);
             Collider[] colliders = Physics.OverlapSphere(transform.position, Range,
             Tower.Instance.EntityLayer);
             foreach (var collider in colliders)
             {
 
                 Entity enemy = collider.GetComponent<Entity>();
-                enemy.TakeDamage(Damage);
+                if(enemy != null && !enemy.HasDied)
+                    enemy.TakeDamage(Damage);
                 
 
             }

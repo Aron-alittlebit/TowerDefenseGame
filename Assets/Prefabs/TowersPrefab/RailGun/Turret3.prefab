@@ -141,7 +141,7 @@ MonoBehaviour:
   rotationSpeed: 10
   RotationMinLimitY: 250
   RotationMaxLimitY: 290
-  RotationLimitX: 15
+  RotationLimitX: 0
 --- !u!114 &7371793636954365791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38967dd85b8f3f46a191b269f8ac7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailGunAttack
+  Bullet: {fileID: 0}
   FirePoint: {fileID: 5735211508955440117}
 --- !u!1 &1459250975727944671
 GameObject:

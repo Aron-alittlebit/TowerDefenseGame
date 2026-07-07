@@ -11,28 +11,20 @@ public class EntityWeaponColliderScript : MonoBehaviour
     {
         Collider.enabled = false;
     }
-    private void OnEnable()
-    {
-        EntitiesEvent.OnWeaponSet += SetWeapon;
-    }
-
-    private void OnDisable()
-    {
-        EntitiesEvent.OnWeaponSet -= SetWeapon;
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
         LivingAbstractClass enemy = other.GetComponent<LivingAbstractClass>();
+        
 
         if (enemy != null && enemy.Health > 0)
         {
             enemy.TakeDamage(Damage);
+
         }
     }
 
-    void SetWeapon(bool value)
+    public void SetWeapon(bool value)
     {
         
         Collider.enabled = value;

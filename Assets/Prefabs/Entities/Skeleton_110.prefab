@@ -757,7 +757,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2692,6 +2692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
   coolDown: 2
+  weaponCollider: {fileID: 6646104757990668073}
 --- !u!114 &168004459988665981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2705,7 +2706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMove
   speed: 10
-  attackDst: 10
+  attackDst: 3
   Range: 20
   Ally:
     serializedVersion: 2
