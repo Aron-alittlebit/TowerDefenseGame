@@ -2705,7 +2705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a35e62cd6419c409fc62ce4ffcca47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMove
-  speed: 10
+  speed: 15
   attackDst: 3
   Range: 20
   Ally:

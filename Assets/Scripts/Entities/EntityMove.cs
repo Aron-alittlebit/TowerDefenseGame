@@ -8,7 +8,7 @@ public class EntityMove : MonoBehaviour
 {
     Crystal Crystal;
     [SerializeField] float speed = 10f;
-    [SerializeField] float attackDst = 1f;
+    [SerializeField] float attackDst;
     [SerializeField] float Range;
     [SerializeField] LayerMask Ally;
     List<Vector3> path = new List<Vector3>();
@@ -57,15 +57,19 @@ public class EntityMove : MonoBehaviour
         {
             foreach (var collider in colliders)
             {
-                if (Vector3.Distance(transform.position, collider.transform.position) <= MinDst)
+                if (Vector3.Distance(transform.position, collider.transform.position)
+                    <= MinDst)
                 {
                     Target = collider.GetComponent<LivingAbstractClass>();
-                    MinDst = Vector3.Distance(transform.position, collider.transform.position);
+                    MinDst = Vector3.Distance(transform.position, 
+                        collider.transform.position);
                 }
             }
         }
 
-        if (Target != null)
+        Debug.Log(Target);
+
+        if (Target != null && Target != Crystal)
         {
             
             bool validTarget = Target.GetComponent<LivingAbstractClass>() != null
@@ -74,40 +78,41 @@ public class EntityMove : MonoBehaviour
 
             
 
-            if (!validTarget || dst > attackDst)
+            if (!validTarget || dst > Range)
             {
                 MinDst = float.MaxValue;
                 Target = null;
                 animator.SetBool("Walk", true);
                 MoveTowardsWayPoints();
-                //Debug.Log($"1 {validTarget}");
+                //Debug.Log($"Moving to waypoints");
             }
             else if (dst <= attackDst)
             {
                 Turn(Target.transform.position);
                 animator.SetBool("Walk", false);
                 EntitiesEvent.EntityAttack(Target, gameObject);
-                //Debug.Log("2");
+                //Debug.Log("Attacking target");
             }
             else
             {
                 animator.SetBool("Walk", true);
+                Turn(Target.transform.position);
                 Vector3 newPos = Target.transform.position;
                 newPos.y = transform.position.y;
                 transform.position = Vector3.MoveTowards(transform.position,
                 newPos, speed * Time.deltaTime);
-                //Debug.Log("3");
+                //Debug.Log("Walking towards target");
 
             }
 
         }
         else
         {
-            MinDst = float.MaxValue;
-            Target = null;
+            //MinDst = float.MaxValue;
+            //Target = null;
             animator.SetBool("Walk", true);
             MoveTowardsWayPoints();
-            //Debug.Log("4");
+            //Debug.Log($"walking towards waypoints");
         }
     }
     
@@ -140,6 +145,7 @@ public class EntityMove : MonoBehaviour
         }
         else
         {
+            //Target = Crystal;
             MoveTowardsCrystal();
         }
             
@@ -148,9 +154,10 @@ public class EntityMove : MonoBehaviour
     void MoveTowardsCrystal()
     {
         Turn(Crystal.transform.position);
-        
 
-        if (Vector3.Distance(transform.position, Crystal.transform.position) > attackDst)
+        //Debug.Log(Vector3.Distance(transform.position, Crystal.transform.position));
+
+        if (Vector3.Distance(transform.position, Crystal.transform.position) >= attackDst*2)
         {
             Vector3 newPos = Crystal.transform.position;
             newPos.y = transform.position.y;

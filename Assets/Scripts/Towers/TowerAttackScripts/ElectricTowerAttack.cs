@@ -24,7 +24,7 @@ public class ElectricTowerAttack : TowerAttack
     protected override void Update()
     {
         base.Update();
-        Debug.Log(currentCoolDown);
+        
     }
     protected override void Attack(GameObject sender)
     {
