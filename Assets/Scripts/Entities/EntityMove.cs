@@ -67,7 +67,7 @@ public class EntityMove : MonoBehaviour
             }
         }
 
-        Debug.Log(Target);
+        
 
         if (Target != null && Target != Crystal)
         {
@@ -84,14 +84,14 @@ public class EntityMove : MonoBehaviour
                 Target = null;
                 animator.SetBool("Walk", true);
                 MoveTowardsWayPoints();
-                //Debug.Log($"Moving to waypoints");
+                Debug.Log($"Moving to waypoints");
             }
             else if (dst <= attackDst)
             {
                 Turn(Target.transform.position);
                 animator.SetBool("Walk", false);
                 EntitiesEvent.EntityAttack(Target, gameObject);
-                //Debug.Log("Attacking target");
+                Debug.Log("Attacking target");
             }
             else
             {
@@ -101,7 +101,7 @@ public class EntityMove : MonoBehaviour
                 newPos.y = transform.position.y;
                 transform.position = Vector3.MoveTowards(transform.position,
                 newPos, speed * Time.deltaTime);
-                //Debug.Log("Walking towards target");
+                Debug.Log($"Walking towards target {dst}");
 
             }
 
@@ -112,7 +112,7 @@ public class EntityMove : MonoBehaviour
             //Target = null;
             animator.SetBool("Walk", true);
             MoveTowardsWayPoints();
-            //Debug.Log($"walking towards waypoints");
+            Debug.Log($"walking towards waypoints");
         }
     }
     
