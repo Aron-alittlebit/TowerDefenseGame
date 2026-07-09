@@ -1,16 +1,18 @@
 using System.Collections;
+using Unity.Hierarchy;
 using UnityEngine;
 
 public class ChargingScript : EntityMove
 {
-    public bool IsInCharge { get; private set; }
+    bool IsInCharge;
     float originalSpeed;
     [SerializeField] float ChargingCoolDown;
     [SerializeField] float ChargingSpeed;
     float ChargingCurrentCoolDown;
     string action;
     bool IsAttacking;
-    bool HasStartedAttack;
+    bool hasAttacked;
+    
     
 
     protected override void Start()
@@ -18,9 +20,9 @@ public class ChargingScript : EntityMove
         base.Start();
         IsInCharge = true;
         IsAttacking = false;
-        HasStartedAttack = false;
         originalSpeed = speed;
         ChargingCurrentCoolDown = ChargingCoolDown;
+        hasAttacked = false;
     }
 
     protected override void Update()
@@ -45,7 +47,9 @@ public class ChargingScript : EntityMove
             }
         }
 
-        ChargingCurrentCoolDown -= Time.deltaTime;
+        if(!IsAttacking)
+            ChargingCurrentCoolDown -= Time.deltaTime;
+
         if (IsInCharge)
         {
             action = "Run";
@@ -56,14 +60,15 @@ public class ChargingScript : EntityMove
             action = "Walk";
             speed = originalSpeed;
         }
-
+        
         if (!IsInCharge && !IsAttacking && ChargingCurrentCoolDown <= 0)
         {
             IsInCharge = true;
             ChargingCurrentCoolDown = ChargingCoolDown;
-            
+            hasAttacked = false;
         }
 
+        
 
         if (Target != null)
         {
@@ -71,32 +76,37 @@ public class ChargingScript : EntityMove
             bool validTarget = Target.GetComponent<LivingAbstractClass>() != null
                 || Target.GetComponent<Tower>().IsBuilt;
             float dst = Vector3.Distance(transform.position, Target.transform.position);
-            
 
+            
 
             if (!validTarget || dst > Range)
             {
                 MinDst = float.MaxValue;
                 Target = null;
+                
                 IsAttacking = false;
+                IsInCharge = false; 
                 animator.SetBool(action, true);
                 MoveTowardsWayPoints();
                 //Debug.Log($"Moving to waypoints");
             }
             else if (dst <= attackDst)
             {
-                if (!IsAttacking && !HasStartedAttack)
+
+                if (IsInCharge)
                 {
-                    EntitiesEvent.ChargeStateChanged(IsInCharge,
+                    EntitiesEvent.ChargeStateChanged(true, 
                         GetComponentInChildren<ChargingAttackScript>().gameObject);
-                    IsInCharge = false;
-                    IsAttacking = true;
-                    HasStartedAttack = true;
-                    ChargingCurrentCoolDown = ChargingCoolDown;
-                    animator.SetBool(action, false);
+                    hasAttacked = true; 
                 }
+
+                IsAttacking = true;
+                animator.SetBool("Run", false);
+                animator.SetBool("Walk", false);
                 Turn(Target.transform.position);
-                EntitiesEvent.EntityAttack(Target, gameObject);
+                EntitiesEvent.EntityAttack(gameObject);
+
+                //Debug.Log($"Attacking target");
             }
             else
             {
@@ -121,5 +131,13 @@ public class ChargingScript : EntityMove
         }
     }
 
-    
+    public void ResetChargeStateFromWeapon()
+    {
+        IsInCharge = false;
+        ChargingCurrentCoolDown = ChargingCoolDown;
+        EntitiesEvent.ChargeStateChanged(false, 
+            GetComponentInChildren<ChargingAttackScript>().gameObject);
+    }
+
+
 }

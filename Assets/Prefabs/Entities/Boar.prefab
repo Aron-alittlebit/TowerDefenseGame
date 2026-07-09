@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 5830778425512667038}
   - component: {fileID: 3283006485466004424}
   - component: {fileID: 5739591290312743864}
-  - component: {fileID: 4727766988843301409}
+  - component: {fileID: 470211384425085636}
   m_Layer: 7
   m_Name: Boar
   m_TagString: Untagged
@@ -1113,7 +1113,7 @@ MonoBehaviour:
     m_Bits: 256
   ChargingCoolDown: 5
   ChargingSpeed: 35
---- !u!114 &4727766988843301409
+--- !u!114 &470211384425085636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1125,5 +1125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67200015e4e6eb42948e178c3cd54f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
-  coolDown: 3
+  coolDown: 5
   weaponColliderScript: {fileID: 2669984632229322477}

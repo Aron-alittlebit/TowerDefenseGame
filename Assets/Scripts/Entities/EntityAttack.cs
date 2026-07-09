@@ -15,7 +15,7 @@ public class EntityAttack : MonoBehaviour
 
     protected virtual void Start()
     {
-        currentCoolDown = coolDown;
+        currentCoolDown = 0;
         animator = GetComponent<Animator>();
         IsEnabled = false;
         
@@ -33,7 +33,7 @@ public class EntityAttack : MonoBehaviour
         
         currentCoolDown -= Time.deltaTime;
     }
-    protected virtual void Attack(LivingAbstractClass entity, GameObject sender)
+    protected virtual void Attack(GameObject sender)
     {
         if (sender != gameObject) return;
         if(currentCoolDown <= 0)

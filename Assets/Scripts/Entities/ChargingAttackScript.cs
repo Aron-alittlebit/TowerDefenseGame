@@ -7,8 +7,8 @@ public class ChargingAttackScript : EntityWeaponColliderScript
 
     protected override void Start()
     {
-        base.Start();
-        
+        base.Start();    
+        charge = true;
     }
 
     protected virtual void OnEnable()
@@ -28,16 +28,21 @@ public class ChargingAttackScript : EntityWeaponColliderScript
         if (enemy != null && enemy.Health > 0 && HasHit && !enemy.GetComponent<Entity>())
         {
             enemy.TakeDamage(charge ? ChargeImpactDamage : Damage);
-
+            Debug.Log(charge ? ChargeImpactDamage : Damage);
+            if (charge)
+            {
+                charge = false;
+                GetComponentInParent<ChargingScript>().ResetChargeStateFromWeapon();
+            }
             HasHit = false;
 
         }
     }
 
-    void ChargeState(bool state, GameObject sender)
+    public void ChargeState(bool state, GameObject sender)
     {
-        Debug.Log(charge);
-        if (sender!= gameObject) return;
+        
+        if (sender != gameObject) return;
 
         charge = state;
     }

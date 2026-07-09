@@ -69,7 +69,7 @@ public class EntityMove : MonoBehaviour
 
         
 
-        if (Target != null && Target != Crystal)
+        if (Target != null)
         {
             
             bool validTarget = Target.GetComponent<LivingAbstractClass>() != null
@@ -90,7 +90,7 @@ public class EntityMove : MonoBehaviour
             {
                 Turn(Target.transform.position);
                 animator.SetBool("Walk", false);
-                EntitiesEvent.EntityAttack(Target, gameObject);
+                EntitiesEvent.EntityAttack(gameObject);
                 Debug.Log("Attacking target");
             }
             else
@@ -134,7 +134,6 @@ public class EntityMove : MonoBehaviour
             Turn(path[indexer]);
             if (Vector3.Distance(transform.position, path[indexer]) >= 0.1)
             {
-                
                 transform.position = Vector3.MoveTowards(transform.position,
                 path[indexer], speed * Time.deltaTime);
             }
@@ -145,19 +144,16 @@ public class EntityMove : MonoBehaviour
         }
         else
         {
-            //Target = Crystal;
             MoveTowardsCrystal();
         }
-            
+
     }
 
     protected void MoveTowardsCrystal()
     {
         Turn(Crystal.transform.position);
 
-        //Debug.Log(Vector3.Distance(transform.position, Crystal.transform.position));
-
-        if (Vector3.Distance(transform.position, Crystal.transform.position) >= attackDst*2)
+        if (Vector3.Distance(transform.position, Crystal.transform.position) >= attackDst * 2)
         {
             Vector3 newPos = Crystal.transform.position;
             newPos.y = transform.position.y;
@@ -165,11 +161,11 @@ public class EntityMove : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position,
             newPos, speed * Time.deltaTime);
         }
-        else
-        {
-            animator.SetBool("Walk", false);
-            EntitiesEvent.EntityAttack(Crystal, gameObject);
-        }
+        //else
+        //{
+        //    animator.SetBool("Walk", false);
+        //    EntitiesEvent.EntityAttack(gameObject);
+        //}
     }
 
     protected void Turn(Vector3 target)
