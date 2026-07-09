@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 318859007059599255}
   - component: {fileID: 981083856703025377}
+  - component: {fileID: 2669984632229322477}
   m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
@@ -88,6 +89,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.3, z: 0}
+--- !u!114 &2669984632229322477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741905738983309778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61074c542138595479ab334b2ee67f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargingAttackScript
+  Damage: 50
+  Collider: {fileID: 981083856703025377}
+  ChargeImpactDamage: 500
 --- !u!1 &753233610779534426
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,11 +960,10 @@ GameObject:
   - component: {fileID: 1340759645920336265}
   - component: {fileID: 8928322502734786678}
   - component: {fileID: 5178868284348260071}
-  - component: {fileID: 5624809403353984622}
-  - component: {fileID: 8005790476300044647}
-  - component: {fileID: 4186372253795754449}
   - component: {fileID: 5830778425512667038}
   - component: {fileID: 3283006485466004424}
+  - component: {fileID: 5739591290312743864}
+  - component: {fileID: 4727766988843301409}
   m_Layer: 7
   m_Name: Boar
   m_TagString: Untagged
@@ -1036,52 +1051,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity
   StartingHealth: 300
   GemPrefab: {fileID: 5163178437046360733, guid: d8a93eeeb3fbbdf43ad995e2cbf877ba, type: 3}
---- !u!114 &5624809403353984622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9192119536122146268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b67200015e4e6eb42948e178c3cd54f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
-  coolDown: 3
-  weaponCollider: {fileID: 4186372253795754449}
---- !u!114 &8005790476300044647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9192119536122146268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a35e62cd6419c409fc62ce4ffcca47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityMove
-  speed: 10
-  attackDst: 10
-  Range: 15
-  Ally:
-    serializedVersion: 2
-    m_Bits: 256
---- !u!114 &4186372253795754449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9192119536122146268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd15e14b48f16ba4fab8cff402fdf6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityWeaponColliderScript
-  Damage: 50
-  Collider: {fileID: 981083856703025377}
 --- !u!65 &5830778425512667038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1124,3 +1093,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 1.2, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0.8}
+--- !u!114 &5739591290312743864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9192119536122146268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f63ed552ec4464296b2be542646bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargingScript
+  speed: 20
+  attackDst: 10
+  Range: 50
+  Ally:
+    serializedVersion: 2
+    m_Bits: 256
+  ChargingCoolDown: 5
+  ChargingSpeed: 35
+--- !u!114 &4727766988843301409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9192119536122146268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67200015e4e6eb42948e178c3cd54f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
+  coolDown: 3
+  weaponColliderScript: {fileID: 2669984632229322477}

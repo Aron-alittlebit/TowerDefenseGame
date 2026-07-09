@@ -1482,7 +1482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
   coolDown: 3
-  weaponCollider: {fileID: 6317866955525116558}
+  weaponColliderScript: {fileID: 392277206997362685}
 --- !u!114 &922423394594014676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1757,7 +1757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3623106490276384092}
   - component: {fileID: 4592607150343868256}
-  - component: {fileID: 6317866955525116558}
+  - component: {fileID: 392277206997362685}
   m_Layer: 7
   m_Name: MiddleFinger1_R
   m_TagString: Untagged
@@ -1802,7 +1802,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6317866955525116558
+--- !u!114 &392277206997362685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

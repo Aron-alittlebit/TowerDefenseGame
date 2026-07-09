@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class EntityWeaponColliderScript : MonoBehaviour
 {
-    [SerializeField] int Damage;
-    
+    [SerializeField] protected int Damage;
+
     [SerializeField] BoxCollider Collider;
-    bool HasHit;
-    private void Start()
+    protected bool HasHit;
+    protected virtual void Start()
     {
         Collider.enabled = false;
         HasHit = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         LivingAbstractClass enemy = other.GetComponent<LivingAbstractClass>();
         
@@ -27,11 +27,19 @@ public class EntityWeaponColliderScript : MonoBehaviour
         }
     }
 
-    public void SetWeapon(bool value)
+    public void EnableWeapon()
     {
         
-        Collider.enabled = value;
-        HasHit = value;
+        Collider.enabled = true;
+        HasHit = true;
         
+    }
+
+    public void DisableWeapon()
+    {
+
+        Collider.enabled = false;
+        HasHit = false;
+
     }
 }

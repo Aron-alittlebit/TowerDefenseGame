@@ -1,36 +1,39 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class EntityAttack : MonoBehaviour
 {
     
-    [SerializeField] float coolDown;
-    [SerializeField] EntityWeaponColliderScript weaponCollider;
-    float currentCoolDown;
-    Animator animator;
-    bool IsEnabled;
+    [SerializeField] protected float coolDown;
+    [SerializeField] EntityWeaponColliderScript weaponColliderScript;
+    
+    protected float currentCoolDown;
+    protected Animator animator;
+    protected bool IsEnabled;
 
-    private void Start()
+    protected virtual void Start()
     {
         currentCoolDown = coolDown;
         animator = GetComponent<Animator>();
         IsEnabled = false;
+        
     }
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         EntitiesEvent.OnEntityReadyToAttack += Attack;
     }
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         EntitiesEvent.OnEntityReadyToAttack -= Attack;
     }
-    private void Update()
+    protected virtual void Update()
     {
         
         currentCoolDown -= Time.deltaTime;
     }
-    void Attack(LivingAbstractClass entity, GameObject sender)
+    protected virtual void Attack(LivingAbstractClass entity, GameObject sender)
     {
         if (sender != gameObject) return;
         if(currentCoolDown <= 0)
@@ -42,11 +45,18 @@ public class EntityAttack : MonoBehaviour
         
     }
 
-    public void EnableWeapon() => weaponCollider.SetWeapon(true);
-    public void DisableWeapon() => weaponCollider.SetWeapon(false);
+    public void EnableWeapon()
+    {
 
+        weaponColliderScript.EnableWeapon();
 
+    }
 
+    public void DisableWeapon()
+    {
 
+        weaponColliderScript.DisableWeapon();
+
+    }
 
 }

@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
   coolDown: 2
-  weaponCollider: {fileID: 4536362245110926321}
+  weaponColliderScript: {fileID: 4106679502169480851}
 --- !u!114 &6493188082024467417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,10 +2566,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4204069142530506077, guid: df1a4008ca62f0546a7ea4628e303fca, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4536362245110926321}
+      addedObject: {fileID: 7992112907893325552}
     - targetCorrespondingSourceObject: {fileID: 4204069142530506077, guid: df1a4008ca62f0546a7ea4628e303fca, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7992112907893325552}
+      addedObject: {fileID: 4106679502169480851}
   m_SourcePrefab: {fileID: 100100000, guid: df1a4008ca62f0546a7ea4628e303fca, type: 3}
 --- !u!4 &1245629075913444100 stripped
 Transform:
@@ -2581,20 +2581,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4204069142530506077, guid: df1a4008ca62f0546a7ea4628e303fca, type: 3}
   m_PrefabInstance: {fileID: 2329864295543631075}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4536362245110926321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874216147181130174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd15e14b48f16ba4fab8cff402fdf6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityWeaponColliderScript
-  Damage: 75
-  Collider: {fileID: 7992112907893325552}
 --- !u!65 &7992112907893325552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2616,3 +2602,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.45635685, y: 0.51184916, z: 0.58387536}
   m_Center: {x: -0.012532019, y: 0.5928055, z: -0.0006290711}
+--- !u!114 &4106679502169480851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874216147181130174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd15e14b48f16ba4fab8cff402fdf6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityWeaponColliderScript
+  Damage: 75
+  Collider: {fileID: 7992112907893325552}

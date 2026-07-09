@@ -6,21 +6,21 @@ using UnityEngine.EventSystems;
 
 public class EntityMove : MonoBehaviour
 {
-    Crystal Crystal;
-    [SerializeField] float speed = 10f;
-    [SerializeField] float attackDst;
-    [SerializeField] float Range;
-    [SerializeField] LayerMask Ally;
-    List<Vector3> path = new List<Vector3>();
-    int indexer = 0;
-    Animator animator;
-    bool AllyNearby;
-    LivingAbstractClass Target = null;
-    float MinDst = float.MaxValue;
-    bool isDead;
+    protected Crystal Crystal;
+    [SerializeField] protected float speed = 10f;
+    [SerializeField] protected float attackDst;
+    [SerializeField] protected float Range;
+    [SerializeField] protected LayerMask Ally;
+    protected List<Vector3> path = new List<Vector3>();
+    protected int indexer = 0;
+    protected Animator animator;
+    protected bool AllyNearby;
+    protected LivingAbstractClass Target = null;
+    protected float MinDst = float.MaxValue;
+    protected bool isDead;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         isDead = false;
         animator = GetComponent<Animator>();
@@ -31,21 +31,21 @@ public class EntityMove : MonoBehaviour
         else transform.LookAt(Crystal.transform);
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
 
         EntitiesEvent.OnEntityDeath += EntityDied;
         EntitiesEvent.OnEntityRevived += RevivingEntity;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
 
         EntitiesEvent.OnEntityDeath -= EntityDied;
         EntitiesEvent.OnEntityRevived -= RevivingEntity;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         
         if (isDead) return;
@@ -126,7 +126,7 @@ public class EntityMove : MonoBehaviour
         Crystal = crystal;
     }
 
-    void MoveTowardsWayPoints()
+    protected void MoveTowardsWayPoints()
     {
         
         if(indexer < path.Count)
@@ -151,7 +151,7 @@ public class EntityMove : MonoBehaviour
             
     }
 
-    void MoveTowardsCrystal()
+    protected void MoveTowardsCrystal()
     {
         Turn(Crystal.transform.position);
 
@@ -172,7 +172,7 @@ public class EntityMove : MonoBehaviour
         }
     }
 
-    void Turn(Vector3 target)
+    protected void Turn(Vector3 target)
     {
         Vector3 direction = target - transform.position;
         direction.y = 0f;
@@ -187,7 +187,7 @@ public class EntityMove : MonoBehaviour
         }
     }
 
-    void EntityDied(int id)
+    protected void EntityDied(int id)
     {
         if (id == gameObject.GetInstanceID())
         {
@@ -199,7 +199,7 @@ public class EntityMove : MonoBehaviour
 
     }
 
-    void RevivingEntity(int id)
+    protected void RevivingEntity(int id)
     {
         if (id == gameObject.GetInstanceID())
         {
