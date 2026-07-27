@@ -7,7 +7,7 @@ public class EntityAttack : MonoBehaviour
 {
     
     [SerializeField] protected float coolDown;
-    [SerializeField] EntityWeaponColliderScript weaponColliderScript;
+    [SerializeField] List<EntityWeaponColliderScript> weaponColliderScript;
     
     protected float currentCoolDown;
     protected Animator animator;
@@ -45,17 +45,17 @@ public class EntityAttack : MonoBehaviour
         
     }
 
-    public void EnableWeapon()
+    public void EnableWeapon(int index)
     {
 
-        weaponColliderScript.EnableWeapon();
+        weaponColliderScript[index].EnableWeapon();
 
     }
 
-    public void DisableWeapon()
+    public void DisableWeapon(int index)
     {
 
-        weaponColliderScript.DisableWeapon();
+        weaponColliderScript[index].DisableWeapon();
 
     }
 
