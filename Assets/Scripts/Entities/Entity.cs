@@ -19,11 +19,14 @@ public class Entity : LivingAbstractClass
     public override void TakeDamage(int damage)
     {
         if (health <= 0) return;
+        hasFiredFinishedDamageAnim = false;
         animator.SetTrigger("TakeDamage");
         health -= damage;
         Die();
     }
+    
 
+    bool hasFiredFinishedDamageAnim = false;
     protected override void Die()
     {
         if(health <= 0 && !HasDied)

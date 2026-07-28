@@ -12,6 +12,7 @@ public static class EntitiesEvent
     public static event Action<int> OnEntityRevived;
     public static event Action<bool, GameObject> OnChargeStateChanged;
     
+    
 
 
 

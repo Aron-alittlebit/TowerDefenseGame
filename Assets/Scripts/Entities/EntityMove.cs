@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using NUnit.Framework.Internal.Builders;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,10 +8,11 @@ using UnityEngine.EventSystems;
 public class EntityMove : MonoBehaviour
 {
     protected Crystal Crystal;
-    [SerializeField] protected float speed = 10f;
+    [SerializeField] protected float speed;
     [SerializeField] protected float attackDst;
     [SerializeField] protected float Range;
     [SerializeField] protected LayerMask Ally;
+    [SerializeField] protected AudioClip WalkingSound;
     protected List<Vector3> path = new List<Vector3>();
     protected int indexer = 0;
     protected Animator animator;
@@ -18,17 +20,20 @@ public class EntityMove : MonoBehaviour
     protected LivingAbstractClass Target = null;
     protected float MinDst = float.MaxValue;
     protected bool isDead;
+    protected bool IsWalking;
+    //protected bool CanPlaySound;
+    protected float WalkingTimer;
+    protected float originalSpeed;
 
 
     protected virtual void Start()
     {
         isDead = false;
+        IsWalking = true;
+        WalkingTimer = 0;
+        originalSpeed = speed;
         animator = GetComponent<Animator>();
-        
 
-        Crystal = FindAnyObjectByType<Crystal>();
-        if (Crystal == null) Debug.LogError("No Crystal found in scene!", this);
-        else transform.LookAt(Crystal.transform);
     }
 
     protected virtual void OnEnable()
@@ -36,6 +41,7 @@ public class EntityMove : MonoBehaviour
 
         EntitiesEvent.OnEntityDeath += EntityDied;
         EntitiesEvent.OnEntityRevived += RevivingEntity;
+        
     }
 
     protected virtual void OnDisable()
@@ -43,13 +49,17 @@ public class EntityMove : MonoBehaviour
 
         EntitiesEvent.OnEntityDeath -= EntityDied;
         EntitiesEvent.OnEntityRevived -= RevivingEntity;
+        
     }
 
     protected virtual void Update()
     {
         
         if (isDead) return;
-
+        Debug.Log(speed);
+        PlayWalkingSound();
+        WalkingTimer -= Time.deltaTime;
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
 
@@ -83,37 +93,41 @@ public class EntityMove : MonoBehaviour
                 MinDst = float.MaxValue;
                 Target = null;
                 animator.SetBool("Walk", true);
+                IsWalking = true;
                 MoveTowardsWayPoints();
-                Debug.Log($"Moving to waypoints");
+                //Debug.Log($"Moving to waypoints");
             }
             else if (dst <= attackDst)
             {
                 Turn(Target.transform.position);
+                
                 animator.SetBool("Walk", false);
+                IsWalking = false;
                 EntitiesEvent.EntityAttack(gameObject);
-                Debug.Log("Attacking target");
+                //Debug.Log("Attacking target");
             }
             else
             {
                 animator.SetBool("Walk", true);
+                IsWalking = true;
                 Turn(Target.transform.position);
                 Vector3 newPos = Target.transform.position;
                 newPos.y = transform.position.y;
                 transform.position = Vector3.MoveTowards(transform.position,
                 newPos, speed * Time.deltaTime);
-                Debug.Log($"Walking towards target {dst}");
+                //Debug.Log($"Walking towards target {dst}");
 
             }
 
         }
         else
         {
-            //MinDst = float.MaxValue;
-            //Target = null;
+            IsWalking = true;
             animator.SetBool("Walk", true);
             MoveTowardsWayPoints();
-            Debug.Log($"walking towards waypoints");
+            //Debug.Log($"walking towards waypoints");
         }
+        
     }
     
 
@@ -205,6 +219,28 @@ public class EntityMove : MonoBehaviour
 
         }
 
+    }
+
+    protected void PlayWalkingSound()
+    {
+        if (IsWalking && WalkingTimer <= 0 && speed > 0 && !isDead)
+        {
+            SoundManager.instance.PlaySound(WalkingSound, transform, 50f);
+            
+            WalkingTimer = WalkingSound.length;
+        }
+ 
+    }
+
+    public void SetSpeedToZero()
+    {
+        speed = 0;
+    }
+
+     public void SetSpeedBack()
+    {
+        speed = originalSpeed;
+        
     }
 
 

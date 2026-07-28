@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChargingScript : EntityMove
 {
     bool IsInCharge;
-    float originalSpeed;
+    
     [SerializeField] float ChargingCoolDown;
     [SerializeField] float ChargingSpeed;
     float ChargingCurrentCoolDown;
@@ -20,7 +20,7 @@ public class ChargingScript : EntityMove
         base.Start();
         IsInCharge = true;
         IsAttacking = false;
-        originalSpeed = speed;
+        
         ChargingCurrentCoolDown = ChargingCoolDown;
         hasAttacked = false;
     }
