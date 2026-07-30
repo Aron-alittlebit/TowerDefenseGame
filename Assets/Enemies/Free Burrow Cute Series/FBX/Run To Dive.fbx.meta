@@ -1,21 +1,11 @@
 fileFormatVersion: 2
-guid: 5c14c99557b54074eb3b65351a34447c
-AssetOrigin:
-  serializedVersion: 1
-  productId: 184837
-  packageName: Meshtint Free Burrow Cute Series
-  packageVersion: 1.0
-  assetPath: Assets/Free Burrow Cute Series/FBX/Burrow@Walk Forward In Place.FBX
-  uploadId: 405756
+guid: 139a1daca05b9714d84d2c5652a90701
 ModelImporter:
   serializedVersion: 24200
-  internalIDToNameTable:
-  - first:
-      74: 1827226128182048838
-    second: Walk Forward In Place
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -41,9 +31,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walk Forward In Place
-      takeName: Take 001
-      internalID: 0
+      name: GoingUnderground
+      takeName: mixamo.com
+      internalID: -203655887218126122
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -52,7 +42,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -82,7 +72,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    nodeNameCollisionStrategy: 0
+    nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -103,7 +93,7 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 0
+    secondaryUVMarginMethod: 1
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
@@ -140,9 +130,9 @@ ModelImporter:
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
-  importBlendShapeDeformPercent: 0
-  remapMaterialsIfMaterialImportModeIsNone: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
