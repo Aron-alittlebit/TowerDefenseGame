@@ -8,6 +8,7 @@ public class MoleMove : EntityMove
     float currentBurrowCoolDown;
     float currentBurrowDuration;
     burrowEffect burrowEffect;
+    [SerializeField] private ParticleSystem dirtParticles;
 
     protected override void Start()
     {
@@ -24,9 +25,8 @@ public class MoleMove : EntityMove
         
         PlayWalkingSound();
         WalkingTimer -= Time.deltaTime;
-        
-        
-        
+        dirtParticles.transform.position = new Vector3(transform.position.x,0,transform.position.z);
+
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
@@ -44,7 +44,7 @@ public class MoleMove : EntityMove
                 }
             }
         }
-        Debug.Log($"cooldoen: {currentBurrowCoolDown}, duration: {currentBurrowDuration}");
+        
         if (burrowEffect.IsBurrowing)
         {
             currentBurrowDuration -= Time.deltaTime;
@@ -59,6 +59,7 @@ public class MoleMove : EntityMove
             
             burrowEffect.ToggleBurrow();
             currentBurrowDuration = BurrowDuration;
+            dirtParticles.Stop();
         }
 
 
@@ -99,6 +100,9 @@ public class MoleMove : EntityMove
                     burrowEffect.ToggleBurrow();
                     animator.SetTrigger("Burrow");
                     currentBurrowCoolDown = BurrowCoolDown;
+                    dirtParticles.Play();
+                    
+
                 }
                 else if(!burrowEffect.IsBurrowing)
                 {

@@ -6,7 +6,7 @@ public class burrowEffect : MonoBehaviour
     [SerializeField] Transform originalPos;
     [SerializeField] float BurrowDepth;
     
-    [SerializeField] private ParticleSystem dirtParticles;
+    
     [SerializeField] float transitionDuration;
     public bool IsBurrowing { get; private set; }
 
@@ -37,7 +37,7 @@ public class burrowEffect : MonoBehaviour
         Vector3 startPos = originalPos.localPosition;
         Vector3 targetPos = new Vector3(startPos.x, BurrowDepth, startPos.z);
         float time = 0;
-        //dirtParticles.Play();
+        
         while (time <= transitionDuration)
         {
 
@@ -67,5 +67,6 @@ public class burrowEffect : MonoBehaviour
             yield return null;
         }
         originalPos.localPosition = targetPos;
+        
     }
 }

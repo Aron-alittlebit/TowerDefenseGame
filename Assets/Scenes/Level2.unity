@@ -5044,7 +5044,7 @@ PrefabInstance:
     - target: {fileID: 4714016359868998664, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: EntitiesList.Array.data[0].entity
       value: 
-      objectReference: {fileID: 2692546008038895428, guid: 4247f65dd5d1d2a48b4930ab3dfaec64, type: 3}
+      objectReference: {fileID: 4102770630301684755, guid: cc578cccd07cec74cb3a84a842e0ba0b, type: 3}
     - target: {fileID: 6073337269668364365, guid: 1781aa31aeb9d904789e55c6a86f4c34, type: 3}
       propertyPath: m_Name
       value: Portal red (2)
