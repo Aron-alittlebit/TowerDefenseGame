@@ -8,6 +8,7 @@ public class Entity : LivingAbstractClass
     public bool HasDied { get; private set; }
     bool Revived = false;
     Coroutine DeathCoroutine;
+    [SerializeField] AudioClip DeathSound;
 
     protected override void Start()
     {
@@ -43,6 +44,7 @@ public class Entity : LivingAbstractClass
     IEnumerator DeathAnimation()
     {
         animator.SetTrigger("Death");
+        SoundManager.instance.PlaySound(DeathSound, transform, 50f);
         CapsuleCollider[] colliders = GetComponents<CapsuleCollider>();
         foreach (var col in colliders)
         {

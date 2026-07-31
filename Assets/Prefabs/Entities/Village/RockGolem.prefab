@@ -676,6 +676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity
   StartingHealth: 300
   GemPrefab: {fileID: 5163178437046360733, guid: d8a93eeeb3fbbdf43ad995e2cbf877ba, type: 3}
+  DeathSound: {fileID: 8300000, guid: ea61e2fc24a5bd94497586d9750e9fc0, type: 3}
 --- !u!114 &6953133838716325009
 MonoBehaviour:
   m_ObjectHideFlags: 0

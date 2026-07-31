@@ -23,8 +23,8 @@ public class MoleMove : EntityMove
 
         if (isDead) return;
         
-        PlayWalkingSound();
-        WalkingTimer -= Time.deltaTime;
+        //PlayWalkingSound();
+        //WalkingTimer -= Time.deltaTime;
         dirtParticles.transform.position = new Vector3(transform.position.x,0,transform.position.z);
 
 
@@ -85,6 +85,12 @@ public class MoleMove : EntityMove
             else if (dst <= attackDst)
             {
                 Turn(Target.transform.position);
+                if (burrowEffect.IsBurrowing)
+                {
+                    burrowEffect.ToggleBurrow();
+                    currentBurrowDuration = BurrowDuration;
+                    dirtParticles.Stop();
+                }
 
                 animator.SetBool("Walk", false);
                 IsWalking = false;
@@ -96,7 +102,7 @@ public class MoleMove : EntityMove
                
                 if(currentBurrowCoolDown <= 0)
                 {
-                    
+                    animator.SetBool("Walk", false);
                     burrowEffect.ToggleBurrow();
                     animator.SetTrigger("Burrow");
                     currentBurrowCoolDown = BurrowCoolDown;

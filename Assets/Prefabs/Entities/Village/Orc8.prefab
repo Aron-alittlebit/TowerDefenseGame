@@ -1607,7 +1607,6 @@ GameObject:
   - component: {fileID: 7204954848084053864}
   - component: {fileID: 9179456067347801630}
   - component: {fileID: 523575181374177109}
-  - component: {fileID: 1968842865386788933}
   m_Layer: 7
   m_Name: Orc8
   m_TagString: Untagged
@@ -1682,11 +1681,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMove
   speed: 10
-  attackDst: 3
+  attackDst: 6
   Range: 20
   Ally:
     serializedVersion: 2
     m_Bits: 256
+  WalkingSound: {fileID: 8300000, guid: 5a145fa18d53510489278d4ecfa47ecc, type: 3}
 --- !u!114 &7204954848084053864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,6 +1701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity
   StartingHealth: 250
   GemPrefab: {fileID: 5163178437046360733, guid: d8a93eeeb3fbbdf43ad995e2cbf877ba, type: 3}
+  DeathSound: {fileID: 8300000, guid: 34a6eb13dc9402140a240d642d66cea4, type: 3}
 --- !u!136 &9179456067347801630
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1747,33 +1748,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!54 &1968842865386788933
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6854199266347557606}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!1 &6968663091960185958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,11 +2571,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.45635685, y: 0.51184916, z: 0.58387536}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: -0.012532019, y: 0.5928055, z: -0.0006290711}
 --- !u!114 &4106679502169480851
 MonoBehaviour:

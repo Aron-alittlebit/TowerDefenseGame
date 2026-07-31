@@ -5,8 +5,9 @@ public class burrowEffect : MonoBehaviour
 {
     [SerializeField] Transform originalPos;
     [SerializeField] float BurrowDepth;
-    
-    
+    [SerializeField] CapsuleCollider TriggerCapsuleCollider;
+
+
     [SerializeField] float transitionDuration;
     public bool IsBurrowing { get; private set; }
 
@@ -22,11 +23,14 @@ public class burrowEffect : MonoBehaviour
         if (!IsBurrowing)
         {
             StartCoroutine(Burrow());
+            TriggerCapsuleCollider.enabled = false;
             
         }
         else
         {
             StartCoroutine(UnBurrow());
+            TriggerCapsuleCollider.enabled = true;
+            
         }
     }
 

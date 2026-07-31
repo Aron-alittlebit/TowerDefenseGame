@@ -56,9 +56,9 @@ public class EntityMove : MonoBehaviour
     {
         
         if (isDead) return;
-        Debug.Log(speed);
-        PlayWalkingSound();
-        WalkingTimer -= Time.deltaTime;
+        
+        //PlayWalkingSound();
+        //WalkingTimer -= Time.deltaTime;
         
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
@@ -221,15 +221,9 @@ public class EntityMove : MonoBehaviour
 
     }
 
-    protected void PlayWalkingSound()
+    public void PlayWalkingSound()
     {
-        if (IsWalking && WalkingTimer <= 0 && speed > 0 && !isDead)
-        {
-            SoundManager.instance.PlaySound(WalkingSound, transform, 50f);
-            
-            WalkingTimer = WalkingSound.length;
-        }
- 
+         SoundManager.instance.PlaySound(WalkingSound, transform, 50f);
     }
 
     public void SetSpeedToZero()
