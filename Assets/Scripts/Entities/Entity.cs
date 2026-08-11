@@ -9,6 +9,7 @@ public class Entity : LivingAbstractClass
     bool Revived = false;
     Coroutine DeathCoroutine;
     [SerializeField] AudioClip DeathSound;
+    [SerializeField] EnemyType EnemyType;
 
     protected override void Start()
     {
@@ -37,11 +38,37 @@ public class Entity : LivingAbstractClass
             SpawnEntities.NumberOfAllEntities--;
             EntitiesEvent.EntityDeath(gameObject.GetInstanceID());
             animator.SetBool("Walk", false);
-            DeathCoroutine = StartCoroutine(DeathAnimation());
+            if (EnemyType == EnemyType.Skeleton)
+                DeathCoroutine = StartCoroutine(DeathAnimation());
+            else
+                NormalDeath();
         }
     }
 
-    IEnumerator DeathAnimation()
+     void NormalDeath()
+    {
+        animator.SetTrigger("Death");
+        
+        SoundManager.instance.PlaySound(DeathSound, transform, 50f);
+        CapsuleCollider[] colliders = GetComponents<CapsuleCollider>();
+        foreach (var col in colliders)
+        {
+            if (!col.isTrigger)
+                col.enabled = false;
+        }
+
+        GameObject gem = Instantiate(GemPrefab, transform.position, Quaternion.identity);
+        Rigidbody rb = gem.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.AddExplosionForce(500f, transform.position, 5f);
+
+        }
+        
+        
+    }
+
+     IEnumerator DeathAnimation()
     {
         animator.SetTrigger("Death");
         SoundManager.instance.PlaySound(DeathSound, transform, 50f);
@@ -92,5 +119,17 @@ public class Entity : LivingAbstractClass
         
         
     }
+
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject);
+    }
     
+}
+
+public enum EnemyType
+{
+    Village,
+    Skeleton
+
 }

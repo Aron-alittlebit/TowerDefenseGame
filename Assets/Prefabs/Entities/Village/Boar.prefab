@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChargingAttackScript
   Damage: 50
   Collider: {fileID: 981083856703025377}
-  ChargeImpactDamage: 500
+  ChargeImpactDamage: 250
 --- !u!1 &753233610779534426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity
   StartingHealth: 300
   GemPrefab: {fileID: 5163178437046360733, guid: d8a93eeeb3fbbdf43ad995e2cbf877ba, type: 3}
+  DeathSound: {fileID: 8300000, guid: 9e84a6e23b6597d45b0f40046904e757, type: 3}
 --- !u!65 &5830778425512667038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1111,7 +1112,8 @@ MonoBehaviour:
   Ally:
     serializedVersion: 2
     m_Bits: 256
-  ChargingCoolDown: 5
+  WalkingSound: {fileID: 8300000, guid: 9ea11a2d13d536e4e8441a0f5895995c, type: 3}
+  ChargingCoolDown: 20
   ChargingSpeed: 35
 --- !u!114 &470211384425085636
 MonoBehaviour:

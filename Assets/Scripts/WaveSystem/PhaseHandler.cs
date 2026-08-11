@@ -7,7 +7,7 @@ public class PhaseHandler : MonoBehaviour
     [SerializeField] int NumberOfWaves;
     public static int LeftOfWaves;
     public Phase CurrentPhase;
-    float BuildingPhasePeriod = 30;
+    
     float Timer;
     bool waveCompleted;
     [SerializeField] AudioClip BattleClip;
@@ -18,7 +18,7 @@ public class PhaseHandler : MonoBehaviour
     {
         waveCompleted = false;
         LeftOfWaves = NumberOfWaves;
-        Timer = BuildingPhasePeriod;
+        Timer = 360;
         CurrentPhase = Phase.BuildingPhase;
     }
 
@@ -53,18 +53,15 @@ public class PhaseHandler : MonoBehaviour
         {
             SoundManager.instance.ChangeMusic(RestBetweenWaves);
             waveCompleted = true;
-            LeftOfWaves -= 1;
+            
             CurrentPhase = Phase.BuildingPhase;
 
-            if(LeftOfWaves == NumberOfWaves)
-                BuildingPhasePeriod = 3600;
-            else
-                BuildingPhasePeriod = 90;
+            if(LeftOfWaves <= NumberOfWaves)
+                Timer = 90;
 
-            Timer = BuildingPhasePeriod;
-
+            LeftOfWaves -= 1;
             //Gives player gems after each wave
-            if(LeftOfWaves > 0)
+            if (LeftOfWaves > 0)
             {
                 TowerEvents.TowerSold(10);
             }

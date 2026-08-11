@@ -2679,6 +2679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity
   StartingHealth: 100
   GemPrefab: {fileID: 5163178437046360733, guid: d8a93eeeb3fbbdf43ad995e2cbf877ba, type: 3}
+  DeathSound: {fileID: 0}
+  EnemyType: 1
 --- !u!114 &3429155624300229831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2712,6 +2714,7 @@ MonoBehaviour:
   Ally:
     serializedVersion: 2
     m_Bits: 256
+  WalkingSound: {fileID: 0}
 --- !u!54 &2636175467502259959
 Rigidbody:
   m_ObjectHideFlags: 0

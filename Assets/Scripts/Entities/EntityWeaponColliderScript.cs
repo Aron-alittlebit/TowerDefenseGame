@@ -21,7 +21,7 @@ public class EntityWeaponColliderScript : MonoBehaviour
 
         if (enemy != null && enemy.Health > 0 && HasHit && !enemy.GetComponent<Entity>())
         {
-            Debug.Log("Hit");
+            Debug.Log("Hit tower");
             enemy.TakeDamage(Damage);
             HasHit = false;
 

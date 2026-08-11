@@ -6,6 +6,7 @@ public class burrowEffect : MonoBehaviour
     [SerializeField] Transform originalPos;
     [SerializeField] float BurrowDepth;
     [SerializeField] CapsuleCollider TriggerCapsuleCollider;
+    string OriginalLayer;
 
 
     [SerializeField] float transitionDuration;
@@ -15,7 +16,8 @@ public class burrowEffect : MonoBehaviour
     {
         IsBurrowing = false;
         originalPos = transform;
-        
+        OriginalLayer = LayerMask.LayerToName(gameObject.layer);
+
     }
 
     public void ToggleBurrow()
@@ -51,6 +53,7 @@ public class burrowEffect : MonoBehaviour
         }
 
         originalPos.localPosition = targetPos;
+        gameObject.layer = LayerMask.NameToLayer("");
 
     }
 
@@ -71,6 +74,7 @@ public class burrowEffect : MonoBehaviour
             yield return null;
         }
         originalPos.localPosition = targetPos;
-        
+        gameObject.layer = LayerMask.NameToLayer(OriginalLayer);
+
     }
 }

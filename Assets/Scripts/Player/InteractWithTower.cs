@@ -32,7 +32,7 @@ public class InteractWithTower : MonoBehaviour
                 {
                     SellTower(tower);
                 }
-                else if (Input.GetKeyDown(KeyCode.U) && PlayerGemPickUp.GemCounter >= 5 * tower.Tier)
+                else if (Input.GetKeyDown(KeyCode.U) && tower.Tier < 4 && PlayerGemPickUp.GemCounter >= 5 * tower.Tier)
                 {
                     
                     UpgradeTower(tower);

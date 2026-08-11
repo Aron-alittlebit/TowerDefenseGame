@@ -24,14 +24,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2436519806464311761}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3324319851145824922}
   m_Father: {fileID: 692265212143687005}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!1 &2505280489830187092
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4350032e0e01e30449c66f163d523476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttack
-  Bullet: {fileID: -6258836920682332025, guid: 4ec3597453692f941ade1031a213b071, type: 3}
   FirePoint: {fileID: 3452895399008681296}
 --- !u!114 &7823841248781090442
 MonoBehaviour:
@@ -480,6 +479,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2266010822713190365}
     m_Modifications:
+    - target: {fileID: 5545368733813724899, guid: e5ea1ca991d181f4083eb8921bcf5746, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545368733813724899, guid: e5ea1ca991d181f4083eb8921bcf5746, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545368733813724899, guid: e5ea1ca991d181f4083eb8921bcf5746, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545368733813724899, guid: e5ea1ca991d181f4083eb8921bcf5746, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545368733813724899, guid: e5ea1ca991d181f4083eb8921bcf5746, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
     - target: {fileID: 6185099919296560367, guid: e5ea1ca991d181f4083eb8921bcf5746, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.987366

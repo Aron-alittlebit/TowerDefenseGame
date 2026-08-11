@@ -51,7 +51,7 @@ public class Tower : LivingAbstractClass
 
     public void IncreaseTier()
     {
-        if(Tier>=4) return;
+        if(Tier>4) return;
         Tier += 1;
     }
     protected virtual void OnEnable()

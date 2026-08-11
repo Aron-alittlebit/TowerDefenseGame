@@ -12,7 +12,7 @@ public class PlayerGemPickUp : MonoBehaviour
     public TextMeshProUGUI GemCounterText;
     private void Start()
     {
-        StartingGemCount = 10 * 
+        StartingGemCount = 30 * 
             FindObjectsByType<SpawnEntities>(FindObjectsSortMode.None).Length;
         ReadOnlyStartingGem = StartingGemCount;
         GemCounter = StartingGemCount;

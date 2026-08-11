@@ -204,6 +204,7 @@ public class EntityMove : MonoBehaviour
             EntityAttack attack = transform.GetComponent<EntityAttack>();
             attack.enabled = false;
             isDead = true;
+            SetSpeedToZero();
 
         }
 
@@ -216,6 +217,7 @@ public class EntityMove : MonoBehaviour
             EntityAttack attack = transform.GetComponent<EntityAttack>();
             attack.enabled = true;
             isDead = false;
+            SetSpeedBack();
 
         }
 

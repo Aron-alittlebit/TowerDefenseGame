@@ -28,7 +28,7 @@ public class ChargingAttackScript : EntityWeaponColliderScript
         if (enemy != null && enemy.Health > 0 && HasHit && !enemy.GetComponent<Entity>())
         {
             enemy.TakeDamage(charge ? ChargeImpactDamage : Damage);
-            Debug.Log(charge ? ChargeImpactDamage : Damage);
+            
             if (charge)
             {
                 charge = false;

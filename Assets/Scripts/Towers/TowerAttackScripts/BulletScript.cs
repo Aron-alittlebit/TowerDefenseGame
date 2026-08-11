@@ -29,6 +29,7 @@ public class BulletScript : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(Damage);
+            Debug.Log("Hit orc");
             Destroy(gameObject);
         }
     }
