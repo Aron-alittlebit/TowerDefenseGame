@@ -19,12 +19,10 @@ public class TowerAttack : MonoBehaviour
     protected int range;
     protected float coolDown;
     protected DamageType damageType;
-    //int maxBounces = 5;
 
-    //[Header("Visual Effects")]
-    //[SerializeField] private LightningBoltEffect lightningPrefab;
-    //[SerializeField] private Color lightningColor = Color.cyan;
-    //[SerializeField] private float effectDuration = 0.1f;
+    int ogDamage;
+    int ogRange;
+    float ogCoolDown;
 
 
     public int Damage => damage;
@@ -119,8 +117,27 @@ public class TowerAttack : MonoBehaviour
             coolDown = 0.1f;
 
         currentCoolDown = coolDown;
-        damageType = towerData.DamageType;
+        //damageType = towerData.DamageType;
  
+    }
+
+    public void SetDataForBoost(float boostRate)
+    {
+        ogDamage = damage;
+        ogCoolDown = coolDown;
+        ogRange = range;
+
+        damage = (int)Mathf.Round(damage * boostRate);
+        range = (int)Mathf.Round(range * boostRate);
+        coolDown = (int)Mathf.Round(damage * (2f-boostRate));
+
+    }
+
+    public void SetDataBackAfterBoost()
+    {
+        damage = ogDamage;
+        coolDown = ogCoolDown;
+        range = ogRange;
     }
 
 

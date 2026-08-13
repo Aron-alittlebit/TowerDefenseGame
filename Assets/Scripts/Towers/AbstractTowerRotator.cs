@@ -4,6 +4,7 @@ public abstract class AbstractTowerRotator : MonoBehaviour
 {
     protected TowerData towerData;
     protected int Range;
+    int ogRange;
 
     protected virtual void OnEnable()
     {
@@ -32,5 +33,16 @@ public abstract class AbstractTowerRotator : MonoBehaviour
         towerData = tower.towerData;
         Range = towerData.Range + (10 * (tower.Tier - 1));
 
+    }
+    public void SetDataForBoost(float boostRate)
+    {
+
+        ogRange = Range;
+        Range = (int)Mathf.Round(Range * boostRate);
+    }
+
+    public void SetDataBackAfterBoost()
+    {
+        Range = ogRange;
     }
 }

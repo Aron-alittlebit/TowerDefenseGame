@@ -22,8 +22,8 @@ public class Tower : LivingAbstractClass
         IsBuilt = false;
         Tier = 1;
         Instance = this;
-        if(GetComponentInChildren<TowerRotator>() != null)
-            GetComponentInChildren<TowerRotator>().enabled = false;
+        if(GetComponentInChildren<AbstractTowerRotator>() != null)
+            GetComponentInChildren<AbstractTowerRotator>().enabled = false;
         if (GetComponentInChildren<TowerAttack>() != null)
             GetComponentInChildren<TowerAttack>().enabled = false;
     }
@@ -32,8 +32,8 @@ public class Tower : LivingAbstractClass
 
     public void TowerIsBuilt()
     {
-        if(GetComponentInChildren<TowerRotator>() != null)
-            GetComponentInChildren<TowerRotator>().enabled = true;
+        if(GetComponentInChildren<AbstractTowerRotator>() != null)
+            GetComponentInChildren<AbstractTowerRotator>().enabled = true;
         if (GetComponentInChildren<TowerAttack>() != null)
             GetComponentInChildren<TowerAttack>().enabled = true;
         IsBuilt = true;
@@ -98,6 +98,18 @@ public class Tower : LivingAbstractClass
         StartingHealth = value;
         health = StartingHealth;
         
+    }
+
+    public void BoostedTower(float rate)
+    {
+        GetComponentInChildren<AbstractTowerRotator>().SetDataForBoost(rate);
+        GetComponentInChildren<TowerAttack>().SetDataForBoost(rate);
+    }
+
+    public void Deboost()
+    {
+        GetComponentInChildren<AbstractTowerRotator>().SetDataBackAfterBoost();
+        GetComponentInChildren<TowerAttack>().SetDataBackAfterBoost();
     }
 
 
