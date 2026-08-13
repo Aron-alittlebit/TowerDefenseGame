@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d810f3a3c97454ebf34b1986c7899e, type: 3}
-  m_Name: Cannon
+  m_Name: KnightCannon
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   Cost: 5
   Name: Cannon
   Icon: {fileID: 0}
-  TowerPrefab: {fileID: 7628077126649123113, guid: a795e51a522887244b1131abd4a3a8bc, type: 3}
+  TowerPrefab: {fileID: 6977801702697961030, guid: 9adbb90a405fda848a8f81ce0d94b870, type: 3}
   TierPrefabs:
-  - {fileID: 2507857462180137906, guid: 4b4461f01395c5e44a0db5e4e2876a1a, type: 3}
-  - {fileID: 8671637467687091871, guid: be1167cb067f8aa45a253aac76da2d29, type: 3}
-  - {fileID: 2549582001120558232, guid: 309a44090c67f2b4093333abfd2dc1fa, type: 3}
+  - {fileID: 5542815695251706975, guid: 774aa3af5486e9c4b9c44164f8f12e07, type: 3}
+  - {fileID: 3276468162803996293, guid: 69e8d924043b54b4b8b7e89287a70689, type: 3}
+  - {fileID: 7900886766882966799, guid: 024e767542b88f44289e627afd27f490, type: 3}
   TowerName: Cannon
-  Damage: 50
-  Range: 25
-  CoolDown: 1
+  Damage: 75
+  Range: 15
+  CoolDown: 6
   DamageType: 0
   ShootingSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}

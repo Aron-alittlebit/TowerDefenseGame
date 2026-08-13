@@ -3,31 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class NonTurnableTowers : TowerRotator
+public class NonTurnableTowers : AbstractTowerRotator
 {
     [SerializeField] Transform FirePoint;
-    [SerializeField] bool CanTurnXAxis;
+    [SerializeField] bool IsAreaDamage;
     float originalX;
 
-    protected override void Start()
-    {
-        originalX = Pivotpoint.localEulerAngles.x;
-    }
 
-    
-
-    protected override void Update()
+    protected void Update()
     {
-        if (CanTurnXAxis)
+        if (!IsAreaDamage)
         {
-            if(Physics.Raycast(FirePoint.position, FirePoint.forward, out RaycastHit hitInfo
+            if (Physics.Raycast(FirePoint.position, FirePoint.forward, out RaycastHit hitInfo
                 , Range, Tower.Instance.EntityLayer))
             {
-                RotateTower(hitInfo.collider.transform.position,
-                Vector3.Distance(hitInfo.collider.transform.position, Pivotpoint.position));
                 GunEvents.TowerAttack(gameObject);
             }
-            
+
         }
         else
         {
@@ -42,26 +34,28 @@ public class NonTurnableTowers : TowerRotator
         }
 
 
-        
+
     }
 
-    void RotateTower(Vector3 enemyPos, float steps)
-    {
-        float targetX = originalX + Mathf.Lerp(0f, RotationLimitX, steps / Range);
-        float clampedX = Mathf.Clamp(targetX,
-            originalX + Mathf.Min(0f, RotationLimitX),
-            originalX + Mathf.Max(0f, RotationLimitX));
 
-        Quaternion targetRotation = Quaternion.Euler(
-            clampedX,
-            Pivotpoint.localEulerAngles.y,
-            Pivotpoint.localEulerAngles.z);
 
-        Pivotpoint.localRotation = Quaternion.Slerp(
-            Pivotpoint.localRotation,
-            targetRotation,
-            Time.deltaTime * 5f);
-    }
+    //void RotateTower(Vector3 enemyPos, float steps)
+    //{
+    //    float targetX = originalX + Mathf.Lerp(0f, RotationLimitX, steps / Range);
+    //    float clampedX = Mathf.Clamp(targetX,
+    //        originalX + Mathf.Min(0f, RotationLimitX),
+    //        originalX + Mathf.Max(0f, RotationLimitX));
 
-    
+    //    Quaternion targetRotation = Quaternion.Euler(
+    //        clampedX,
+    //        Pivotpoint.localEulerAngles.y,
+    //        Pivotpoint.localEulerAngles.z);
+
+    //    Pivotpoint.localRotation = Quaternion.Slerp(
+    //        Pivotpoint.localRotation,
+    //        targetRotation,
+    //        Time.deltaTime * 5f);
+    //}
+
+
 }

@@ -2,18 +2,18 @@ using NUnit.Framework.Internal.Builders;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerRotator : MonoBehaviour
+public class TowerRotator : AbstractTowerRotator
 {
     [SerializeField] protected Transform Pivotpoint;
     [SerializeField] float rotationSpeed = 10f;
-    protected TowerData towerData;
+    
     [SerializeField] float RotationMinLimitY;
     [SerializeField] float RotationMaxLimitY;
     [SerializeField] protected float RotationLimitX;
-    protected int Range;
+    
     
     Entity? target = null;
-    Dictionary<int, float> EntitiesDistance = new Dictionary<int, float>();
+    
     (float,float,float) OriginalRotaion;
     
     
@@ -23,23 +23,11 @@ public class TowerRotator : MonoBehaviour
         OriginalRotaion = (Pivotpoint.localEulerAngles.x, 
             Pivotpoint.localEulerAngles.y, Pivotpoint.localEulerAngles.z);
     }
-    protected virtual void OnEnable()
-    {
-        
-        TowerEvents.OnTowerBuilt += SetTowerData;
-        TowerEvents.OnTowerUpgraded += SetDataAfterUpgrade;
-    }
-
-    protected virtual void OnDisable()
-    {
-        
-        TowerEvents.OnTowerBuilt -= SetTowerData;
-        TowerEvents.OnTowerUpgraded -= SetDataAfterUpgrade;
-    }
+    
 
     
 
-    protected virtual void Update()
+    protected void Update()
     {
         
         float originalDistance = 0f;
@@ -98,24 +86,6 @@ public class TowerRotator : MonoBehaviour
         return target;
     }
 
-   
-
-    protected virtual void SetTowerData(TowerData td, GameObject sender)
-    {
-        if (sender != gameObject) return;
-        Range = td.Range;
-        
-    }
-
-    protected virtual void SetDataAfterUpgrade(Tower tower, GameObject sender)
-    {
-        if (gameObject != sender) return;
-        towerData = tower.towerData;
-        Range = towerData.Range + (10 * (tower.Tier - 1));
-
-    }
-
-    
 
     void RotateTower(Vector3 enemyPos, float steps)
     {
