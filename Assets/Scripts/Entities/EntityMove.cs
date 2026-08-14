@@ -21,16 +21,17 @@ public class EntityMove : MonoBehaviour
     protected float MinDst = float.MaxValue;
     protected bool isDead;
     protected bool IsWalking;
-    //protected bool CanPlaySound;
-    protected float WalkingTimer;
+    //protected float WalkingTimer;
     protected float originalSpeed;
+    Coroutine OilSlowedDown;
+
 
 
     protected virtual void Start()
     {
         isDead = false;
         IsWalking = true;
-        WalkingTimer = 0;
+        //WalkingTimer = 0;
         originalSpeed = speed;
         animator = GetComponent<Animator>();
 
@@ -56,9 +57,8 @@ public class EntityMove : MonoBehaviour
     {
         
         if (isDead) return;
-        
-        //PlayWalkingSound();
-        //WalkingTimer -= Time.deltaTime;
+
+        Debug.Log(speed);
         
         Collider[] colliders = Physics.OverlapSphere(transform.position, Range, Ally);
         AllyNearby = colliders.Length > 0;
@@ -237,6 +237,25 @@ public class EntityMove : MonoBehaviour
     {
         speed = originalSpeed;
         
+    }
+
+    protected IEnumerator CaughtInOil(float time, float slowSpeed)
+    {
+        
+        speed = slowSpeed;
+        yield return new WaitForSeconds(time);
+        if(!isDead)
+            SetSpeedBack();
+        OilSlowedDown = null;
+    }
+
+    public void ApplyOil(float duration, float SlowedSpeed)
+    {
+        if(OilSlowedDown != null)
+        {
+            StopCoroutine(OilSlowedDown);
+        }
+        OilSlowedDown = StartCoroutine(CaughtInOil(duration, SlowedSpeed));
     }
 
 

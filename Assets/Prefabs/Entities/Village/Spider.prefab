@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMove
   speed: 10
-  attackDst: 6
+  attackDst: 5
   Range: 10
   Ally:
     serializedVersion: 2

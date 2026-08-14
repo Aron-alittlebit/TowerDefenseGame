@@ -14,8 +14,14 @@ public class BannerBoost : MonoBehaviour
         boostedTowers = new();
     }
 
+    private void OnEnable()
+    {
+        TowerEvents.OnTowerUpgraded += UpgradeBanner;
+    }
+
     private void OnDisable()
     {
+        TowerEvents.OnTowerUpgraded -= UpgradeBanner;
         DeBoostAllTowers();
     }
 
@@ -41,5 +47,13 @@ public class BannerBoost : MonoBehaviour
                 tower.Deboost();
         }
         boostedTowers.Clear();
+    }
+
+    void UpgradeBanner(Tower tower, GameObject sender)
+    {
+        if (sender != transform.GetChild(0).gameObject) return;
+
+        boostRate += 0.2f * tower.Tier;
+        range += 5 * tower.Tier;
     }
 }

@@ -17,9 +17,9 @@ MonoBehaviour:
   Icon: {fileID: 0}
   TowerPrefab: {fileID: 6977801702697961030, guid: 9adbb90a405fda848a8f81ce0d94b870, type: 3}
   TierPrefabs:
-  - {fileID: 5542815695251706975, guid: 774aa3af5486e9c4b9c44164f8f12e07, type: 3}
-  - {fileID: 3276468162803996293, guid: 69e8d924043b54b4b8b7e89287a70689, type: 3}
-  - {fileID: 7900886766882966799, guid: 024e767542b88f44289e627afd27f490, type: 3}
+  - {fileID: 7941951101628240182, guid: 6b05b49932afd2a41abf90d3c9a2de89, type: 3}
+  - {fileID: 5285456020053850336, guid: ba96da4c2c0e9dc4e8ec5425f84f5148, type: 3}
+  - {fileID: 3830185296619510557, guid: 763da4dbcc7562d42b1f6cdf84d2b34a, type: 3}
   TowerName: Cannon
   Damage: 75
   Range: 15

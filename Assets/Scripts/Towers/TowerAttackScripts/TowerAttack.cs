@@ -129,7 +129,7 @@ public class TowerAttack : MonoBehaviour
 
         damage = (int)Mathf.Round(damage * boostRate);
         range = (int)Mathf.Round(range * boostRate);
-        coolDown = (int)Mathf.Round(damage * (2f-boostRate));
+        coolDown = (int)Mathf.Round(coolDown * (2.3f-boostRate));
 
     }
 

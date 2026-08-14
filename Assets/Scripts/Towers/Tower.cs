@@ -102,14 +102,20 @@ public class Tower : LivingAbstractClass
 
     public void BoostedTower(float rate)
     {
-        GetComponentInChildren<AbstractTowerRotator>().SetDataForBoost(rate);
-        GetComponentInChildren<TowerAttack>().SetDataForBoost(rate);
+        var rotator = GetComponentInChildren<AbstractTowerRotator>();
+        if (rotator != null) rotator.SetDataForBoost(rate);
+
+        var attack = GetComponentInChildren<TowerAttack>();
+        if (attack != null) attack.SetDataForBoost(rate);
     }
 
     public void Deboost()
     {
-        GetComponentInChildren<AbstractTowerRotator>().SetDataBackAfterBoost();
-        GetComponentInChildren<TowerAttack>().SetDataBackAfterBoost();
+        var rotator = GetComponentInChildren<AbstractTowerRotator>();
+        if (rotator != null) rotator.SetDataBackAfterBoost();
+
+        var attack = GetComponentInChildren<TowerAttack>();
+        if (attack != null) attack.SetDataBackAfterBoost();
     }
 
 

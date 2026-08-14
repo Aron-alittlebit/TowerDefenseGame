@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class InteractWithTower : MonoBehaviour
 {
-    [SerializeField] LayerMask TowerMask;
     [SerializeField] TowerInfoUIController TowerInfo;
     [SerializeField] Camera MainCamera;
     void Update()
     {
 
-        if (Physics.Raycast(MainCamera.transform.position, MainCamera.transform.forward, out RaycastHit hitInfo, 10f,
-            TowerMask))
+        if (Physics.Raycast(MainCamera.transform.position, MainCamera.transform.forward, 
+            out RaycastHit hitInfo, 10f))
         {
             
             
@@ -19,6 +18,7 @@ public class InteractWithTower : MonoBehaviour
             {
                 
                 TowerAttack ta = tower.GetComponentInChildren<TowerAttack>();
+                
                 TowerUIModell ui = new(tower, ta);
 
                 if (TowerInfo.IsOpened)

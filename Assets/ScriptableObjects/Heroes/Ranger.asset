@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ranger
   m_EditorClassIdentifier: Assembly-CSharp::HeroData
   towers:
-  - {fileID: 11400000, guid: 099cc73d2827be6479f364ef40c0faa7, type: 2}
+  - {fileID: 11400000, guid: 508ff8e86503a5a4f98814f101184134, type: 2}
   - {fileID: 11400000, guid: b2edbe437dfe8ff4fa233d8ef73704b1, type: 2}
   - {fileID: 11400000, guid: ccb345c7c1f568f4e9a2b16aa90b00b3, type: 2}
   - {fileID: 11400000, guid: 08e2614a238b9884da9ee9ba1116ecba, type: 2}

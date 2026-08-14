@@ -10,7 +10,6 @@ public class TowerData : ScriptableObject
     public Sprite Icon;
     public Tower TowerPrefab;
     public List<GameObject> TierPrefabs;
-    public string TowerName;
     public int Damage;
     public int Range;
     public float CoolDown;
