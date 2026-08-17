@@ -6,7 +6,7 @@ public class Tower : LivingAbstractClass
     public static Tower Instance;
     public LayerMask EntityLayer;
     public TowerData towerData { get; private set; }
-    GameObject Visual;
+    protected GameObject Visual;
 
     public Sprite Icon {  get; private set; }
     public int Cost { get; private set; }
@@ -16,7 +16,7 @@ public class Tower : LivingAbstractClass
 
     public int KillCount { get; private set; }
    
-    void Awake()
+    protected void Awake()
     {
         
         IsBuilt = false;
@@ -86,7 +86,7 @@ public class Tower : LivingAbstractClass
 
     }
 
-    void IncreaseKillCount(GameObject sender)
+    protected void IncreaseKillCount(GameObject sender)
     {
         if (transform.GetChild(0).gameObject != sender) return;
 

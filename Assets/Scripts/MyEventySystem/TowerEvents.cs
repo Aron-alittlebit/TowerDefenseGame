@@ -10,6 +10,7 @@ public static class TowerEvents
     
     public static event Action<Tower, GameObject> OnTowerUpgraded;
     public static event Action<GameObject> OnTowerKilledEntity;
+    public static event Action OnHiddenSpikeReadyToAttack;
     
 
     public static void GemSpent(int gems) => OnGemSpent?.Invoke(gems);
@@ -17,5 +18,7 @@ public static class TowerEvents
     public static void TowerBuilt(TowerData td, GameObject sender) => OnTowerBuilt?.Invoke(td, sender);
     public static void TowerUpgraded(Tower t, GameObject sender) 
         => OnTowerUpgraded?.Invoke(t, sender);
-    public static void TowerKilledEntity(GameObject sender) => OnTowerKilledEntity?.Invoke(sender);
+    public static void TowerKilledEntity(GameObject sender) => 
+        OnTowerKilledEntity?.Invoke(sender);
+    public static void HiddenSpikeAttack() => OnHiddenSpikeReadyToAttack?.Invoke();
 }
